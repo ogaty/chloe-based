@@ -17,4 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Frontend\HomeController@index')->name('home');
+Route::get('/sitemap.xml', 'Frontend\HomeController@sitemap')->name('front.sitemap');
+Route::get('/feed', 'Frontend\HomeController@feed')->name('front.feed');
+Route::get('/blog/post/{slug}', 'Frontend\HomeController@showPost')->name('front.post');
+Route::get('/search', 'Frontend\SearchController@index')->name('front.search');
+
+Route::group([
+    'middleware' => ['auth'],
+    'namespace' => 'Backend',
+], function () {
+    Route::get('/adm', 'HomeController@index')->name('admin');
+});
