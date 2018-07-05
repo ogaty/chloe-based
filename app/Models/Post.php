@@ -15,7 +15,7 @@ class Post extends Model
         $params['slug'] = $this->slug;
         $params['tag'] = $tag ? $tag->tag : null;
 
-        return false;
+        return route('front.post', array_filter($params));
     }
 
     public function tags()
