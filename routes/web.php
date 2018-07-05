@@ -11,16 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/', 'Frontend\HomeController@index')->name('home');
-Route::get('/sitemap.xml', 'Frontend\HomeController@sitemap')->name('front.sitemap');
-Route::get('/feed', 'Frontend\HomeController@feed')->name('front.feed');
-Route::get('/blog/post/{slug}', 'Frontend\HomeController@showPost')->name('front.post');
+Route::get('/', 'Frontend\BlogController@index')->name('home');
+Route::get('/sitemap.xml', 'Frontend\BlogController@sitemap')->name('front.sitemap');
+Route::get('/feed', 'Frontend\BlogController@feed')->name('front.feed');
+Route::get('/blog/post/{slug}', 'Frontend\BlogController@showPost')->name('front.post');
 Route::get('/search', 'Frontend\SearchController@index')->name('front.search');
 
 Route::group([

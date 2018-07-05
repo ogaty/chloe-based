@@ -6,7 +6,6 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Settings;
-use App\Helpers\CanvasHelper;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 
@@ -26,8 +25,8 @@ class HomeController extends Controller
             'users' => User::all(),
             'disqus' => Settings::disqus(),
             'analytics' => Settings::gaId(),
-            'status' => App::isDownForMaintenance() ? CanvasHelper::MAINTENANCE_MODE_ENABLED : CanvasHelper::MAINTENANCE_MODE_DISABLED,
-            'canvasVersion' => Settings::canvasVersion(),
+            'status' => 1,
+            'canvasVersion' => 1,
             'latestRelease' => Settings::latestRelease(),
         ];
 

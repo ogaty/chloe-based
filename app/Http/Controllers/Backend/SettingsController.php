@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Session;
 use App\Models\Settings;
 use App\Helpers\CanvasHelper;
-use Easel\Extensions\ThemeManager;
-use App\Extensions\NewThemeManager;
+use App\Extensions\ThemeManager;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SettingsUpdateRequest;
 use Illuminate\Filesystem\Filesystem;
@@ -26,7 +25,6 @@ class SettingsController extends Controller
     public function __construct()
     {
         $this->themeManager = new ThemeManager(resolve('app'), resolve('files'));
-        $this->themeManager2 = new NewThemeManager(resolve('app'), resolve('files'));
     }
 
     /**
@@ -36,7 +34,7 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        $themes = $this->themeManager2->getThemes();
+        $themes = $this->themeManager->getThemes();
         $data = [
             'blogTitle' => Settings::blogTitle(),
             'blogSubtitle' => Settings::blogSubTitle(),
@@ -49,7 +47,7 @@ class SettingsController extends Controller
             'themes' => collect($this->themeManager->getThemes()->toArray())->pluck('name', 'id'),
             'default_theme_name' => $this->themeManager->getDefaultThemeName(),
             'active_theme' => $this->themeManager->getActiveTheme(),
-            'active_theme_theme' => $this->themeManager->getTheme($this->themeManager->getActiveTheme()) ?: $this->themeManager->getDefaultTheme(),
+            'active_theme_theme' => $this->themeManager->getTheme($this->themeManager->getActiveTheme()),
             'custom_css' => Settings::customCSS(),
             'custom_js' => Settings::customJS(),
             'ad1' => Settings::ad1(),
@@ -105,11 +103,11 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'ad1'], ['setting_value' => $request->toArray()['ad1']]);
         Settings::updateOrCreate(['setting_name' => 'ad2'], ['setting_value' => $request->toArray()['ad2']]);
 
-        $request->session()->put('_update-settings', trans('canvas::messages.save_settings_success', ['entity' => 'User']));
+        $request->session()->put('_update-settings', 'Success! The blog settings have been saved.');
 
         // Update theme
         $this->themeManager->setActiveTheme($request->theme);
 
-        return redirect()->route('canvas.admin.settings');
+        return redirect()->route('admin.settings');
     }
 }

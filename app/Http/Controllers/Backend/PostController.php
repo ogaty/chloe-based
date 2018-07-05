@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use Session;
 use App\Models\Post;
-use App\Jobs\PostFormFields;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
@@ -30,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $data = $this->dispatch(new PostFormFields());
+        $data = [];
 
         return view('backend.post.create', $data);
     }
@@ -47,9 +46,9 @@ class PostController extends Controller
         $post = Post::create($request->postFillData());
         $post->syncTags($request->get('tags', []));
 
-        $request->session()->put('_new-post', trans('canvas::messages.create_success', ['entity' => 'post']));
+        $request->session()->put('_new-post', 'Success! New :entity has been created.');
 
-        return redirect()->route('canvas.admin.post.edit', $post->id);
+        return redirect()->route('admin.post.edit', $post->id);
     }
 
     /**
@@ -81,9 +80,9 @@ class PostController extends Controller
         $post->save();
         $post->syncTags($request->get('tags', []));
 
-        $request->session()->put('_update-post', trans('canvas::messages.update_success', ['entity' => 'Post']));
+        $request->session()->put('_update-post', 'Success! :entity has been updated.');
 
-        return redirect()->route('canvas.admin.post.edit', $id);
+        return redirect()->route('admin.post.edit', $id);
     }
 
     /**
@@ -99,8 +98,8 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
 
-        $request->session()->put('_delete-post', trans('canvas::messages.delete_success', ['entity' => 'Post']));
+        $request->session()->put('_delete-post', 'Success! :entity has been deleted.');
 
-        return redirect()->route('canvas.admin.techs.index');
+        return redirect()->route('admin.techs.index');
     }
 }
