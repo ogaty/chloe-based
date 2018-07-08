@@ -23,11 +23,11 @@ class HomeController extends Controller
             'recentPosts' => Post::orderBy('created_at', 'desc')->take(4)->get(),
             'tags' => Tag::all(),
             'users' => User::all(),
-            'disqus' => Settings::disqus(),
+            'disqus' => null,
             'analytics' => Settings::gaId(),
             'status' => 1,
             'canvasVersion' => 1,
-            'latestRelease' => Settings::latestRelease(),
+            'latestRelease' => 1,
         ];
 
         return view('backend.home.index', compact('data'));

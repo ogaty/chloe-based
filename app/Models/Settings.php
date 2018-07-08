@@ -51,7 +51,7 @@ class Settings extends Model
     }
 
     public static function blogSubTitle() {
-        $subTitle = Cache::get('settings.blog.title');
+        $subTitle = Cache::get('settings.blog.subtitle');
         if (is_null($subTitle)) {
             $subTitle = self::getByName('blog_subtitle');
             Cache::forever('settings.blog.subtitle', $subTitle);
@@ -72,4 +72,23 @@ class Settings extends Model
         return $gaId;
     }
 
+    public static function customCSS()
+    {
+        return $customCSS = self::where('setting_name', 'custom_css')->pluck('setting_value')->first();
+    }
+
+    public static function customJS()
+    {
+        return $customJS = self::where('setting_name', 'custom_js')->pluck('setting_value')->first();
+    }
+
+    public static function ad1()
+    {
+        return self::where('setting_name', 'ad1')->pluck('setting_value')->first();
+    }
+
+    public static function ad2()
+    {
+        return self::where('setting_name', 'ad2')->pluck('setting_value')->first();
+    }
 }

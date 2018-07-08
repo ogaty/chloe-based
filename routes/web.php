@@ -23,5 +23,50 @@ Route::group([
     'middleware' => ['auth'],
     'namespace' => 'Backend',
 ], function () {
-    Route::get('/adm', 'HomeController@index')->name('admin');
+    Route::get('/adm', 'HomeController@index')->name('admin.home');
+    Route::resource('/adm/post', 'PostController', [
+        'except' => 'show',
+        'names' => [
+            'index' => 'admin.post.index',
+            'create' => 'admin.post.create',
+            'store' => 'admin.post.store',
+            'edit' => 'admin.post.edit',
+            'update' => 'admin.post.update',
+            'destroy' => 'admin.post.destroy',
+        ],
+    ]);
+    Route::resource('/adm/tag', 'TagController', [
+        'except' => 'show',
+        'names' => [
+            'index' => 'admin.tag.index',
+            'create' => 'admin.tag.create',
+            'store' => 'admin.tag.store',
+            'edit' => 'admin.tag.edit',
+            'update' => 'admin.tag.update',
+            'destroy' => 'admin.tag.destroy',
+        ],
+    ]);
+    Route::resource('/adm/setting', 'SettingController', [
+        'except' => 'show',
+        'names' => [
+            'index' => 'admin.setting.index',
+            'create' => 'admin.setting.create',
+            'store' => 'admin.setting.store',
+            'edit' => 'admin.setting.edit',
+            'update' => 'admin.setting.update',
+            'destroy' => 'admin.setting.destroy',
+        ],
+    ]);
+    Route::resource('/adm/user', 'UserController', [
+        'except' => 'show',
+        'names' => [
+            'index' => 'admin.user.index',
+            'create' => 'admin.user.create',
+            'store' => 'admin.user.store',
+            'edit' => 'admin.user.edit',
+            'update' => 'admin.user.update',
+            'destroy' => 'admin.user.destroy',
+        ],
+    ]);
+    Route::get('/adm/search', 'SearchController@index')->name('admin.search.index');
 });
