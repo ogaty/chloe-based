@@ -91,4 +91,8 @@ class Settings extends Model
     {
         return self::where('setting_name', 'ad2')->pluck('setting_value')->first();
     }
+
+    public static function twitterCardType()
+    {
+    }
 }

@@ -13,7 +13,7 @@
                 <a href="{!! route('admin.profile.index') !!}" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-account"></i> Update your Profile</a>
                 <br>
                 <br>
-                <a href="{!! route('admin.settings') !!}" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-settings"></i> Configure your Settings</a>
+                <a href="{!! route('admin.setting.index') !!}" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-settings"></i> Configure your Settings</a>
                 <br>
                 <br>
             </div>
@@ -29,9 +29,6 @@
             <div class="col-sm-4">
                 <h5>More Actions</h5>
                 <ul class="getting-started">
-                    <li><i class="zmdi zmdi-disqus"></i> <a href="{!! route('admin.settings') !!}">Disqus Integration</a></li>
-                    <li><i class="zmdi zmdi-trending-up"></i> <a href="{!! route('admin.settings') !!}">Google Analytics Setup</a></li>
-                    <li><i class="zmdi zmdi-wrench"></i> <a href="{!! route('admin.tools') !!}">Advanced Tools</a></li></a></li>
                 </ul>
                 <br>
             </div>

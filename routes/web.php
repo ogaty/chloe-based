@@ -69,4 +69,22 @@ Route::group([
         ],
     ]);
     Route::get('/adm/search', 'SearchController@index')->name('admin.search.index');
+    Route::resource('/adm/profile', 'ProfileController', [
+        'only' => ['index', 'update'],
+        'names' => [
+            'index' => 'admin.profile.index',
+            'update' => 'admin.profile.update',
+        ],
+    ]);
+    Route::get('/adm/upload', 'UploadController@index')->name('admin.upload');
+
+    Route::get('/adm/tools', 'ToolsController@index')->name('admin.tools');
+    Route::post('/adm/tools/reset_index', 'ToolsController@resetIndex')->name('admin.tools.reset_index');
+    Route::post('/adm/tools/cache_clear', 'ToolsController@clearCache')->name('admin.tools.cache_clear');
+    Route::post('/adm/tools/download_archive', 'ToolsController@handleDownload')->name('admin.tools.download_archive');
+    Route::post('/adm/tools/enable_maintenance_mode', 'ToolsController@enableMaintenanceMode')->name('admin.tools.enable_maintenance_mode');
+    Route::post('/adm/tools/disable_maintenance_mode', 'ToolsController@disableMaintenanceMode')->name('admin.tools.disable_maintenance_mode');
+
+
+
 });
