@@ -1,5 +1,5 @@
 <header id="header" class="clearfix" data-current-skin="blue">
-    <a href="{!! route('admin.home') !!}"><img src="{!! asset('vendor/canvas/assets/images/canvas-logo-white.gif') !!}" class="cl-center" style="width: 100px"></a>
+    <a href="{!! route('admin.home') !!}"><img src="" class="cl-center" style="width: 100px" alter="canvas"></a>
     <ul class="header-inner">
         <li id="menu-trigger" data-trigger="#sidebar">
             <div class="line-wrap">
@@ -9,7 +9,7 @@
             </div>
         </li>
         <li class="logo">
-            <a href="{!! route('admin.home') !!}"><img src="{!! asset('vendor/canvas/assets/images/canvas-logo-white.gif') !!}" class="cl hidden-xs" style="width: 100px"></a>
+            <a href="{!! route('admin.home') !!}"><img src="" alter="canvas" class="cl hidden-xs" style="width: 100px"></a>
         </li>
         <li class="pull-right">
             <ul class="top-menu">

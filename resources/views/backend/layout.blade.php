@@ -4,6 +4,7 @@
         @include('backend.shared.partials.meta')
         @yield('title')
         @include('backend.shared.partials.css')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body @if(Auth::guard()->check()) class="toggled sw-toggled" @endif>
         @if (Auth::guard()->guest())
