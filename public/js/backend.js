@@ -104,6 +104,21 @@ $(document).ready(function() {
     $(".dropdown")[0] && ($("body").on("click", ".dropdown.open .dropdown-menu", function(e) {
         e.stopPropagation()
     }),
+    $(".dropdown").on("click", function(e) {
+	console.log("aaa");
+        e.preventDefault()
+        $(this).attr("data-animation") && ($animArray = [],
+        $animation = $(this).data("animation"),
+        $animArray = $animation.split(","),
+        $animationIn = "animated " + $animArray[0],
+        $animationOut = "animated " + $animArray[1],
+        $animationDuration = "",
+        $animArray[2] ? $animationDuration = $animArray[2] : $animationDuration = 500,
+        $(this).find(".dropdown-menu").removeClass($animationOut),
+        $(this).find(".dropdown-menu").addClass($animationIn));
+
+        $(this).toggleClass("open");
+    }),
     $(".dropdown").on("shown.bs.dropdown", function(e) {
         $(this).attr("data-animation") && ($animArray = [],
         $animation = $(this).data("animation"),
