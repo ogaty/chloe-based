@@ -95,4 +95,8 @@ class Settings extends Model
     public static function twitterCardType()
     {
     }
+
+    public static function socialHeaderIconsUserId()
+    {
+    }
 }

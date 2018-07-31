@@ -46,7 +46,7 @@ Route::group([
             'destroy' => 'admin.tag.destroy',
         ],
     ]);
-    Route::resource('/adm/setting', 'SettingController', [
+    Route::resource('/adm/setting', 'SettingsController', [
         'except' => 'show',
         'names' => [
             'index' => 'admin.setting.index',

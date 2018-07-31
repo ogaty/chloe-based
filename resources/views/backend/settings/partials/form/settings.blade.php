@@ -1,4 +1,4 @@
-<form class="keyboard-save" role="form" method="POST" id="settings" action="{!! route('canvas.admin.settings') !!}">
+<form class="keyboard-save" role="form" method="POST" id="settings" action="{!! route('admin.setting.index') !!}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <br>
@@ -62,16 +62,6 @@
             </select>
         </div>
         <small>Select the user whose social icons you would like to appear in the header of the blog.</small>
-    </div>
-
-    <br>
-
-    <div class="form-group">
-        <div class="fg-line">
-            <label class="fg-label"><i class="zmdi zmdi-disqus"></i> Disqus</label>
-            <input type="text" class="form-control" name="disqus_name" id="disqus_name" value="{{ $data['disqus'] }}" placeholder="Disqus Shortname">
-        </div>
-        <small>Enter your Disqus shortname to enable comments in your blog posts or <a href="https://cnvs.readme.io/docs/options#section-disqus" target="_blank">learn more about this option</a>.</small>
     </div>
 
     <br>
