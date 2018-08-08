@@ -17,7 +17,7 @@
                     <a href=""><i class="tm-icon zmdi zmdi-search"></i></a>
                 </li>
                 <li class="dropdown hidden-xs">
-                    <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
+                    <a data-toggle="dropdown" href="javascript:void(0)"><i class="tm-icon zmdi zmdi-more-vert"></i></a>
                     <ul class="dropdown-menu dm-icon pull-right">
                         <li class="hidden-xs">
                             <a href="{!! route('admin.profile.index') !!}"><i class="zmdi zmdi-account"></i> Your Profile</a>

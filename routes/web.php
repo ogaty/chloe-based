@@ -85,6 +85,27 @@ Route::group([
     Route::post('/adm/tools/enable_maintenance_mode', 'ToolsController@enableMaintenanceMode')->name('admin.tools.enable_maintenance_mode');
     Route::post('/adm/tools/disable_maintenance_mode', 'ToolsController@disableMaintenanceMode')->name('admin.tools.disable_maintenance_mode');
 
+    /* Reset password routes. */
+Route::group(['prefix' => 'password'], function () {
+    Route::post('/', '\App\Http\Controllers\Auth\PasswordController@updatePassword')->name('canvas.auth.password.update');
+    Route::get('forgot', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('canvas.auth.password.forgot');
+    Route::post('forgot', '\App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('canvas.auth.password.forgot.store')
+;
+    Route::get('reset/{token}', '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('canvas.auth.password.reset');
+    Route::post('reset', '\App\Http\Controllers\Auth\ResetPasswordController@reset')->name('canvas.auth.password.reset.store');
+});
 
+/* Reset password routes. */
+Route::group(['prefix' => 'password'], function () {
+    Route::post('/', 'PasswordController@updatePassword')->name('password.update');
+    Route::get('forgot', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.forgot');
+    Route::post('forgot', '\App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.forgot.store');
+    Route::get('reset/{token}', '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('reset', '\App\Http\Controllers\Auth\ResetPasswordController@reset')->name('password.reset.store');
+});
+
+Route::get('/auth/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('auth.login');
+Route::post('/auth/login', '\App\Http\Controllers\Auth\LoginController@login')->name('auth.login.store');
+Route::get('/auth/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('auth.logout');
 
 });

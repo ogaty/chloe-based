@@ -102,11 +102,8 @@ $(document).ready(function() {
         }, 150 * a + 200)
     }),
     $(".dropdown")[0] && ($("body").on("click", ".dropdown.open .dropdown-menu", function(e) {
-        e.stopPropagation()
     }),
     $(".dropdown").on("click", function(e) {
-	console.log("aaa");
-        e.preventDefault()
         $(this).attr("data-animation") && ($animArray = [],
         $animation = $(this).data("animation"),
         $animArray = $animation.split(","),
