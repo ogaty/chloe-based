@@ -8,4 +8,10 @@ class Tag extends Model
 {
     //
     protected $table = 'canvas_tags';
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class, 'post_tag')->withTimestamps();
+    }
+
 }

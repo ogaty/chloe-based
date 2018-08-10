@@ -11,7 +11,12 @@
 |
 */
 
-Auth::routes();
+//Auth::routes();
+Route::get('/adm/lin', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
+Route::post('/adm/lin', '\App\Http\Controllers\Auth\LoginController@login')->name('login');
+
+Route::get('/adm/lout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Route::post('/adm/lout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'Frontend\BlogController@index')->name('home');
 Route::get('/sitemap.xml', 'Frontend\BlogController@sitemap')->name('front.sitemap');
@@ -85,27 +90,14 @@ Route::group([
     Route::post('/adm/tools/enable_maintenance_mode', 'ToolsController@enableMaintenanceMode')->name('admin.tools.enable_maintenance_mode');
     Route::post('/adm/tools/disable_maintenance_mode', 'ToolsController@disableMaintenanceMode')->name('admin.tools.disable_maintenance_mode');
 
-    /* Reset password routes. */
-Route::group(['prefix' => 'password'], function () {
-    Route::post('/', '\App\Http\Controllers\Auth\PasswordController@updatePassword')->name('canvas.auth.password.update');
-    Route::get('forgot', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('canvas.auth.password.forgot');
-    Route::post('forgot', '\App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('canvas.auth.password.forgot.store')
-;
-    Route::get('reset/{token}', '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('canvas.auth.password.reset');
-    Route::post('reset', '\App\Http\Controllers\Auth\ResetPasswordController@reset')->name('canvas.auth.password.reset.store');
 });
 
-/* Reset password routes. */
-Route::group(['prefix' => 'password'], function () {
-    Route::post('/', 'PasswordController@updatePassword')->name('password.update');
-    Route::get('forgot', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.forgot');
-    Route::post('forgot', '\App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.forgot.store');
-    Route::get('reset/{token}', '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
-    Route::post('reset', '\App\Http\Controllers\Auth\ResetPasswordController@reset')->name('password.reset.store');
-});
+$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+$this->post('register', 'Auth\RegisterController@register');
 
-Route::get('/auth/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('auth.login');
-Route::post('/auth/login', '\App\Http\Controllers\Auth\LoginController@login')->name('auth.login.store');
-Route::get('/auth/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('auth.logout');
 
-});
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
