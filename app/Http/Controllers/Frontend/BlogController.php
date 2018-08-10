@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use \App\Models\Post;
+use \App\Models\Tag;
 use \App\Models\User;
 use \App\Models\Settings;
 use Carbon\Carbon;
@@ -13,6 +14,7 @@ class BlogController extends \App\Http\Controllers\Controller
     //
     public function index(Request $request) {
         $tag = $request->get('tag');
+        $tagModel = Tag::where('title', $tag)->first();
 
         $posts = Post::with('tags')
             ->where('published_at', '<=', Carbon::now())
@@ -22,7 +24,7 @@ class BlogController extends \App\Http\Controllers\Controller
             ->simplePaginate(6);
         $data = [
             'posts' => $posts,
-            'tag' => $tag,
+            'tag' => $tagModel,
             'reverse_direction' => false,
         ];
         return view('frontend.blogs.index', $data);

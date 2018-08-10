@@ -238,6 +238,7 @@ class UploadController extends Controller
 
     public function index()
     {
-        return view('backend/upload/index');
+        $images = [];
+        return view('backend/upload/index', ['images' => $images]);
     }
 }

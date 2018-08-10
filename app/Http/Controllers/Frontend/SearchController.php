@@ -13,7 +13,7 @@ class SearchController extends Controller
 {
     public function index(Request $request) {
         $tag = $request->get('tag');
-        $tagModel = new Tag();
+        $tagModel = Tag::where('title', $tag)->first();
 
         $posts = Post::with('tags')
             ->where('published_at', '<=', Carbon::now())

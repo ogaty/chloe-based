@@ -264,6 +264,10 @@ button, input[type=button], input[type=submit] {
   bottom: -132px;
   right: 10px; }
 
+.copyright {
+  padding: 4px 0px;
+  text-align: center;
+}
 @media (min-width: 992px) {
   .container {
     width: 1110px; } }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="footer-wrap">
         <div class="">
-            <div class="">
+            <div class="copyright">
                 <hr>
                 <p class="small">project ogatism</p>
             </div>

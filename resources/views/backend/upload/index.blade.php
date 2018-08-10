@@ -35,7 +35,16 @@
                         </h2>
                     </div>
 
-                    <media-manager prefix="/admin/"></media-manager>
+		    @if (count($images) == 0)
+                    <div
+                        class="alternative-content">
+                        <h4>This folder is empty.</h4>
+                        <p>
+                            Drag and drop files onto this window to upload files.
+                        </p>
+                    </div>
+                    @endif
+
                 </div>
             </div>
         </section>
@@ -43,35 +52,5 @@
 @stop
 
 @section('unique-js')
-    <script>
-        new Vue({
-            el: '#main',
-            created: function () {
-                window.eventHub.$on('media-manager-notification', function (message, type, time) {
-                    $.growl({
-                        message: message
-                    }, {
-                        type: 'inverse',
-                        allow_dismiss: false,
-                        label: 'Cancel',
-                        className: 'btn-xs btn-inverse',
-                        placement: {
-                            from: 'top',
-                            align: 'right'
-                        },
-                        delay: time,
-                        animate: {
-                            enter: 'animated fadeInRight',
-                            exit: 'animated fadeOutRight'
-                        },
-                        offset: {
-                            x: 20,
-                            y: 85
-                        }
-                    });
-                });
-            }
-        });
-    </script>
 @stop                                                                                                                                       
 
