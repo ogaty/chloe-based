@@ -17,6 +17,9 @@ class BlogController extends \App\Http\Controllers\Controller
         $tagModel = Tag::where('title', $tag)->first();
 
         $posts = Post::with('tags')
+            ->whereHas('tags', function ($q) use ($tagModel) {
+                $q->where('id', '=', $tagModel->id);
+            })
             ->where('published_at', '<=', Carbon::now())
             ->where('custom_code', 'blog')
             ->where('is_published', 1)

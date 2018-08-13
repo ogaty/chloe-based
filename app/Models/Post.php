@@ -29,8 +29,7 @@ class Post extends Model
         $tags = $this->tags()->pluck('tag');
         $return = [];
         foreach ($tags as $tag) {
-            $url = '';
-            $return[] = '<a href="'.url($url).'">#'.e($tag).'</a>&nbsp;';
+            $return[] = '<a href="/?tag='.$tag.'">#'.e($tag).'</a>&nbsp;';
         }
 
         return $return;
