@@ -35,15 +35,16 @@
                         </h2>
                     </div>
 
-		    @if (count($images) == 0)
-                    <div
-                        class="alternative-content">
-                        <h4>This folder is empty.</h4>
-                        <p>
-                            Drag and drop files onto this window to upload files.
-                        </p>
+                    <div class="images-toolbar">
+                        <span>Upload</span>
+                        <span>Add Folder</span>
+                        <span>Refresh</span>
+                        <span>Move</span>
+                        <span>Delete</span>
+                        <span>Rename</span>
                     </div>
-                    @endif
+		    <div id="images-content">
+                    </div>
 
                 </div>
             </div>
@@ -52,5 +53,24 @@
 @stop
 
 @section('unique-js')
+<script>
+$(function() {
+    $.ajax({
+        url: '/adm/upload/ls?path=public',
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+	    $("#images-content").html("");
+	    if (data.files.length > 0) {
+                for (var i = 0; i < data.files.length; i++) {
+                    $("#images-content").append(data.files[i].name);
+                }
+	    } else {
+                $("#images-content").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
+	    }
+        }
+    });
+});
+</script>
 @stop                                                                                                                                       
 

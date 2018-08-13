@@ -82,6 +82,7 @@ Route::group([
         ],
     ]);
     Route::get('/adm/upload', 'UploadController@index')->name('admin.upload');
+    Route::get('/adm/upload/ls', 'UploadController@ls')->name('admin.upload.list');
 
     Route::get('/adm/tools', 'ToolsController@index')->name('admin.tools');
     Route::post('/adm/tools/reset_index', 'ToolsController@resetIndex')->name('admin.tools.reset_index');
