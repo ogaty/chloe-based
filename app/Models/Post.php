@@ -65,4 +65,10 @@ class Post extends Model
 
         return $query->first();
     }
+
+    public static function getAuthor($id)
+    {
+        return User::where('id', $id)->pluck('display_name')->first();
+    }
+
 }

@@ -36,12 +36,14 @@
                     </div>
 
                     <div class="images-toolbar">
-                        <span>Upload</span>
-                        <span>Add Folder</span>
-                        <span>Refresh</span>
-                        <span>Move</span>
-                        <span>Delete</span>
-                        <span>Rename</span>
+                        <ul class="images-toolbar--container">
+                            <li class="images-toolbar--button">Upload</li>
+                            <li class="images-toolbar--button">Add Folder</li>
+                            <li class="images-toolbar--button">Refresh</li>
+                            <li class="images-toolbar--button">Move</li>
+                            <li class="images-toolbar--button">Delete</li>
+                            <li class="images-toolbar--button">Rename</li>
+                        </ul>
                     </div>
 		    <div id="images-content">
                     </div>
@@ -55,22 +57,31 @@
 @section('unique-js')
 <script>
 $(function() {
+    reRender('/');
+});
+function reRender(path) {
     $.ajax({
-        url: '/adm/upload/ls?path=public',
+        url: '/adm/upload/ls?path=' + path,
         dataType: 'json',
         success: function(data) {
             console.log(data);
 	    $("#images-content").html("");
+	    console.log(data.breadCrumbs);
+            if (data.subFolders.length > 0) {
+                for (var i = 0; i < data.subFolders.length; i++) {
+                    $("#images-content").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
+                }
+            }
 	    if (data.files.length > 0) {
                 for (var i = 0; i < data.files.length; i++) {
-                    $("#images-content").append(data.files[i].name);
+                    $("#images-content").append('<li>'+data.files[i].name+'</li>');
                 }
 	    } else {
                 $("#images-content").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
 	    }
         }
     });
-});
+}
 </script>
 @stop                                                                                                                                       
 

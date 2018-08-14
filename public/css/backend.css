@@ -23446,3 +23446,24 @@ input#layout:disabled {
 
 .label-totals {
   float: right; }
+
+.images-toolbar {
+  position: relative;
+  opacity: .6;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  padding: 0 10px;
+  border-top: 1px solid #bbb;
+  border-left: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.images-toolbar--button {
+  float: left;
+  list-style: none;
+  display: inline-block;
+  margin-right: 8px;
+}
+
