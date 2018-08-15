@@ -45,65 +45,13 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
      *
      * @var string
      */
-    private $breadcrumbRootLabel = 'Root';
-
-        protected $extensionToType = array(
-        'ez' => 'application/andrew-inset',
-        'aw' => 'application/applixware',
+    // from apache-mime-types
+    protected $extensionToType = array(
         'atom' => 'application/atom+xml',
-        'atomcat' => 'application/atomcat+xml',
-        'atomsvc' => 'application/atomsvc+xml',
-        'ccxml' => 'application/ccxml+xml',
-        'cdmia' => 'application/cdmi-capability',
-        'cdmic' => 'application/cdmi-container',
-        'cdmid' => 'application/cdmi-domain',
-        'cdmio' => 'application/cdmi-object',
-        'cdmiq' => 'application/cdmi-queue',
-        'cu' => 'application/cu-seeme',
-        'davmount' => 'application/davmount+xml',
-        'dbk' => 'application/docbook+xml',
-        'dssc' => 'application/dssc+der',
-        'xdssc' => 'application/dssc+xml',
-        'ecma' => 'application/ecmascript',
-        'emma' => 'application/emma+xml',
         'epub' => 'application/epub+zip',
-        'exi' => 'application/exi',
-        'pfr' => 'application/font-tdpfr',
-        'gml' => 'application/gml+xml',
-        'gpx' => 'application/gpx+xml',
-        'gxf' => 'application/gxf',
-        'stk' => 'application/hyperstudio',
-        'ink' => 'application/inkml+xml',
-        'inkml' => 'application/inkml+xml',
-        'ipfix' => 'application/ipfix',
-        'jar' => 'application/java-archive',
-        'ser' => 'application/java-serialized-object',
-        'class' => 'application/java-vm',
         'js' => 'application/javascript',
         'json' => 'application/json',
-        'jsonml' => 'application/jsonml+json',
-        'lostxml' => 'application/lost+xml',
-        'hqx' => 'application/mac-binhex40',
-        'cpt' => 'application/mac-compactpro',
-        'mads' => 'application/mads+xml',
-        'mrc' => 'application/marc',
-        'mrcx' => 'application/marcxml+xml',
-        'ma' => 'application/mathematica',
-        'nb' => 'application/mathematica',
-        'mb' => 'application/mathematica',
-        'mathml' => 'application/mathml+xml',
-        'mbox' => 'application/mbox',
-        'mscml' => 'application/mediaservercontrol+xml',
-        'metalink' => 'application/metalink+xml',
-        'meta4' => 'application/metalink4+xml',
-        'mets' => 'application/mets+xml',
-        'mods' => 'application/mods+xml',
-        'm21' => 'application/mp21',
-        'mp21' => 'application/mp21',
-        'mp4s' => 'application/mp4',
         'doc' => 'application/msword',
-        'dot' => 'application/msword',
-        'mxf' => 'application/mxf',
         'bin' => 'application/octet-stream',
         'dms' => 'application/octet-stream',
         'lrf' => 'application/octet-stream',
@@ -494,10 +442,6 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
         'sema' => 'application/vnd.sema',
         'semd' => 'application/vnd.semd',
         'semf' => 'application/vnd.semf',
-        'ifm' => 'application/vnd.shana.informed.formdata',
-        'itp' => 'application/vnd.shana.informed.formtemplate',
-        'iif' => 'application/vnd.shana.informed.interchange',
-        'ipk' => 'application/vnd.shana.informed.package',
         'twd' => 'application/vnd.simtech-mindmapper',
         'twds' => 'application/vnd.simtech-mindmapper',
         'mmf' => 'application/vnd.smaf',
@@ -1263,13 +1207,6 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
         'application/vnd.micrografx.flo' => array('flo'),
         'application/vnd.micrografx.igx' => array('igx'),
         'application/vnd.mif' => array('mif'),
-        'application/vnd.mobius.daf' => array('daf'),
-        'application/vnd.mobius.dis' => array('dis'),
-        'application/vnd.mobius.mbk' => array('mbk'),
-        'application/vnd.mobius.mqy' => array('mqy'),
-        'application/vnd.mobius.msl' => array('msl'),
-        'application/vnd.mobius.plc' => array('plc'),
-        'application/vnd.mobius.txf' => array('txf'),
         'application/vnd.mophun.application' => array('mpn'),
         'application/vnd.mophun.certificate' => array('mpc'),
         'application/vnd.mozilla.xul+xml' => array('xul'),
@@ -1315,23 +1252,6 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
         'application/vnd.novadigm.edm' => array('edm'),
         'application/vnd.novadigm.edx' => array('edx'),
         'application/vnd.novadigm.ext' => array('ext'),
-        'application/vnd.oasis.opendocument.chart' => array('odc'),
-        'application/vnd.oasis.opendocument.chart-template' => array('otc'),
-        'application/vnd.oasis.opendocument.database' => array('odb'),
-        'application/vnd.oasis.opendocument.formula' => array('odf'),
-        'application/vnd.oasis.opendocument.formula-template' => array('odft'),
-        'application/vnd.oasis.opendocument.graphics' => array('odg'),
-        'application/vnd.oasis.opendocument.graphics-template' => array('otg'),
-        'application/vnd.oasis.opendocument.image' => array('odi'),
-        'application/vnd.oasis.opendocument.image-template' => array('oti'),
-        'application/vnd.oasis.opendocument.presentation' => array('odp'),
-        'application/vnd.oasis.opendocument.presentation-template' => array('otp'),
-        'application/vnd.oasis.opendocument.spreadsheet' => array('ods'),
-        'application/vnd.oasis.opendocument.spreadsheet-template' => array('ots'),
-        'application/vnd.oasis.opendocument.text' => array('odt'),
-        'application/vnd.oasis.opendocument.text-master' => array('odm'),
-        'application/vnd.oasis.opendocument.text-template' => array('ott'),
-        'application/vnd.oasis.opendocument.text-web' => array('oth'),
         'application/vnd.olpc-sugar' => array('xo'),
         'application/vnd.oma.dd2+xml' => array('dd2'),
         'application/vnd.openofficeorg.extension' => array('oxt'),
@@ -1676,19 +1596,6 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
         'text/turtle' => array('ttl'),
         'text/uri-list' => array('uri', 'uris', 'urls'),
         'text/vcard' => array('vcard'),
-        'text/vnd.curl' => array('curl'),
-        'text/vnd.curl.dcurl' => array('dcurl'),
-        'text/vnd.curl.scurl' => array('scurl'),
-        'text/vnd.curl.mcurl' => array('mcurl'),
-        'text/vnd.dvb.subtitle' => array('sub'),
-        'text/vnd.fly' => array('fly'),
-        'text/vnd.fmi.flexstor' => array('flx'),
-        'text/vnd.graphviz' => array('gv'),
-        'text/vnd.in3d.3dml' => array('3dml'),
-        'text/vnd.in3d.spot' => array('spot'),
-        'text/vnd.sun.j2me.app-descriptor' => array('jad'),
-        'text/vnd.wap.wml' => array('wml'),
-        'text/vnd.wap.wmlscript' => array('wmls'),
         'text/x-asm' => array('s', 'asm'),
         'text/x-c' => array('c', 'cc', 'cxx', 'cpp', 'h', 'hh', 'dic'),
         'text/x-fortran' => array('f', 'for', 'f77', 'f90'),
@@ -1740,7 +1647,6 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
         'video/x-msvideo' => array('avi'),
         'video/x-sgi-movie' => array('movie'),
         'video/x-smv' => array('smv'),
-        'x-conference/x-cooltalk' => array('ice'),
     );
 
     /**
@@ -1823,7 +1729,17 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
     {
         $folder = $this->cleanFolder($folder);
         $breadCrumbs = $this->breadcrumbs($folder);
-        $folderName = $breadCrumbs->pop();
+	//💣
+	//first: / [[name:'/', fullPath:'/']]
+	//second: /test [[name:'/', fullPath:'/'],[name:'test', fullPath:'/test']]
+	//third: /test/test2 [[name:'/', fullPath:'/'],[name:'test', fullPath:'/test'],[name:'test2, fullPath:'/test2']]
+	if ($breadCrumbs[0] == "") {
+            $folderName = "/";
+            $breadCrumbs = [];
+        } else {
+            $folderName = end($breadCrumbs);
+	    logger($breadCrumbs);
+        }
 
         // Get the names of the sub folders within this folder
         $subFolders = collect($this->disk->directories($folder))->reduce(function ($subFolders, $subFolder) {
@@ -1871,14 +1787,13 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
     {
         $folder = trim($folder, '/');
         $folders = collect(explode('/', $folder));
-        $path = '';
-
         return $folders->reduce(function ($crumbs, $folder) use (&$path) {
             $path .= '/'.$folder;
-            $crumbs[$path] = $folder;
-
+            $crumbs[] = ['fullPath' => $path, 'name' =>  $folder];
             return $crumbs;
-        }, collect())->prepend($this->breadcrumbRootLabel, '/');
+        }, collect())->prepend(['fullPath' => '/', 'name' => '/'], 0);
+
+	return $folders;
     }
 
     /**
@@ -2066,7 +1981,7 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
             $allDirectories[$directory] = $name;
 
             return $allDirectories;
-        }, collect())->prepend($this->breadcrumbRootLabel, '/');
+        }, collect())->prepend('');
     }
 
     /**

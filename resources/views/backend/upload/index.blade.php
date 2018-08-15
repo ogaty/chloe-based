@@ -45,6 +45,8 @@
                             <li class="images-toolbar--button">Rename</li>
                         </ul>
                     </div>
+                    <div id="images-breadCrumb">
+                    </div>
                     <div id="images-content">
                         <div id="images-content__list">
                         </div>
@@ -93,6 +95,12 @@ function reRender(path) {
             console.log(data);
             $("#images-content__list").html("");
             console.log(data.breadCrumbs);
+            if (data.breadCrumbs.length > 0) {
+                $("#images-breadCrumb").html("");
+                for (var i = 0; i < data.breadCrumbs.length; i++) {
+                    $("#images-breadCrumb").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs[i].fullPath+'\')">'+data.breadCrumbs[i].name+'</a></li>');
+                }
+	    }
             if (data.subFolders.length > 0) {
                 for (var i = 0; i < data.subFolders.length; i++) {
                     $("#images-content__list").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
@@ -103,7 +111,9 @@ function reRender(path) {
                     $("#images-content__list").append('<li>'+data.files[i].name+'</li>');
                 }
             } else {
-                $("#images-content__list").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
+                if (data.subFolders.length == 0) {
+                    $("#images-content__list").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
+		}
             }
         }
     });
