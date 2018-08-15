@@ -45,7 +45,33 @@
                             <li class="images-toolbar--button">Rename</li>
                         </ul>
                     </div>
-		    <div id="images-content">
+                    <div id="images-content">
+                        <div id="images-content__list">
+                        </div>
+                        <div id="preview-sidebar">
+                        </div>
+                    </div>
+                    <div id="create-directory-modal" class="modal" style="display:none;">
+                        <input type="text">
+                        <button>Apply</button>
+                        <button>Cancel</button>
+                    </div>
+                    <div id="confirm-delete-modal" class="modal" style="display:none;">
+                        <label>Are you sure you want to delete the following item?</label>
+                        <button>Delete</button>
+                        <button>Cancel</button>
+                    </div>
+                    <div id="move-item-modal" class="modal" style="display:none;">
+                        <option>
+                            <select>/</select>
+                        </option>
+                        <button>Apply</button>
+                        <button>Cancel</button>
+                    </div>
+                    <div id="rename-item-modal" class="modal" style="display:none;">
+                        <input type="text">
+                        <button>Apply</button>
+                        <button>Cancel</button>
                     </div>
 
                 </div>
@@ -65,22 +91,25 @@ function reRender(path) {
         dataType: 'json',
         success: function(data) {
             console.log(data);
-	    $("#images-content").html("");
-	    console.log(data.breadCrumbs);
+            $("#images-content__list").html("");
+            console.log(data.breadCrumbs);
             if (data.subFolders.length > 0) {
                 for (var i = 0; i < data.subFolders.length; i++) {
-                    $("#images-content").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
+                    $("#images-content__list").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
                 }
             }
-	    if (data.files.length > 0) {
+            if (data.files.length > 0) {
                 for (var i = 0; i < data.files.length; i++) {
-                    $("#images-content").append('<li>'+data.files[i].name+'</li>');
+                    $("#images-content__list").append('<li>'+data.files[i].name+'</li>');
                 }
-	    } else {
-                $("#images-content").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
-	    }
+            } else {
+                $("#images-content__list").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
+            }
         }
     });
+}
+function closeModal() {
+    $("body").find(".modal").removeClass("visible");
 }
 </script>
 @stop                                                                                                                                       
