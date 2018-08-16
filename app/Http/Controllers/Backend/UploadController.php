@@ -13,7 +13,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\UploadFileRequest;
 use App\Http\Requests\UploadNewFolderRequest;
-use App\Http\UploadedFiles;
+use App\Models\UploadedFiles;
 use App\Services\MediaManager;
 
 /**
@@ -128,11 +128,10 @@ class UploadController extends Controller
     public function uploadFiles(UploadFileRequest $request)
     {
         try {
-            $files = $request->file('files');
-            $folder = $request->get('folder', '/');
-            $uploadedFiles = new UploadedFiles($files);
+            $files = $request->file('file');
+            $folder = $request->post('folder', '/');
 
-            $response = $this->mediaManager->saveUploadedFiles($uploadedFiles, $folder);
+            $response = $this->mediaManager->saveUploadedFiles($files, $folder);
             if ($response != 0) {
                 $response = trans('media-manager::messages.upload_success', ['entity' => $response.' New '.str_plural('File', $response)]);
             }

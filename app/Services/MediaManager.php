@@ -8,13 +8,12 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use App\Contracts\FileMoverInterface;
-use App\Contracts\FileUploaderInterface;
 use App\Contracts\UploadedFilesInterface;
 
 /**
  * Class MediaManager.
  */
-class MediaManager implements FileUploaderInterface, FileMoverInterface
+class MediaManager implements FileMoverInterface
 {
     /**
      * @var FilesystemAdapter
@@ -2058,25 +2057,19 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
      *
      * @return int
      */
-    public function saveUploadedFiles(UploadedFilesInterface $files, $path = '/')
+    public function saveUploadedFiles(UploadedFile $file, $path = '/')
     {
-        return $files->getUploadedFiles()->reduce(function ($uploaded, UploadedFile $file) use ($path) {
-            $fileName = $file->getClientOriginalName();
-            if ($this->disk->exists($path.$fileName)) {
-                $this->errors[] = 'File '.$path.$fileName.' already exists in this folder.';
+        if ($this->disk->exists($path.$file->getClientOriginalName())) {
+            $this->errors[] = 'File '.$path.$file.' already exists in this folder.';
 
-                return $uploaded;
-            }
+            return 0;
+        }
+        if (!$file->storeAs($path, $file->getClientOriginalName(), $this->diskName, $this->access)) {
+            $this->errors[] = trans('media-manager::messages.upload_error', ['entity' => $file]);
 
-            if (!$file->storeAs($path, $fileName, $this->diskName, $this->access)) {
-                $this->errors[] = trans('media-manager::messages.upload_error', ['entity' => $fileName]);
-
-                return $uploaded;
-            }
-            $uploaded++;
-
-            return $uploaded;
-        }, 0);
+            return 0;
+        }
+	return 1;
     }
 
     /**

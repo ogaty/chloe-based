@@ -53,30 +53,31 @@
                         <div id="preview-sidebar">
                         </div>
                     </div>
-                    <div id="upload-modal" class="modal" style="display:none;">
+                    <div id="upload-modal" class="modal">
                         <form id="upload-form"> 
-                            <input type="file" id="image-uploader">
+                            <input type="file" name="file" id="image-uploader">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button type="button" onclick="closeModal()">Close</button>
                         </form>
-                        <button>Close</button>
                     </div>
-                    <div id="create-directory-modal" class="modal" style="display:none;">
+                    <div id="create-directory-modal" class="modal">
                         <input type="text">
                         <button>Apply</button>
                         <button>Cancel</button>
                     </div>
-                    <div id="confirm-delete-modal" class="modal" style="display:none;">
+                    <div id="confirm-delete-modal" class="modal">
                         <label>Are you sure you want to delete the following item?</label>
                         <button>Delete</button>
                         <button>Cancel</button>
                     </div>
-                    <div id="move-item-modal" class="modal" style="display:none;">
+                    <div id="move-item-modal" class="modal">
                         <option>
                             <select>/</select>
                         </option>
                         <button>Apply</button>
                         <button>Cancel</button>
                     </div>
-                    <div id="rename-item-modal" class="modal" style="display:none;">
+                    <div id="rename-item-modal" class="modal">
                         <input type="text">
                         <button>Apply</button>
                         <button>Cancel</button>
@@ -90,12 +91,14 @@
 
 @section('unique-js')
 <script>
+var folder = "/";
 $(function() {
     reRender('/');
     
     $("#image-uploader").on('change', function() {
         var form = $('#upload-form').get()[0];
         var formData = new FormData( form );
+	formData.append('folder', folder);
         $.ajax({
             url: '/adm/upload/uploadFiles',
             type: 'post',
@@ -125,6 +128,7 @@ $(function() {
     });
 });
 function reRender(path) {
+    folder = path;
     $.ajax({
         url: '/adm/upload/ls?path=' + path,
         dataType: 'json'

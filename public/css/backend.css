@@ -11841,13 +11841,6 @@ output {
   color: #000;
   display: block; }
 
-input[type=file] {
-  display: block; }
-
-input[type=range] {
-  display: block;
-  width: 100%; }
-
 select[multiple],
 select[size] {
   height: auto; }
@@ -23486,4 +23479,13 @@ input#layout:disabled {
   margin: 6px 25px;
   border-bottom: 1px solid #ccc;
 }
-
+.modal {
+  display: none;
+}
+.visible {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 400px;
+}
