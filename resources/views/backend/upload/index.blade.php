@@ -54,7 +54,9 @@
                         </div>
                     </div>
                     <div id="upload-modal" class="modal" style="display:none;">
-                        <input type="file">
+                        <form id="upload-form"> 
+                            <input type="file" id="image-uploader">
+                        </form>
                         <button>Close</button>
                     </div>
                     <div id="create-directory-modal" class="modal" style="display:none;">
@@ -90,12 +92,43 @@
 <script>
 $(function() {
     reRender('/');
+    
+    $("#image-uploader").on('change', function() {
+        var form = $('#upload-form').get()[0];
+        var formData = new FormData( form );
+        $.ajax({
+            url: '/adm/upload/uploadFiles',
+            type: 'post',
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function() {
+        });
+    });
+
+    $("#upload-image").on('click', function() {
+        $("#upload-modal").addClass("visible");
+    });
+    $("#add-folder").on('click', function() {
+        $("#create-directory-modal").addClass("visible");
+    });
+    $("#refresh").on('click', function() {
+    });
+    $("#move").on('click', function() {
+        $("#move-item-modal").addClass("visible");
+    });
+    $("#rename").on('click', function() {
+        $("#rename-item-modal").addClass("visible");
+    });
+    $("#remove").on('click', function() {
+        $("#confirm-delete-modal").addClass("visible");
+    });
 });
 function reRender(path) {
     $.ajax({
         url: '/adm/upload/ls?path=' + path,
-        dataType: 'json',
-        success: function(data) {
+        dataType: 'json'
+    }).done(function(data) {
             console.log(data);
             $("#images-content__list").html("");
             console.log(data.breadCrumbs);
