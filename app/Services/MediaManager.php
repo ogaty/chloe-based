@@ -1729,17 +1729,6 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
     {
         $folder = $this->cleanFolder($folder);
         $breadCrumbs = $this->breadcrumbs($folder);
-	//💣
-	//first: / [[name:'/', fullPath:'/']]
-	//second: /test [[name:'/', fullPath:'/'],[name:'test', fullPath:'/test']]
-	//third: /test/test2 [[name:'/', fullPath:'/'],[name:'test', fullPath:'/test'],[name:'test2, fullPath:'/test2']]
-	if ($breadCrumbs[0] == "") {
-            $folderName = "/";
-            $breadCrumbs = [];
-        } else {
-            $folderName = end($breadCrumbs);
-	    logger($breadCrumbs);
-        }
 
         // Get the names of the sub folders within this folder
         $subFolders = collect($this->disk->directories($folder))->reduce(function ($subFolders, $subFolder) {

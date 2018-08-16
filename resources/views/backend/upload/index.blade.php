@@ -45,10 +45,10 @@
                             <li class="images-toolbar--button"><button id="rename">Rename</button></li>
                         </ul>
                     </div>
-                    <div id="images-breadCrumb">
+                    <div id="images-breadCrumb" class="images-breadcrumb">
                     </div>
                     <div id="images-content">
-                        <div id="images-content__list">
+                        <div id="images-content__list" class="images-content__list">
                         </div>
                         <div id="preview-sidebar">
                         </div>
@@ -129,30 +129,33 @@ function reRender(path) {
         url: '/adm/upload/ls?path=' + path,
         dataType: 'json'
     }).done(function(data) {
-            console.log(data);
+        console.log(data);
             $("#images-content__list").html("");
             console.log(data.breadCrumbs);
+	    if (typeof data.breadCrumbs.name != undefined) {
+                $("#images-breadCrumb").html("");
+                $("#images-breadCrumb").append('<li class="images-breadcrumb__item"><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs.fullPath+'\')">'+data.breadCrumbs.name+'</a></li>');
+	    }
             if (data.breadCrumbs.length > 0) {
                 $("#images-breadCrumb").html("");
                 for (var i = 0; i < data.breadCrumbs.length; i++) {
-                    $("#images-breadCrumb").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs[i].fullPath+'\')">'+data.breadCrumbs[i].name+'</a></li>');
+                    $("#images-breadCrumb").append('<li class="images-breadcrumb__item"><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs[i].fullPath+'\')">'+data.breadCrumbs[i].name+'</a></li>');
                 }
             }
             if (data.subFolders.length > 0) {
                 for (var i = 0; i < data.subFolders.length; i++) {
-                    $("#images-content__list").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
+                    $("#images-content__list").append('<li class="images-content__item"><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
                 }
             }
             if (data.files.length > 0) {
                 for (var i = 0; i < data.files.length; i++) {
-                    $("#images-content__list").append('<li>'+data.files[i].name+'</li>');
+                    $("#images-content__list").append('<li class="images-content__item">'+data.files[i].name+'</li>');
                 }
             } else {
                 if (data.subFolders.length == 0) {
                     $("#images-content__list").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
                 }
             }
-        }
     });
 }
 function closeModal() {

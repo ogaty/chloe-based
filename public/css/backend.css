@@ -23465,5 +23465,25 @@ input#layout:disabled {
   list-style: none;
   display: inline-block;
   margin-right: 8px;
+  color: #4a4a4a;
+}
+.images-breadcrumb {
+  margin: 8px 25px;
+}
+.images-breadcrumb__item {
+  display: inline-block;
+  padding: 0px 8px;
+}
+.images-breadcrumb__item:first-child {
+  padding-left: 0px;
+}
+.images-content__list {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.images-content__item {
+  list-style: none;
+  margin: 6px 25px;
+  border-bottom: 1px solid #ccc;
 }
 
