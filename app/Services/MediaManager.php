@@ -1785,15 +1785,19 @@ class MediaManager implements FileUploaderInterface, FileMoverInterface
      */
     protected function breadcrumbs($folder)
     {
+        if ($folder == '/') {
+            return ['name' => '/', 'fullPath' => '/'];
+        }
         $folder = trim($folder, '/');
-        $folders = collect(explode('/', $folder));
-        return $folders->reduce(function ($crumbs, $folder) use (&$path) {
-            $path .= '/'.$folder;
-            $crumbs[] = ['fullPath' => $path, 'name' =>  $folder];
-            return $crumbs;
-        }, collect())->prepend(['fullPath' => '/', 'name' => '/'], 0);
-
-	return $folders;
+        $folders = explode('/', $folder);
+        $crumbs = [];
+        $path = '';
+        foreach ($folders as $folder) {
+            $path = $path . '/' . $folder;
+            $crumbs[] = ['name' => $folder, 'fullPath' => $path];
+        }
+        array_unshift($crumbs, ['name' => '/', 'fullPath' => '/']);
+        return $crumbs;
     }
 
     /**

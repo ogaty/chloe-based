@@ -37,12 +37,12 @@
 
                     <div class="images-toolbar">
                         <ul class="images-toolbar--container">
-                            <li class="images-toolbar--button">Upload</li>
-                            <li class="images-toolbar--button">Add Folder</li>
-                            <li class="images-toolbar--button">Refresh</li>
-                            <li class="images-toolbar--button">Move</li>
-                            <li class="images-toolbar--button">Delete</li>
-                            <li class="images-toolbar--button">Rename</li>
+                            <li class="images-toolbar--button"><button id="upload-image">Upload</button></li>
+                            <li class="images-toolbar--button"><button id="add-folder">Add Folder</button></li>
+                            <li class="images-toolbar--button"><button id="refresh">Refresh</button></li>
+                            <li class="images-toolbar--button"><button id="move">Move</button></li>
+                            <li class="images-toolbar--button"><button id="delete">Delete</button></li>
+                            <li class="images-toolbar--button"><button id="rename">Rename</button></li>
                         </ul>
                     </div>
                     <div id="images-breadCrumb">
@@ -52,6 +52,10 @@
                         </div>
                         <div id="preview-sidebar">
                         </div>
+                    </div>
+                    <div id="upload-modal" class="modal" style="display:none;">
+                        <input type="file">
+                        <button>Close</button>
                     </div>
                     <div id="create-directory-modal" class="modal" style="display:none;">
                         <input type="text">
@@ -100,7 +104,7 @@ function reRender(path) {
                 for (var i = 0; i < data.breadCrumbs.length; i++) {
                     $("#images-breadCrumb").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs[i].fullPath+'\')">'+data.breadCrumbs[i].name+'</a></li>');
                 }
-	    }
+            }
             if (data.subFolders.length > 0) {
                 for (var i = 0; i < data.subFolders.length; i++) {
                     $("#images-content__list").append('<li><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
@@ -113,7 +117,7 @@ function reRender(path) {
             } else {
                 if (data.subFolders.length == 0) {
                     $("#images-content__list").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
-		}
+                }
             }
         }
     });
