@@ -54,33 +54,41 @@
                         </div>
                     </div>
                     <div id="upload-modal" class="modal">
-                        <form id="upload-form"> 
+                        <form id="upload-form" class="modal-form"> 
                             <input type="file" name="file" id="image-uploader">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <button type="button" onclick="closeModal()">Close</button>
                         </form>
                     </div>
                     <div id="create-directory-modal" class="modal">
-                        <input type="text">
-                        <button>Apply</button>
-                        <button>Cancel</button>
+                        <div class="modal-form">
+                            <input type="text" id="newDir">
+                            <button onclick="createDirectory()">Apply</button>
+                            <button onclick="closeModal()">Cancel</button>
+                        </div>
                     </div>
                     <div id="confirm-delete-modal" class="modal">
-                        <label>Are you sure you want to delete the following item?</label>
-                        <button>Delete</button>
-                        <button>Cancel</button>
+                        <div class="modal-form">
+                            <label>Are you sure you want to delete the following item?</label>
+                            <button onclick="deleteItem()">Delete</button>
+                            <button onclick="closeModal()">Cancel</button>
+                        </div>
                     </div>
                     <div id="move-item-modal" class="modal">
-                        <option>
-                            <select>/</select>
-                        </option>
-                        <button>Apply</button>
-                        <button>Cancel</button>
+                        <div class="modal-form">
+                            <option>
+                                <select>/</select>
+                            </option>
+                            <button>Apply</button>
+                            <button onclick="closeModal()">Cancel</button>
+                        </div>
                     </div>
                     <div id="rename-item-modal" class="modal">
-                        <input type="text">
-                        <button>Apply</button>
-                        <button>Cancel</button>
+                        <div class="modal-form">
+                            <input type="text">
+                            <button>Apply</button>
+                            <button onclick="closeModal()">Cancel</button>
+                        </div>
                     </div>
 
                 </div>
@@ -116,6 +124,7 @@ $(function() {
         $("#create-directory-modal").addClass("visible");
     });
     $("#refresh").on('click', function() {
+	reRender(folder);
     });
     $("#move").on('click', function() {
         $("#move-item-modal").addClass("visible");
@@ -123,7 +132,7 @@ $(function() {
     $("#rename").on('click', function() {
         $("#rename-item-modal").addClass("visible");
     });
-    $("#remove").on('click', function() {
+    $("#delete").on('click', function() {
         $("#confirm-delete-modal").addClass("visible");
     });
 });
@@ -148,18 +157,52 @@ function reRender(path) {
             }
             if (data.subFolders.length > 0) {
                 for (var i = 0; i < data.subFolders.length; i++) {
-                    $("#images-content__list").append('<li class="images-content__item"><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
+                    $("#images-content__list").append('<li class="images-content__item"><input type="checkbox" class="images-content__check" data-fullpath="'+data.subFolders[i].fullPath+'"><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
                 }
             }
             if (data.files.length > 0) {
                 for (var i = 0; i < data.files.length; i++) {
-                    $("#images-content__list").append('<li class="images-content__item">'+data.files[i].name+'</li>');
+                    $("#images-content__list").append('<li class="images-content__item"><input type="checkbox" class="images-content__check" data-fullpath="'+data.files[i].fullPath+'"><a href="javascript:void(0)">'+data.files[i].name+'</a></li>');
                 }
             } else {
                 if (data.subFolders.length == 0) {
                     $("#images-content__list").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
                 }
             }
+    });
+}
+function createDirectory() {
+    $.ajax({
+        url: '/adm/upload/createFolder?folder=' + folder + '&new_folder=' + $("#newDir").val(),
+        dataType: 'json'
+    }).done(function(data) {
+	if (data.success.length > 0) {
+            console.log(data.success);
+	}
+        closeModal();
+	reRender(folder);
+    }).fail(function(req, stat, err) {
+	console.log(req.status);
+	console.log(stat);
+	console.log(err);
+    });
+}
+function deleteItem() {
+    $.ajax({
+        url: '/adm/upload/deleteItem?folder=' + folder,
+        dataType: 'json',
+        type: 'post',
+	data: {'_token': '{{csrf_token()}}', 'path': $(".images-content__check:checked").data("fullpath")}
+    }).done(function(data) {
+	if (data.success.length > 0) {
+            console.log(data.success);
+	}
+        closeModal();
+	reRender(folder);
+    }).fail(function(req, stat, err) {
+	console.log(req.status);
+	console.log(stat);
+	console.log(err);
     });
 }
 function closeModal() {

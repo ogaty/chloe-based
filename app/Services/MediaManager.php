@@ -1904,12 +1904,6 @@ class MediaManager implements FileMoverInterface
     public function deleteDirectory($folder)
     {
         $folder = $this->cleanFolder($folder);
-        $filesFolders = array_merge($this->disk->directories($folder), $this->disk->files($folder));
-        if (!empty($filesFolders)) {
-            $this->errors[] = 'The directory must be empty to delete it.';
-
-            return false;
-        }
 
         return $this->disk->deleteDirectory($folder);
     }

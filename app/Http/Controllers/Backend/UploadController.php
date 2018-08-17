@@ -9,6 +9,8 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\UploadFileRequest;
@@ -65,10 +67,23 @@ class UploadController extends Controller
                 return $this->errorResponse($error);
             }
 
-            return ['success' => trans('media-manager::messages.create_success', ['entity' => 'folder'])];
+            return ['success' => 'create_success'];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
+    }
+
+    public function deleteItem(Request $request)
+    {
+        $path = request('path');
+	if (!Storage::exists('public' . $path)) {
+	    return ['success' => 'no such file or folder.'];
+	}
+	if (Storage::getMetadata('public' . $path)['type'] === 'dir') {
+	    return $this->deleteFolder($request, $path);
+	} else {
+	    return $this->deleteFile($request);
+	}
     }
 
     /**
@@ -78,9 +93,11 @@ class UploadController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function deleteFolder(Request $request)
+    public function deleteFolder(Request $request, $folder = null)
     {
-        $folder = $request->get('path');
+	if (is_null($folder)) {
+            $folder = $request->get('path');
+	}
 
         try {
             $result = $this->mediaManager->deleteDirectory($folder);
@@ -90,7 +107,7 @@ class UploadController extends Controller
                 return $this->errorResponse($error);
             }
 
-            return ['success' => trans('media-manager::messages.delete_success', ['entity' => 'folder'])];
+            return ['success' => 'delete_success'];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }
