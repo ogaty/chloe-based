@@ -76,9 +76,9 @@
                     </div>
                     <div id="move-item-modal" class="modal">
                         <div class="modal-form">
-                            <option>
-                                <select>/</select>
-                            </option>
+                            <div>
+                                <select id="all-directories"></select>
+                            </div>
                             <button>Apply</button>
                             <button onclick="closeModal()">Cancel</button>
                         </div>
@@ -131,7 +131,9 @@ $(function() {
             url: '/adm/upload/alldirectories',
             dataType: 'json'
         }).done(function(data) {
-            console.log(data);
+	    for (var i = 0; i < data.length; i++) {
+$("#all-directories").append("<option value=\"" + data[i].fullpath + "\">" + data[i].name + "</option>");
+	    }
         });
         $("#move-item-modal").addClass("visible");
     });
@@ -196,6 +198,24 @@ function createDirectory() {
 function deleteItem() {
     $.ajax({
         url: '/adm/upload/deleteItem?folder=' + folder,
+        dataType: 'json',
+        type: 'post',
+	data: {'_token': '{{csrf_token()}}', 'path': $(".images-content__check:checked").data("fullpath")}
+    }).done(function(data) {
+	if (data.success.length > 0) {
+            console.log(data.success);
+	}
+        closeModal();
+	reRender(folder);
+    }).fail(function(req, stat, err) {
+	console.log(req.status);
+	console.log(stat);
+	console.log(err);
+    });
+}
+function moveItem() {
+    $.ajax({
+        url: '/adm/upload/moveItem?folder=' + folder,
         dataType: 'json',
         type: 'post',
 	data: {'_token': '{{csrf_token()}}', 'path': $(".images-content__check:checked").data("fullpath")}

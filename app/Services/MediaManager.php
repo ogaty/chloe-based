@@ -449,13 +449,6 @@ class MediaManager implements FileMoverInterface
         'sdkd' => 'application/vnd.solent.sdkm+xml',
         'dxp' => 'application/vnd.spotfire.dxp',
         'sfs' => 'application/vnd.spotfire.sfs',
-        'sdc' => 'application/vnd.stardivision.calc',
-        'sda' => 'application/vnd.stardivision.draw',
-        'sdd' => 'application/vnd.stardivision.impress',
-        'smf' => 'application/vnd.stardivision.math',
-        'sdw' => 'application/vnd.stardivision.writer',
-        'vor' => 'application/vnd.stardivision.writer',
-        'sgl' => 'application/vnd.stardivision.writer-global',
         'smzip' => 'application/vnd.stepmania.package',
         'sm' => 'application/vnd.stepmania.stepchart',
         'susp' => 'application/vnd.sus-calendar',
@@ -479,50 +472,6 @@ class MediaManager implements FileMoverInterface
         'umj' => 'application/vnd.umajin',
         'unityweb' => 'application/vnd.unity',
         'uoml' => 'application/vnd.uoml+xml',
-        'vcx' => 'application/vnd.vcx',
-        'vsd' => 'application/vnd.visio',
-        'vst' => 'application/vnd.visio',
-        'vss' => 'application/vnd.visio',
-        'vsw' => 'application/vnd.visio',
-        'vis' => 'application/vnd.visionary',
-        'vsf' => 'application/vnd.vsf',
-        'wbxml' => 'application/vnd.wap.wbxml',
-        'wmlc' => 'application/vnd.wap.wmlc',
-        'wmlsc' => 'application/vnd.wap.wmlscriptc',
-        'wtb' => 'application/vnd.webturbo',
-        'nbp' => 'application/vnd.wolfram.player',
-        'wpd' => 'application/vnd.wordperfect',
-        'wqd' => 'application/vnd.wqd',
-        'stf' => 'application/vnd.wt.stf',
-        'xar' => 'application/vnd.xara',
-        'xfdl' => 'application/vnd.xfdl',
-        'hvd' => 'application/vnd.yamaha.hv-dic',
-        'hvs' => 'application/vnd.yamaha.hv-script',
-        'hvp' => 'application/vnd.yamaha.hv-voice',
-        'osf' => 'application/vnd.yamaha.openscoreformat',
-        'osfpvg' => 'application/vnd.yamaha.openscoreformat.osfpvg+xml',
-        'saf' => 'application/vnd.yamaha.smaf-audio',
-        'spf' => 'application/vnd.yamaha.smaf-phrase',
-        'cmp' => 'application/vnd.yellowriver-custom-menu',
-        'zir' => 'application/vnd.zul',
-        'zirz' => 'application/vnd.zul',
-        'zaz' => 'application/vnd.zzazz.deck+xml',
-        'vxml' => 'application/voicexml+xml',
-        'wgt' => 'application/widget',
-        'hlp' => 'application/winhlp',
-        'wsdl' => 'application/wsdl+xml',
-        'wspolicy' => 'application/wspolicy+xml',
-        '7z' => 'application/x-7z-compressed',
-        'abw' => 'application/x-abiword',
-        'ace' => 'application/x-ace-compressed',
-        'dmg' => 'application/x-apple-diskimage',
-        'aab' => 'application/x-authorware-bin',
-        'x32' => 'application/x-authorware-bin',
-        'u32' => 'application/x-authorware-bin',
-        'vox' => 'application/x-authorware-bin',
-        'aam' => 'application/x-authorware-map',
-        'aas' => 'application/x-authorware-seg',
-        'bcpio' => 'application/x-bcpio',
         'torrent' => 'application/x-bittorrent',
         'blb' => 'application/x-blorb',
         'blorb' => 'application/x-blorb',
@@ -982,16 +931,6 @@ class MediaManager implements FileMoverInterface
         'application/pgp-encrypted' => array('pgp'),
         'application/pgp-signature' => array('asc', 'sig'),
         'application/pics-rules' => array('prf'),
-        'application/pkcs10' => array('p10'),
-        'application/pkcs7-mime' => array('p7m', 'p7c'),
-        'application/pkcs7-signature' => array('p7s'),
-        'application/pkcs8' => array('p8'),
-        'application/pkix-attr-cert' => array('ac'),
-        'application/pkix-cert' => array('cer'),
-        'application/pkix-crl' => array('crl'),
-        'application/pkix-pkipath' => array('pkipath'),
-        'application/pkixcmp' => array('pki'),
-        'application/pls+xml' => array('pls'),
         'application/postscript' => array('ai', 'eps', 'ps'),
         'application/prs.cww' => array('cww'),
         'application/pskc+xml' => array('pskcxml'),
@@ -1048,23 +987,6 @@ class MediaManager implements FileMoverInterface
         'application/vnd.americandynamics.acc' => array('acc'),
         'application/vnd.amiga.ami' => array('ami'),
         'application/vnd.android.package-archive' => array('apk'),
-        'application/vnd.anser-web-certificate-issue-initiation' => array('cii'),
-        'application/vnd.anser-web-funds-transfer-initiation' => array('fti'),
-        'application/vnd.antix.game-component' => array('atx'),
-        'application/vnd.apple.installer+xml' => array('mpkg'),
-        'application/vnd.apple.mpegurl' => array('m3u8'),
-        'application/vnd.aristanetworks.swi' => array('swi'),
-        'application/vnd.astraea-software.iota' => array('iota'),
-        'application/vnd.audiograph' => array('aep'),
-        'application/vnd.blueice.multipass' => array('mpm'),
-        'application/vnd.bmi' => array('bmi'),
-        'application/vnd.businessobjects' => array('rep'),
-        'application/vnd.chemdraw+xml' => array('cdxml'),
-        'application/vnd.chipnuts.karaoke-mmd' => array('mmd'),
-        'application/vnd.cinderella' => array('cdy'),
-        'application/vnd.claymore' => array('cla'),
-        'application/vnd.cloanto.rp9' => array('rp9'),
-        'application/vnd.clonk.c4group' => array('c4g', 'c4d', 'c4f', 'c4p', 'c4u'),
         'application/vnd.cluetrust.cartomobile-config' => array('c11amc'),
         'application/vnd.cluetrust.cartomobile-config-pkg' => array('c11amz'),
         'application/vnd.commonspace' => array('csp'),
@@ -1190,13 +1112,6 @@ class MediaManager implements FileMoverInterface
         'application/vnd.las.las+xml' => array('lasxml'),
         'application/vnd.llamagraphics.life-balance.desktop' => array('lbd'),
         'application/vnd.llamagraphics.life-balance.exchange+xml' => array('lbe'),
-        'application/vnd.lotus-1-2-3' => array('123'),
-        'application/vnd.lotus-approach' => array('apr'),
-        'application/vnd.lotus-freelance' => array('pre'),
-        'application/vnd.lotus-notes' => array('nsf'),
-        'application/vnd.lotus-organizer' => array('org'),
-        'application/vnd.lotus-screencam' => array('scm'),
-        'application/vnd.lotus-wordpro' => array('lwp'),
         'application/vnd.macports.portpkg' => array('portpkg'),
         'application/vnd.mcd' => array('mcd'),
         'application/vnd.medcalcdata' => array('mc1'),
@@ -1956,18 +1871,14 @@ class MediaManager implements FileMoverInterface
     {
         $directories = $this->disk->allDirectories('/');
 
-        return collect($directories)->filter(function ($directory) {
-            return !(starts_with($directory, '.'));
-        })->map(function ($directory) {
-            return DIRECTORY_SEPARATOR.$directory;
-        })->reduce(function ($allDirectories, $directory) {
-            $parts = explode('/', $directory);
-            $name = str_repeat('&nbsp;', (count($parts)) * 4).basename($directory);
+	$return = [['name' => '/', 'fullpath' => '/']];
+	foreach ($directories as $directory) {
+            if (starts_with($directory, '.')) continue;
+            $return[] =  ['name' => $directory, 'fullPath' => '/' . $directory];
+	}
 
-            $allDirectories[$directory] = $name;
-
-            return $allDirectories;
-        }, collect())->prepend('');
+	logger($return);
+	return $return;
     }
 
     /**
