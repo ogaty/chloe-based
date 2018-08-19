@@ -108,7 +108,7 @@ $(function() {
         var formData = new FormData( form );
 	formData.append('folder', folder);
         $.ajax({
-            url: '/adm/upload/uploadFiles',
+            url: '/adm/upload/uploadfiles',
             type: 'post',
             data: formData,
             processData: false,
@@ -127,6 +127,12 @@ $(function() {
 	reRender(folder);
     });
     $("#move").on('click', function() {
+        $.ajax({
+            url: '/adm/upload/alldirectories',
+            dataType: 'json'
+        }).done(function(data) {
+            console.log(data);
+        });
         $("#move-item-modal").addClass("visible");
     });
     $("#rename").on('click', function() {
@@ -173,7 +179,7 @@ function reRender(path) {
 }
 function createDirectory() {
     $.ajax({
-        url: '/adm/upload/createFolder?folder=' + folder + '&new_folder=' + $("#newDir").val(),
+        url: '/adm/upload/createfolder?folder=' + folder + '&new_folder=' + $("#newDir").val(),
         dataType: 'json'
     }).done(function(data) {
 	if (data.success.length > 0) {

@@ -83,9 +83,10 @@ Route::group([
     ]);
     Route::get('/adm/upload', 'UploadController@index')->name('admin.upload');
     Route::get('/adm/upload/ls', 'UploadController@ls')->name('admin.upload.list');
-    Route::post('/adm/upload/uploadFiles', 'UploadController@uploadFiles')->name('admin.upload.upload');
-    Route::get('/adm/upload/createFolder', 'UploadController@createFolder')->name('admin.upload.createfolder');
+    Route::post('/adm/upload/uploadfiles', 'UploadController@uploadFiles')->name('admin.upload.upload');
+    Route::get('/adm/upload/createfolder', 'UploadController@createFolder')->name('admin.upload.createfolder');
     Route::post('/adm/upload/deleteItem', 'UploadController@deleteItem')->name('admin.upload.deleteItem');
+    Route::get('/adm/upload/alldirectories', 'UploadController@allDirectories')->name('admin.upload.allDirectories');
 
     Route::get('/adm/tools', 'ToolsController@index')->name('admin.tools');
     Route::post('/adm/tools/reset_index', 'ToolsController@resetIndex')->name('admin.tools.reset_index');
