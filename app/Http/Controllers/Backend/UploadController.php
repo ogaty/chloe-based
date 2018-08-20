@@ -198,6 +198,12 @@ class UploadController extends Controller
      */
     public function move(Request $request)
     {
+        $moveFrom = $request->post('from');
+        $moveTo = $request->post('to');
+        if (Storage::getMetadata('public' . $moveFrom)['type'] === 'dir') {
+            return ['success' => 'move skipped'];
+        }
+
         $path = $request->get('path');
         $currentFileName = $request->get('currentItem');
         $newPath = $request->get('newPath');
