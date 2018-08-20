@@ -1871,13 +1871,12 @@ class MediaManager implements FileMoverInterface
     {
         $directories = $this->disk->allDirectories('/');
 
-	$return = [['name' => '/', 'fullpath' => '/']];
+	$return = [['name' => '/', 'fullPath' => '/']];
 	foreach ($directories as $directory) {
             if (starts_with($directory, '.')) continue;
             $return[] =  ['name' => $directory, 'fullPath' => '/' . $directory];
 	}
 
-	logger($return);
 	return $return;
     }
 
@@ -1889,13 +1888,14 @@ class MediaManager implements FileMoverInterface
      */
     public function moveFile($currentFile, $newFile)
     {
-        if ($this->disk->exists($newFile)) {
+        $p = pathinfo($currentFile);
+        if ($this->disk->exists($newFile . $p['basename'])) {
             $this->errors[] = 'File already exists.';
 
             return false;
         }
 
-        return $this->disk->getDriver()->rename($currentFile, $newFile);
+        return $this->disk->getDriver()->rename($currentFile, $newFile . $p['basename']);
     }
 
     /**

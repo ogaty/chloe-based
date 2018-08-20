@@ -196,7 +196,7 @@ class UploadController extends Controller
      *
      * @return array|\Illuminate\Http\JsonResponse
      */
-    public function move(Request $request)
+    public function moveItem(Request $request)
     {
         $moveFrom = $request->post('from');
         $moveTo = $request->post('to');
@@ -204,28 +204,20 @@ class UploadController extends Controller
             return ['success' => 'move skipped'];
         }
 
-        $path = $request->get('path');
-        $currentFileName = $request->get('currentItem');
-        $newPath = $request->get('newPath');
-        $type = $request->get('type');
-
-        $currentFile = str_finish($path, DIRECTORY_SEPARATOR).$currentFileName;
-        $newFile = str_finish($newPath, DIRECTORY_SEPARATOR).$currentFileName;
-
         try {
-            if ($type == 'Folder') {
-                $result = $this->mediaManager->moveFolder($currentFile, $newFile);
-            } else {
-                $result = $this->mediaManager->moveFile($currentFile, $newFile);
-            }
+//            if ($type == 'Folder') {
+//                $result = $this->mediaManager->moveFolder($currentFile, $newFile);
+//            } else {
+            $result = $this->mediaManager->moveFile($moveFrom, $moveTo);
+//            }
 
             if ($result !== true) {
-                $error = $this->mediaManager->errors() ?: trans('media-manager::messages.move_error', ['entity' => $type]);
+                $error = $this->mediaManager->errors() ?: 'move_error';
 
                 return $this->errorResponse($error);
             }
 
-            return ['success' => trans('media-manager::messages.move_success', ['entity' => $type])];
+            return ['success' => 'move_success'];
         } catch (\Exception $e) {
             return $this->errorResponse($e->getMessage());
         }

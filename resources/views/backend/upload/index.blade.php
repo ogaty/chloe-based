@@ -79,7 +79,7 @@
                             <div>
                                 <select id="all-directories"></select>
                             </div>
-                            <button>Apply</button>
+                            <button onclick="moveItem()">Apply</button>
                             <button onclick="closeModal()">Cancel</button>
                         </div>
                     </div>
@@ -132,7 +132,7 @@ $(function() {
             dataType: 'json'
         }).done(function(data) {
 	    for (var i = 0; i < data.length; i++) {
-$("#all-directories").append("<option value=\"" + data[i].fullpath + "\">" + data[i].name + "</option>");
+$("#all-directories").append("<option value=\"" + data[i].fullPath + "\">" + data[i].name + "</option>");
 	    }
         });
         $("#move-item-modal").addClass("visible");
@@ -215,10 +215,11 @@ function deleteItem() {
 }
 function moveItem() {
     $.ajax({
-        url: '/adm/upload/moveItem?folder=' + folder,
+        url: '/adm/upload/moveitem',
         dataType: 'json',
         type: 'post',
-	data: {'_token': '{{csrf_token()}}', 'path': $(".images-content__check:checked").data("fullpath")}
+	data: {'_token': '{{csrf_token()}}', 'from': $(".images-content__check:checked").data("fullpath"),
+        'to': $("#all-directories").val()}
     }).done(function(data) {
 	if (data.success.length > 0) {
             console.log(data.success);
