@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
-    protected $table = 'canvas_posts';
+    protected $table = 'posts';
     protected $dates = ['published_at'];
 
     public function url(Tag $tag = null)

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     //
-    protected $table = 'canvas_tags';
+    protected $table = 'tags';
 
     public function posts()
     {

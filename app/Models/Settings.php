@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 
 class Settings extends Model
 {
-    protected $table = 'canvas_settings';
+    protected $table = 'settings';
 
     public static function getByName($settingName)
     {
