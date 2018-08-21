@@ -31,4 +31,8 @@ class User extends Authenticatable
     public static function isAdmin() {
         return true;
     }
+
+    public static function postCount() {
+        return 0;
+    }
 }
