@@ -82,4 +82,4 @@
   "description": "{{ $post->subtitle }}"
 }
 </script>
-@stop
+@endsection

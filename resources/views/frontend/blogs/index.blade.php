@@ -22,7 +22,7 @@
         </div>
     </div>
     </div>
-@stop
+@endsection
 
 @section('unique-js')
     <script src="/js/new-frontend.js" charset="utf-8"></script>
