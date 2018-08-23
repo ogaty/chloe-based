@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use \App\Models\User;
 
-class ExampleTest extends TestCase
+class RoutingTest extends TestCase
 {
     /**
      * A basic test example.
@@ -17,7 +17,6 @@ class ExampleTest extends TestCase
     public function testBasicTest()
     {
         $response = $this->get('/');
-
         $response->assertStatus(200);
 
         $user = factory(User::class)->create();
@@ -33,5 +32,9 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
         $response = $this->actingAs($user)->call('GET', route('admin.upload'));
         $response->assertStatus(200);
+        $response = $this->actingAs($user)->call('GET', route('admin.post.create'));
+        $response->assertStatus(200);
+
+        $this->assertTrue(true);
     }
 }

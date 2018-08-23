@@ -11,9 +11,12 @@ class TestDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
         if (!App::environment('testing')) {
-            echo 'NG';
+            echo "only use testing environment\n";
+            return;
         }
+        $this->call([
+            SettingsSeeder::class,
+        ]);
     }
 }
