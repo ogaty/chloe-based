@@ -85,8 +85,8 @@
                     </div>
                     <div id="rename-item-modal" class="modal">
                         <div class="modal-form">
-                            <input type="text">
-                            <button>Apply</button>
+                            <input type="text" id="newName">
+                            <button onclick="renameItem()">Apply</button>
                             <button onclick="closeModal()">Cancel</button>
                         </div>
                     </div>
@@ -218,7 +218,7 @@ function moveItem() {
         url: '/adm/upload/moveitem',
         dataType: 'json',
         type: 'post',
-	data: {'_token': '{{csrf_token()}}', 'from': $(".images-content__check:checked").data("fullpath"),
+        data: {'_token': '{{csrf_token()}}', 'from': $(".images-content__check:checked").data("fullpath"),
         'to': $("#all-directories").val()}
     }).done(function(data) {
 	if (data.success.length > 0) {
@@ -230,6 +230,24 @@ function moveItem() {
 	console.log(req.status);
 	console.log(stat);
 	console.log(err);
+    });
+}
+function renameItem() {
+    $.ajax({
+        url: '/adm/upload/renameitem',
+        dataType: 'json',
+        type: 'post',
+        data: {'_token': '{{csrf_token()}}', 'name': $("#newName").val()}
+    }).done(function(data) {
+        if (data.success.length > 0) {
+            console.log(data.success);
+        }
+        closeModal();
+        reRender(folder);
+    }).fail(function(req, stat, err) {
+        console.log(req.status);
+        console.log(stat);
+        console.log(err);
     });
 }
 function closeModal() {

@@ -29,7 +29,18 @@ class PostController extends Controller
      */
     public function create()
     {
-        $data = [];
+        $data = [
+            'title' => '',
+            'subtitle' => '',
+            'slug' => '',
+            'content' => '',
+            'meta_description' => '',
+            'page_image' => '',
+            'is_published' => '1',
+            'published_at' => '',
+            'layout' => 'default',
+            'allTags' => [],
+        ];
 
         return view('backend.post.create', $data);
     }

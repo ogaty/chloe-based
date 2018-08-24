@@ -17,7 +17,5 @@
 
 @section('unique-js')
     @include('backend.post.partials.editor')
-    @include('backend.shared.notifications.protip')
-    @include('backend.shared.components.datetime-picker')
     @include('backend.shared.components.slugify')
 @stop

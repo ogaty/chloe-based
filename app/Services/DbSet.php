@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Service;
 
 use App\Models\User;
 use App\Models\Settings;
 use Illuminate\Console\Command;
 
-class DbSet extends Command {
+class DbSet {
     protected function createUser($email, $password, $firstName, $lastName)
     {
         $user = User::firstOrNew(['email' => $email]);

@@ -34,6 +34,8 @@ class RoutingTest extends TestCase
         $response->assertStatus(200);
         $response = $this->actingAs($user)->call('GET', route('admin.post.create'));
         $response->assertStatus(200);
+        $response = $this->actingAs($user)->call('POST', route('admin.post.store'), ['title' => 'testing']);
+        $response->assertStatus(200);
 
         $this->assertTrue(true);
     }

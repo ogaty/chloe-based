@@ -88,6 +88,7 @@ Route::group([
     Route::post('/adm/upload/deleteItem', 'UploadController@deleteItem')->name('admin.upload.deleteItem');
     Route::get('/adm/upload/alldirectories', 'UploadController@allDirectories')->name('admin.upload.allDirectories');
     Route::post('/adm/upload/moveitem', 'UploadController@moveItem')->name('admin.upload.moveItem');
+    Route::post('/adm/upload/renameitem', 'UploadController@renameItem')->name('admin.upload.renameItem');
 
     Route::get('/adm/tools', 'ToolsController@index')->name('admin.tools');
     Route::post('/adm/tools/reset_index', 'ToolsController@resetIndex')->name('admin.tools.reset_index');

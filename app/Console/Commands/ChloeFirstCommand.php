@@ -3,8 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Service\DbSet;
 
-class ChloeFirstCommand extends DbSet
+class ChloeFirstCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -28,6 +29,7 @@ class ChloeFirstCommand extends DbSet
     public function __construct()
     {
         parent::__construct();
+        $this->dbset = new DbSet();
     }
 
     /**
@@ -45,11 +47,11 @@ class ChloeFirstCommand extends DbSet
         $this->line('<info>[✔]</info> Success! Your admin user account has been created.');
 
         $blogTitle = $this->ask('Step 2/3: Blog title');
-        $this->title($blogTitle);
+        $this->dbset->title($blogTitle);
         $this->line('<info>[✔]</info> Success! The title of the blog has been saved.');
 
         $blogSubtitle = $this->ask('Step 3/3: Blog subtitle');
-        $this->subtitle($blogSubtitle);
+        $this->dbset->subtitle($blogSubtitle);
         $this->line('<info>[✔]</info> Success! The subtitle of the blog has been saved.');
     }
 

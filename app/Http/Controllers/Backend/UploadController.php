@@ -169,7 +169,7 @@ class UploadController extends Controller
      *
      * @return array|\Illuminate\Http\JsonResponse
      */
-    public function rename(Request $request)
+    public function renameItem(Request $request)
     {
         $path = $request->get('path');
         $original = $request->get('original');

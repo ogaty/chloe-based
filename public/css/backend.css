@@ -22883,6 +22883,7 @@ input#layout:disabled {
 }
 .modal {
   display: none;
+  border: 1px solid #ccc;
 }
 .visible {
   display: block;

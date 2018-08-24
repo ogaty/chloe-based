@@ -1,13 +1,9 @@
-@if(Route::is('canvas.admin.post.create'))
-    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{!! route('canvas.admin.post.store') !!}">
-    <input type="hidden" name="user_id" value="{!! Auth::guard('canvas')->user()->id !!}">
+@if(Route::is('admin.post.create'))
+    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{!! route('admin.post.store') !!}">
+    <input type="hidden" name="user_id" value="{!! Auth::guard()->user()->id !!}">
     <input type="hidden" name="custom_code" value="blog">
-@elseif(Route::is('canvas.admin.techs.create'))
-    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{!! route('canvas.admin.techs.store') !!}">
-    <input type="hidden" name="user_id" value="{!! Auth::guard('canvas')->user()->id !!}">
-    <input type="hidden" name="custom_code" value="techs">
 @else
-    <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{!! route('canvas.admin.post.update', $id) !!}">
+    <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{!! route('admin.post.update', $id) !!}">
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="user_id" value="{!! $user_id !!}">
 @endif
@@ -19,24 +15,17 @@
                     @include('backend.shared.partials.errors')
                     @include('backend.shared.partials.success')
 
-                    @if(Route::is('canvas.admin.post.create'))
+                    @if(Route::is('admin.post.create'))
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
-                            <li><a href="{!! route('canvas.admin.post.index') !!}">Posts</a></li>
+                            <li><a href="{!! route('admin.home') !!}">Home</a></li>
+                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
                             <li class="active">New Post</li>
                         </ol>
                         <h2>Create a New Post</h2>
-                    @elseif(Route::is('canvas.admin.techs.create'))
-                        <ol class="breadcrumb">
-                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
-                            <li><a href="{!! route('canvas.admin.techs.index') !!}">Techs Posts</a></li>
-                            <li class="active">New Techs Post</li>
-                        </ol>
-                        <h2>Create a New Techs Post</h2>
                     @else
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
-                            <li><a href="{!! route('canvas.admin.post.index') !!}">Posts</a></li>
+                            <li><a href="{!! route('admin.home') !!}">Home</a></li>
+                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
                             <li class="active">Edit Post</li>
                         </ol>
                         <h2>
@@ -85,7 +74,7 @@
                     <div class="form-group" style="padding-top: 10px">
                         <div class="toggle-switch toggle-switch-demo" data-ts-color="blue">
                             <label for="is_published" class="ts-label"><span class="label label-default">Draft</span></label>
-                            <input {{ \App\Helpers\CanvasHelper::checked($is_published) }} type="checkbox" name="is_published">
+                            <input {{ $is_published ? 'checked' : '' }} type="checkbox" name="is_published">
                             <label for="is_published" class="ts-helper"></label>
                             <label for="is_published" class="ts-label" style="margin-left: 20px; margin-right: 0"><span class="label label-primary">Published</span></label>
                         </div>
@@ -105,22 +94,22 @@
                         </div>
                     </div>
                     <br>
-                    @if(!Route::is('canvas.admin.post.create') && !Route::is('canvas.admin.techs.create'))
+                    @if(!Route::is('admin.post.create'))
                         <div class="form-group">
                             <div class="fg-line">
                                 <label class="fg-label"><i class="zmdi zmdi-link"></i>&nbsp;&nbsp;Permalink</label><br>
-                                <a href="{!! route('canvas.blog.post.show', $slug) !!}" target="_blank" name="permalink">{!! route('canvas.blog.post.show', $slug) !!}</a>
+                                <a href="{!! route('blog.post.show', $slug) !!}" target="_blank" name="permalink">{!! route('blog.post.show', $slug) !!}</a>
                             </div>
                         </div>
                         <br>
                     @endif
                     <div class="form-group">
-                        @if(Route::is('canvas.admin.post.create') || Route::is('canvas.admin.techs.create'))
+                        @if(Route::is('admin.post.create'))
                             <button type="submit" class="btn btn-primary btn-icon-text">
                                 <i class="zmdi zmdi-floppy"></i> Publish
                             </button>
                             &nbsp;
-                            <a href="{!! route('canvas.admin.post.index') !!}">
+                            <a href="{!! route('admin.post.index') !!}">
                                 <button type="button" class="btn btn-link">Cancel</button>
                             </a>
                         @else
