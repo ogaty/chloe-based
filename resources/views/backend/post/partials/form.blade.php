@@ -8,6 +8,8 @@
         <input type="hidden" name="user_id" value="{!! $user_id !!}">
 @endif
     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+    <div class="post-media-modal">
+    </div>
     <div class="row">
         <div class="col-md-8">
             <div class="card">
@@ -136,7 +138,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="page_image" id="page_image" alt="Image thumbnail" placeholder="Page Image" v-model="pageImage">
                                 <span class="input-group-btn" style="margin-bottom: 11px">
-                        <button style="margin-bottom: -5px" type="button" class="btn btn-primary waves-effect" @click="openFromPageImage()">Select Image</button>
+                        <button style="margin-bottom: -5px" type="button" class="btn btn-primary waves-effect" onclick="openFromPageImage()">Select Image</button>
                     </span>
                             </div>
                         </div>
@@ -184,6 +186,12 @@
     </div>
 </form>
 
+<script>
+function openFromPageImage() {
+    console.log("open");
+    $(".post-media-modal").addClass("visible");
+}
+</script>
 <media-modal v-if="showMediaManager" @close="showMediaManager = false">
 <media-manager
         :is-modal="true"

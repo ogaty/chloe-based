@@ -22884,6 +22884,8 @@ input#layout:disabled {
 .modal {
   display: none;
   border: 1px solid #ccc;
+  width: 400px;
+  height: 200px;
 }
 .visible {
   display: block;
@@ -22894,9 +22896,17 @@ input#layout:disabled {
   top: 0;
   bottom: 0;
   margin: auto;
-  width: 400px;
-  height: 200px;
 }
 .modal-form {
   margin: 40px;
+}
+.post-media-modal.visible {
+  width: 90%;
+  height: 400px;
+  background: #efefef;
+  border: 1px solid #ccc;
+  z-index: 5;
+}
+#postCreate {
+  position: relative;
 }

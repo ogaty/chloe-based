@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Service\DbSet;
+use App\Services\DbSet;
 
 class ChloeFirstCommand extends Command
 {
