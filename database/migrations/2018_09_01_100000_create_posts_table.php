@@ -24,8 +24,6 @@ class CreatePostsTable extends Migration
             $table->text('description_html');
             $table->text('content_raw');
             $table->text('content_html');
-            $table->text('content2_row');
-            $table->text('content2_html');
             $table->string('page_image', 191);
             $table->string('meta_description', 191);
             $table->tinyInteger('is_published')->default(0);

@@ -4,11 +4,40 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Services\Parsedowner;
 
 class Post extends Model
 {
     protected $table = 'posts';
     protected $dates = ['published_at'];
+
+    protected $fillable = [
+        'user_id',
+        'slug',
+        'title',
+        'subtitle',
+        'description_raw',
+        'content_raw',
+        'page_image',
+        'meta_description',
+        'is_published',
+        'layout',
+        'published_at',
+    ];
+
+    public function setContentRawAttribute($value)
+    {
+        $markdown = new Parsedowner();
+        $this->attributes['content_raw'] = $value;
+        $this->attributes['content_html'] = $markdown->toHTML($value);
+    }
+
+    public function setDescriptionRawAttribute($value)
+    {
+        $markdown = new Parsedowner();
+        $this->attributes['description_raw'] = $value;
+        $this->attributes['description_html'] = $markdown->toHTML($value);
+    }
 
     public function url(Tag $tag = null)
     {

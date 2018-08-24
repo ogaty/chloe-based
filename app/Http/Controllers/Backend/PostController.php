@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -37,7 +38,7 @@ class PostController extends Controller
             'meta_description' => '',
             'page_image' => '',
             'is_published' => '1',
-            'published_at' => '',
+            'published_at' => Carbon::now(),
             'layout' => 'default',
             'allTags' => [],
         ];
