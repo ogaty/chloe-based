@@ -1,0 +1,39 @@
+#header {
+    min-height: 70px;
+    position: fixed;
+    z-index: 15;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding: 0 11px;
+}
+#header.blue {
+    background-color: #0072C6; 
+}
+
+.header-inner {
+    position: relative; 
+    list-style: none;
+    padding: 17px 0;
+    margin-bottom: 0;
+}
+#menu-trigger {
+    width: 65px;
+    height: 35px;
+    cursor: pointer;
+}
+.header-inner>li:not(.pull-right) {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+
+@media (min-width: 1200px) {
+    .sw-toggled #header {
+        padding-left: 15px;
+    }
+    .sw-toggled #menu-trigger {
+        display: none;
+    }
+}
