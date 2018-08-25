@@ -1,3 +1,77 @@
 html, body {
     overflow-x: hidden;
 }
+.images-toolbar {
+  position: relative;
+  opacity: .6;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  padding: 0 10px;
+  border-top: 1px solid #bbb;
+  border-left: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.images-toolbar--button {
+  float: left;
+  list-style: none;
+  display: inline-block;
+  margin-right: 8px;
+  color: #1a1a1a;
+}
+.images-breadcrumb {
+  margin: 8px 25px;
+}
+.images-breadcrumb__item {
+  display: inline-block;
+  padding: 0px 8px;
+}
+.images-breadcrumb__item:first-child {
+  padding-left: 0px;
+}
+.images-content__list {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.images-content__item {
+  list-style: none;
+  margin: 6px 25px;
+  border-bottom: 1px solid #ccc;
+}
+.modal {
+  position: absolute;
+  display: none;
+  border: 1px solid #ccc;
+  width: 400px;
+  height: 200px;
+}
+.visible {
+  display: block;
+  background: #fff;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.modal-form {
+  margin: 40px;
+}
+.post-media-modal {
+  position: absolute;
+  display: none;
+}
+.post-media-modal.visible {
+  width: 90%;
+  display: block;
+  height: 400px;
+  background: #efefef;
+  border: 1px solid #ccc;
+  z-index: 20;
+}
+#postCreate {
+  position: relative;
+}
+
