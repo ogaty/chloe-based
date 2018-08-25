@@ -6,6 +6,9 @@
 
 @section('content')
     <section id="main">
+        <div class="post-media-modal">
+        </div>
+        @include('backend.post.partials.modals.media-manager')
         @include('backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">

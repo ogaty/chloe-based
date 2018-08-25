@@ -16459,8 +16459,7 @@ body {
 .media {
   overflow: visible; }
 
-#notifications .lv-body,
-html {
+#notifications .lv-body {
   overflow-x: hidden; }
 
 .media:after,
@@ -22882,6 +22881,7 @@ input#layout:disabled {
   border-bottom: 1px solid #ccc;
 }
 .modal {
+  position: absolute;
   display: none;
   border: 1px solid #ccc;
   width: 400px;
@@ -22889,7 +22889,6 @@ input#layout:disabled {
 }
 .visible {
   display: block;
-  position: absolute;
   background: #fff;
   left: 0;
   right: 0;
@@ -22900,12 +22899,17 @@ input#layout:disabled {
 .modal-form {
   margin: 40px;
 }
+.post-media-modal {
+  position: absolute;
+  display: none;
+}
 .post-media-modal.visible {
   width: 90%;
+  display: block;
   height: 400px;
   background: #efefef;
   border: 1px solid #ccc;
-  z-index: 5;
+  z-index: 20;
 }
 #postCreate {
   position: relative;

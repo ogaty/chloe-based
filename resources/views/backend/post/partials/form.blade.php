@@ -8,8 +8,6 @@
         <input type="hidden" name="user_id" value="{!! $user_id !!}">
 @endif
     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-    <div class="post-media-modal">
-    </div>
     <div class="row">
         <div class="col-md-8">
             <div class="card">
