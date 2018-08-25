@@ -1,3 +1,52 @@
+<div class="header clearfix">
+    <div class="header__logo--pc">
+        <a href="{!! route('admin.home') !!}">
+            <img src="logo.png">
+        </a>
+    </div>
+    <!--
+    <li id="menu-trigger" data-trigger="#sidebar">
+        <div class="line-wrap">
+            <div class="line top"></div>
+            <div class="line center"></div>
+            <div class="line bottom"></div>
+        </div>
+    </li>
+    <div class="header__logo--sm">
+        <a href="{!! route('admin.home') !!}">
+            <img src="logo.png">
+        </a>
+    </div>
+    -->
+    <div class="header__right">
+        <div class="user-wrap">
+            <img src="logo.png" onclick="userMenu()">
+        </div>
+        <div class="search-wrap">
+            <img src="logo.png" onclick="searchMenu()">
+        </div>
+        <div class="user-menu">
+            <div>{{ Auth::guard()->user()->display_name }}</div>
+            <div>{{ Auth::guard()->user()->email }}</div>
+            <hr>
+            <div><a href="{!! route('home') !!}">view site</a></div>
+            <div><a href="{!! route('admin.profile.index') !!}">Profile</a></div>
+            <div><a href="{{ route('logout') }}">logout</a></div>
+        </div>
+        <div class="search-menu">
+            <form method="get">
+                <div>
+                    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                    <input type="button" name="back" value="back">
+                    <input type="text" name="query">
+                    <input type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <header id="header" class="clearfix" data-current-skin="blue">
     <a href="{!! route('admin.home') !!}"><img src="" class="cl-center" style="width: 100px" alter="canvas"></a>
     <ul class="header-inner">
@@ -50,3 +99,4 @@
         </div>
     </form>
 </header>
+

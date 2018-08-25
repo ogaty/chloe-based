@@ -521,3 +521,23 @@ function(e, t, n, a) {
     }
 }(jQuery, window, document);
 
+    function userMenu() {
+        $(".user-menu").addClass("visible");
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    function searchMenu() {
+        $(".search-menu").addClass("visible");
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    $(function() {
+        $("body").on("click", function() {
+                if($(this).closest(".user-menu").length == 0) {
+                        $(".user-menu").removeClass("visible");
+                }
+                if($(this).closest(".search-menu").length == 0) {
+                        $(".search-menu").removeClass("visible");
+                }
+        });
+    });
