@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="/js/knockout-3.4.2.js"></script>
 

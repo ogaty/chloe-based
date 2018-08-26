@@ -1,0 +1,20 @@
+#content {
+    margin-top: 70px;
+}
+
+.container {
+    background: #efefef;
+    padding-top: 40px;
+}
+
+.card {
+    background: #fff;
+}
+
+@media (min-width: 1200px) {
+    body.sw-toggled #content {
+        padding-left: 200px;
+    }
+}
+
+    
