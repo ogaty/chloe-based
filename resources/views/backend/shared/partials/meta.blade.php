@@ -10,6 +10,8 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="{{ asset('vendor/canvas/assets/images/favicon.png') }}">
 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
 <!-- Facebook Open Graph Tags -->
 @yield('og-title')
 @yield('og-image')

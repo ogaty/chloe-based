@@ -1,6 +1,7 @@
 html, body {
     overflow-x: hidden;
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 h2 {
     margin: 0;
