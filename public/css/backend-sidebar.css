@@ -38,6 +38,15 @@
 .sidebar-list__link--icon {
     margin-right: 10px;
 }
+.sub-menu__link {
+    color: #7f7f7f;
+    padding: 8px 20px 8px 50px;
+    font-weight: 500;
+    display: block;
+}
+.sub-menu__link:hover {
+    color: #000;
+}
 @media (min-width: 1200px) {
   body.sw-toggled .sidebar {
     opacity: 1;

@@ -6,7 +6,8 @@
 <link rel="stylesheet" type="text/css" href="/css/media-manager.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/backend.css">-->
+<link rel="stylesheet" type="text/css" href="/css/new-backend.css">
 <link rel="stylesheet" type="text/css" href="/css/backend-header.css">
 <link rel="stylesheet" type="text/css" href="/css/backend-sidebar.css">
-<link rel="stylesheet" type="text/css" href="/css/new-backend.css">
+<link rel="stylesheet" type="text/css" href="/css/backend-content.css">
 <link rel="stylesheet" type="text/css" href="/css/simplemde.css">
