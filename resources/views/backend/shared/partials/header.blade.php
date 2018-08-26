@@ -46,7 +46,7 @@
     </div>
 </div>
 
-
+<!--
 <header id="header" class="clearfix" data-current-skin="blue">
     <a href="{!! route('admin.home') !!}"><img src="" class="cl-center" style="width: 100px" alter="canvas"></a>
     <ul class="header-inner">
@@ -86,9 +86,6 @@
             </ul>
         </li>
     </ul>
-
-
-    <!-- Top Search Content -->
     <form role="form" method="GET" id="search" name="search" action="{!! route('admin.search.index') !!}">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <div id="top-search-wrap">
@@ -99,4 +96,5 @@
         </div>
     </form>
 </header>
+-->
 

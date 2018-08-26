@@ -38,10 +38,10 @@
     }
 }
 
-
+/* ここから */
 .header {
     position: fixed;
-    height: 80px;
+    height: 70px;
     width: 100%;
     background: #ccf;
     box-shadow: 0 1px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -56,7 +56,7 @@
     display: inline-block;
 }
 .header__right {
-    display: inline-block;
+    display: block;
     float: right;
 }
 .search-wrap {
@@ -83,7 +83,7 @@
     background: #fff;
     opacity: 0;
     position: absolute;
-    top: 20px;
+    top: 12px;
     right: 0;
     left: 0;
     padding: 10px;
