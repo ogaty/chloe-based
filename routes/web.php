@@ -81,6 +81,7 @@ Route::group([
             'update' => 'admin.profile.update',
         ],
     ]);
+    Route::get('/adm/profile/privacy', 'ProfileController@privacy')->name('admin.profile.privacy');
     Route::get('/adm/upload', 'UploadController@index')->name('admin.upload');
     Route::get('/adm/upload/ls', 'UploadController@ls')->name('admin.upload.list');
     Route::post('/adm/upload/uploadfiles', 'UploadController@uploadFiles')->name('admin.upload.upload');

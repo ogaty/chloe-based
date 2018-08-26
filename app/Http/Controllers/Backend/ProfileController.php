@@ -6,6 +6,7 @@ use Session;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -16,10 +17,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $userData = $this->guard()->user()->toArray();
-        $blogData = config('blog');
-        $data = array_merge($userData, $blogData);
+        $userData = Auth::guard()->user()->toArray();
+//        $blogData = config('blog');
+//        $data = array_merge($userData, $blogData);
 
+$data = $userData;
         return view('backend.profile.index', compact('data'));
     }
 
@@ -31,7 +33,7 @@ class ProfileController extends Controller
     public function editPrivacy()
     {
         return view('backend.profile.privacy', [
-            'data' => array_merge($this->guard()->user()->toArray(), config('blog')),
+            'data' => array_merge(Auth::guard()->user()->toArray(), config('blog')),
         ]);
     }
 
