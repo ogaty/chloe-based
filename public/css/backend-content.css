@@ -29,12 +29,18 @@
     border-bottom:1px solid #e0e0e0;
     margin-bottom: 20px;
 }
+.card-header {
+    margin-bottom: 18px;
+}
 .glance-list li {
     margin-top: 8px;
     margin-bottom: 8px;
 }
 .glance-list a {
     padding-left: 12px;
+}
+.dataTables_wrapper {
+    margin-top: 30px;
 }
 
 @media (min-width: 1200px) {

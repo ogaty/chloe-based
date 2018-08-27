@@ -3,6 +3,7 @@
 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <!--<link rel="stylesheet" type="text/css" href="/css/backend.css">-->
 <link rel="stylesheet" type="text/css" href="/css/new-backend.css">

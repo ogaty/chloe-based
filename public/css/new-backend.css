@@ -45,7 +45,10 @@ a:visited {
 .breadcrumb {
     list-style: none;
     border-bottom: 1px solid #eaeaea;
-    padding: 10px;
+    padding-bottom: 10px;
+}
+.breadcrumb a {
+    color: #ccc;
 }
 .breadcrumb>li {
     display: inline-block;
