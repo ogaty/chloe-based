@@ -10,4 +10,5 @@
 <link rel="stylesheet" type="text/css" href="/css/backend-header.css">
 <link rel="stylesheet" type="text/css" href="/css/backend-sidebar.css">
 <link rel="stylesheet" type="text/css" href="/css/backend-content.css">
+<link rel="stylesheet" type="text/css" href="/css/backend-upload.css">
 <link rel="stylesheet" type="text/css" href="/css/simplemde.css">
