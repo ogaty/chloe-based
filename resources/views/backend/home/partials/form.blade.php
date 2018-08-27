@@ -24,22 +24,8 @@
     </div>
 </div>
 
-<div class="form-group hidden">
-    <div class="fg-line">
-        <input class="form-control datetime-picker" name="published_at" id="published_at" type="text" value="{{ date('Y-m-d G:i:s') }}">
-    </div>
-</div>
+<input name="published_at" id="published_at" type="hidden" value="{{ date('Y-m-d G:i:s') }}">
 
-<div class="checkbox m-b-15 hidden">
-    <label>
-        <input type="checkbox" name="is_published">
-        <i class="input-helper"></i>
-        Published?
-    </label>
-</div>
+<input type="hidden" name="is_published" value="0">
 
-<div class="form-group hidden">
-    <div class="fg-line">
-        <input type="text" class="form-control" name="layout" id="layout" value="{{ config('blog.post_layout') }}" placeholder="Layout">
-    </div>
-</div>
+<input type="hidden" name="layout" id="layout" value="{{ config('blog.post_layout') }}">

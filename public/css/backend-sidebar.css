@@ -8,6 +8,9 @@
     overflow-y: auto;
     box-shadow: 0 1px 1px rgba(0,0,0,.15);
 }
+.sidebar a, .sidebar a:visited {
+    color: #303030;
+}
 .main-profile-menu {
     border-bottom: 1px solid #ccc;
     padding-bottom: 8px;

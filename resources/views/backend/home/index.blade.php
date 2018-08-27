@@ -19,25 +19,16 @@
                     <div class="card__body">
                     </div>
                 </div>
-                <div class="row">
-                    @if(\App\Models\User::isAdmin(Auth::guard()->user()->role))
-                        <div class="col-sm-6 col-md-6">
-                            @include('backend.home.cards-at-a-glance')
-                        </div>
-                    @endif
-                    <div class="col-sm-6 col-md-6">
-                        @include('backend.home.cards-quick-draft')
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                        @include('backend.home.cards-recent-posts')
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                    </div>
+                <div class="card-container">
+                @if(\App\Models\User::isAdmin(Auth::guard()->user()->role))
+                    @include('backend.home.cards-at-a-glance')
+                @endif
+                @include('backend.home.cards-quick-draft')
+                @include('backend.home.cards-recent-posts')
                 </div>
             </div>
         </section>
     </section>
-    @include('backend.home.partials.modals.update')
 @stop
 
 @section('unique-js')

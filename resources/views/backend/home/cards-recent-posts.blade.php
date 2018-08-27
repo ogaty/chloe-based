@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card half">
     <div class="card-header">
         <h2>Recent Activity
             <small>Last 4 published blog posts:</small>

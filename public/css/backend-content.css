@@ -9,6 +9,32 @@
 
 .card {
     background: #fff;
+    padding: 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card-container .card {
+    width: 46%;
+}
+.card-container input, .card-container textarea {
+    width: 100%;
+    border-top:0;
+    border-right:0;
+    border-left:0;
+    border-bottom:1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+.glance-list li {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.glance-list a {
+    padding-left: 12px;
 }
 
 @media (min-width: 1200px) {
