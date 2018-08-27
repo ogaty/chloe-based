@@ -9,20 +9,27 @@
         @include('backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
-                @if(\App\Models\User::isAdmin(Auth::guard()->user()->role))
-                    @include('backend.home.sections.welcome')
-                @endif
+                <div class="card">
+                    <div class="card__header">
+                        <h2>Welcome!
+                            <small>Here are some helpful links we've gathered to get you started:
+                            </small>
+                        </h2>
+                    </div>
+                    <div class="card__body">
+                    </div>
+                </div>
                 <div class="row">
                     @if(\App\Models\User::isAdmin(Auth::guard()->user()->role))
                         <div class="col-sm-6 col-md-6">
-                            @include('backend.home.sections.at-a-glance')
+                            @include('backend.home.cards-at-a-glance')
                         </div>
                     @endif
                     <div class="col-sm-6 col-md-6">
-                        @include('backend.home.sections.quick-draft')
+                        @include('backend.home.cards-quick-draft')
                     </div>
                     <div class="col-sm-6 col-md-6">
-                        @include('backend.home.sections.recent-posts')
+                        @include('backend.home.cards-recent-posts')
                     </div>
                     <div class="col-sm-6 col-md-6">
                     </div>
