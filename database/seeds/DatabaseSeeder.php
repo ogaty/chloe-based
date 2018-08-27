@@ -13,7 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         if (App::environment('pro')) {
-            echo 'NG';
+            echo 'cannot use in production'.PHP_EOL;
         }
+        $this->call([
+            UsersSeeder::class,
+            SettingsSeeder::class,
+        ]);
     }
 }

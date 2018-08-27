@@ -48,6 +48,19 @@ class RoutingTest extends TestCase
                 'published_at' => '2018-01-01 10:00:00'
         ]);
         $response->assertStatus(302);
+        $response = $this->actingAs($user)->call('GET', route('admin.tag.create'));
+        $response->assertStatus(200);
+        $response = $this->actingAs($user)->call('POST', route('admin.tag.store'), [
+                'tag' => 'testing',
+        ]);
+        $response->assertStatus(302);
+        $response = $this->actingAs($user)->call('GET', route('admin.user.create'));
+        $response->assertStatus(200);
+        $response = $this->actingAs($user)->call('POST', route('admin.user.store'), [
+                'name' => 'testing',
+                'email' => 'testing@example.com',
+        ]);
+        $response->assertStatus(302);
 
         $this->assertTrue(true);
     }

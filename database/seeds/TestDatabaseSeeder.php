@@ -16,6 +16,7 @@ class TestDatabaseSeeder extends Seeder
             return;
         }
         $this->call([
+            UsersSeeder::class,
             SettingsSeeder::class,
         ]);
     }
