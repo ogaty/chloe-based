@@ -43,9 +43,11 @@ class RoutingTest extends TestCase
                 'description_html' => 'testing',
                 'content_raw' => 'testing',
                 'content_html' => 'testing',
-                'published_at' => '2018-01-01 10:00:00',
+                'page_image' => 'testing_image',
+                'meta_description' => 'meta',
+                'published_at' => '2018-01-01 10:00:00'
         ]);
-        $response->assertStatus(200);
+        $response->assertStatus(302);
 
         $this->assertTrue(true);
     }

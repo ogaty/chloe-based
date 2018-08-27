@@ -56,7 +56,7 @@ class PostController extends Controller
     public function store(PostCreateRequest $request)
     {
         $post = Post::create($request->postFillData());
-        $post->syncTags($request->get('tags', []));
+        $post->tags()->attach($request->get('tags', []));
 
         $request->session()->put('_new-post', 'Success! New :entity has been created.');
 
