@@ -73,7 +73,7 @@ class WpToChloeCommand extends Command
             $value['is_published'], 
             $value['layout'], 
             $value['created_at'], 
-            $value['updated_at']
+            $value['updated_at'],
             $value['published_at']
             ]);
         }
