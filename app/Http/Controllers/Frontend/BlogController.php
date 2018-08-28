@@ -11,28 +11,28 @@ use Carbon\Carbon;
 
 class BlogController extends \App\Http\Controllers\Controller
 {
-    //
     public function index(Request $request) {
         $tag = $request->get('tag');
         $tagModel = Tag::where('title', $tag)->first();
-	if (!empty($tagModel)) {
-        $posts = Post::with('tags')
-            ->whereHas('tags', function ($q) use ($tagModel) {
-                $q->where('id', '=', $tagModel->id);
-            })
+
+        if (!empty($tagModel)) {
+            $postTag = PostTag::where('tag_id', $tagModel->id)->lists('post_id');
+
+            $posts = Post::with('tags')
+            ->whereIn('id', $postTag)
             ->where('published_at', '<=', Carbon::now())
             ->where('custom_code', 'blog')
             ->where('is_published', 1)
             ->orderBy('published_at', 'desc')
             ->simplePaginate(6);
-	} else {
-        $posts = Post::with('tags')
+        } else {
+            $posts = Post::with('tags')
             ->where('published_at', '<=', Carbon::now())
             ->where('custom_code', 'blog')
             ->where('is_published', 1)
             ->orderBy('published_at', 'desc')
             ->simplePaginate(6);
-	}
+        }
         $data = [
             'posts' => $posts,
             'tag' => $tagModel,

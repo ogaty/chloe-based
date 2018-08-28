@@ -6,6 +6,8 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use \App\Models\User;
+use \App\Models\Settings;
+use \App\Models\Themes;
 
 class ExampleTest extends TestCase
 {
@@ -16,8 +18,13 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $this->assertTrue(true);
-        $user = factory(User::class)->create();
+        $user = User::find(1);
         $this->assertNotNull($user);
+        $settings = Settings::find(1);
+        $this->assertNotNull($settings);
+        $title = Settings::blogTitle();
+        $this->assertEquals('', $title);
+        $themes = Themes::find(1);
+        $this->assertNotNull($themes);
     }
 }

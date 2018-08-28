@@ -19,7 +19,7 @@ class RoutingTest extends TestCase
         $response = $this->get('/');
         $response->assertStatus(200);
 
-        $user = factory(User::class)->create();
+        $user = User::first();
         $response = $this->actingAs($user)->call('GET', route('admin.home'));
         $response->assertStatus(200);
         $response = $this->actingAs($user)->call('GET', route('admin.post.index'));
