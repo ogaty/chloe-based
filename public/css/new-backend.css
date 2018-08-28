@@ -46,18 +46,61 @@ a:visited {
 .breadcrumb {
     list-style: none;
     border-bottom: 1px solid #eaeaea;
-    padding-bottom: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
-.breadcrumb a {
-    color: #ccc;
+.breadcrumb__parent {
+    text-decoration: none;
+    outline: none;
+    display: block;
+                        float: left;
+                            font-size: 12px;
+                                line-height: 36px;
+    padding: 0 10px 0 32px;
+    position: relative;
+    background: #e91e63;
+    color: #ffffff;
 }
-.breadcrumb>li {
-    display: inline-block;
+.breadcrumb__parent a {
+    color: #efefef;
 }
-.breadcrumb>li:after {
-    content: "";
-    border-top: 1px solid #ccc;
+.breadcrumb__parent::after {
+                                                    content: '';
+                                                        position: absolute;
+                                                            top: 0;
+                                                                right: -18px;
+                                                                    width: 36px;
+                                                                        height: 36px;
+    transform: scale(0.707) rotate(45deg);
+    z-index: 1;
+    border-radius: 0 5px 0 50px;
+    background: #e91e63;
+    box-shadow: 2px -2px 0 2px #e91e63;
 }
+.breadcrumb__active {
+    text-decoration: none;
+                outline: none;
+                    display: block;
+                        float: left;
+                            font-size: 12px;
+                                line-height: 36px;
+    padding: 0 20px 0 40px;
+                                        position: relative;
+                                            background: #ffffff;
+                                                color: #e91e63;
+    border-radius: 0 5px 5px 0;
+}
+.breadcrumb__parent:first_child {
+    padding-left 46px
+    border-radius 5px 0 0 5px
+}
+.breadcrumb__parent:first_child::before {
+    left 14px
+}
+
 .modal {
   position: absolute;
   display: none;

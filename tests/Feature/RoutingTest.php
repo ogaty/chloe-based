@@ -18,6 +18,8 @@ class RoutingTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
+        $response = $this->get('/', ['tag' => 'testing']);
+        $response->assertStatus(200);
 
         $user = User::first();
         $response = $this->actingAs($user)->call('GET', route('admin.home'));

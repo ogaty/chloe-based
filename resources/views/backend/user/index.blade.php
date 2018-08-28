@@ -12,8 +12,8 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin.home') !!}">Home</a></li>
-                            <li class="active">Users</li>
+                            <li class="breadcrumb__parent"><a href="{!! route('admin.home') !!}">Home</a></li>
+                            <li class="breadcrumb__active">Users</li>
                         </ol>
                         <ul class="actions">
                             <li class="dropdown">
@@ -50,12 +50,13 @@
                             </thead>
                             <tbody>
                             @foreach ($data as $user)
-                                <tr>
+                                <tr style="text-align: center;">
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->display_name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->isAdmin($user->role) ? '<span class="label label-primary">Administrator</span>' : '<span class="label label-default">User</span>' }}</td>
+                                    <td>{{ $user->isAdmin($user->role) ? 'Administrator' : 'User' }}</td>
                                     <td>{{ $user->postCount($user->id) }}</td>
+                                    <td></td>
                                 </tr>
                             @endforeach
                             </tbody>

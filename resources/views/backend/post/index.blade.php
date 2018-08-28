@@ -12,8 +12,8 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin.home') !!}">Home</a></li>
-                            <li class="active">Posts</li>
+                            <li class="breadcrumb__parent"><a href="{!! route('admin.home') !!}">Home</a></li>
+                            <li class="breadcrumb__active">Posts</li>
                         </ol>
                         <ul class="actions">
                             <li class="dropdown">
@@ -46,8 +46,6 @@
                                     <th data-column-id="published">Status</th>
                                     <th data-column-id="slug">Slug</th>
                                     <th data-column-id="date" data-type="date" data-formatter="humandate">Date</th>
-                                    <th data-column-id="edit_url" data-sortable="false" data-visible="false">Edit URL</th>
-                                    <th data-column-id="view_url" data-sortable="false" data-visible="false">View URL</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
                                 </tr>
                             </thead>
@@ -57,15 +55,15 @@
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->getAuthor($post->user_id) }}</td>
-                                        <td>{{ $post->is_published == 1 ? '<span class="label label-primary">Published</span>' : '<span class="label label-default">Draft</span>' }}</td>
+                                        <td>{{ $post->is_published == 1 ? 'Published' : 'Draft' }}</td>
                                         <td>{{ $post->slug }}</td>
                                         @if($post->updated_at != $post->created_at)
-                                            <td>{{ $post->updated_at->format('Y/m/d') . "<br/>" }} Last updated</td>
+                                            <td>{{ $post->updated_at->format('Y/m/d') }}</td>
                                         @else
-                                            <td>{{ $post->created_at->format('Y/m/d') . "<br/>" }} Published</td>
+                                            <td>{{ $post->created_at->format('Y/m/d') }}</td>
                                         @endif
-                                        <td>{!! route('admin.post.edit', $post->id) !!}</td>
-                                        <td>{!! route('front.post', $post->slug) !!}</td>
+                                        <td><a href="{!! route('admin.post.edit', $post->id) !!}">e</a>
+                                        <a href="{!! route('front.post', $post->slug) !!}">v</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

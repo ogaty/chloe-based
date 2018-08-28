@@ -12,8 +12,8 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin.home') !!}">Home</a></li>
-                            <li class="active">Tags</li>
+                            <li class="breadcrumb__parent"><a href="{!! route('admin.home') !!}">Home</a></li>
+                            <li class="breadcrumb__active">Tags</li>
                         </ol>
                         <ul class="actions">
                             <li class="dropdown">
