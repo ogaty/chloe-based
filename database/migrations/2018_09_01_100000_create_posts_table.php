@@ -27,7 +27,7 @@ class CreatePostsTable extends Migration
             $table->string('page_image', 191);
             $table->string('meta_description', 191);
             $table->tinyInteger('is_published')->default(0);
-            $table->string('layout', 191);
+            $table->string('layout', 191)->default('default');
             $table->tinyInteger('ad1')->default(0);
             $table->tinyInteger('ad2')->default(0);
             $table->timestamps();

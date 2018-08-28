@@ -55,11 +55,12 @@ class WpToChloeCommand extends Command
             $convert[$i]['layout'] = 'default';
             $convert[$i]['created_at'] = $post->post_date;
             $convert[$i]['updated_at'] = $post->post_modified;
+            $convert[$i]['published_at'] = $post->post_modified;
             $i++;
         }
 
         foreach ($convert as $value) {
-                $posts = DB::connection('mysql')->insert('insert into posts (title, slug, subtitle, content_html, content_raw, description_html, description_raw, meta_description, page_image, is_published, layout, created_at, updated_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+                $posts = DB::connection('mysql')->insert('insert into posts (title, slug, subtitle, content_html, content_raw, description_html, description_raw, meta_description, page_image, is_published, layout, created_at, updated_at, published_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $value['title'],
             $value['slug'],
             $value['subtitle'], 
@@ -73,6 +74,7 @@ class WpToChloeCommand extends Command
             $value['layout'], 
             $value['created_at'], 
             $value['updated_at']
+            $value['published_at']
             ]);
         }
     }
