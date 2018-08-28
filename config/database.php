@@ -54,6 +54,20 @@ return [
             'engine' => null,
         ],
 
+        'wordpress' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST_WP', '127.0.0.1'),
+            'port' => env('DB_PORT_WP', '3306'),
+            'database' => env('DB_DATABASE_WP', 'forge'),
+            'username' => env('DB_USERNAME_WP', 'forge'),
+            'password' => env('DB_PASSWORD_WP', ''),
+            'unix_socket' => env('DB_SOCKET_WP', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
     ],
 
     /*
