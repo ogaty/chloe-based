@@ -19,6 +19,8 @@ Route::get('/adm/lout', '\App\Http\Controllers\Auth\LoginController@logout')->na
 Route::post('/adm/lout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 Route::get('/', 'Frontend\BlogController@index')->name('home');
+Route::get('/home', 'Frontend\BlogController@index')->name('front.home');
+Route::get('/blog/tag/{slug}', 'Frontend\BlogController@tagIndex')->name('front.tag');
 Route::get('/sitemap.xml', 'Frontend\BlogController@sitemap')->name('front.sitemap');
 Route::get('/feed', 'Frontend\BlogController@feed')->name('front.feed');
 Route::get('/blog/post/{slug}', 'Frontend\BlogController@showPost')->name('front.post');

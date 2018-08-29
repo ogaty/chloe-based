@@ -41,6 +41,36 @@ class BlogController extends \App\Http\Controllers\Controller
         return view('frontend.blogs.index', $data);
     }
 
+    public function tagIndex($slug, Request $request) {
+        $tag = $slug;
+        $tagModel = Tag::where('title', $tag)->first();
+
+        if (!empty($tagModel)) {
+            $postTag = PostTag::where('tag_id', $tagModel->id)->lists('post_id');
+
+            $posts = Post::with('tags')
+            ->whereIn('id', $postTag)
+            ->where('published_at', '<=', Carbon::now())
+            ->where('custom_code', 'blog')
+            ->where('is_published', 1)
+            ->orderBy('published_at', 'desc')
+            ->simplePaginate(6);
+        } else {
+            $posts = Post::with('tags')
+            ->where('published_at', '<=', Carbon::now())
+            ->where('custom_code', 'blog')
+            ->where('is_published', 1)
+            ->orderBy('published_at', 'desc')
+            ->simplePaginate(6);
+        }
+        $data = [
+            'posts' => $posts,
+            'tag' => $tagModel,
+            'reverse_direction' => false,
+        ];
+        return view('frontend.blogs.index', $data);
+    }
+
     public function showPost($slug, Request $request)
     {
         $post = Post::with('tags')->whereSlug($slug)->firstOrFail();
