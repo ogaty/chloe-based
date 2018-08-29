@@ -13,7 +13,7 @@ use Carbon\Carbon;
 class BlogController extends \App\Http\Controllers\Controller
 {
     public function index(Request $request) {
-        $tag = $request->get('tag');
+        $tag = $request->get('tag', '');
         $tagModel = Tag::where('title', $tag)->first();
 
         if (!empty($tagModel)) {
@@ -76,7 +76,7 @@ class BlogController extends \App\Http\Controllers\Controller
     {
         $post = Post::with('tags')->whereSlug($slug)->firstOrFail();
         $user = User::where('id', $post->user_id)->firstOrFail();
-        $tag = $request->get('tag');
+        $tag = $request->get('tag', '');
         $title = $post->title;
         $css = Settings::customCSS();
         $js = Settings::customJS();
