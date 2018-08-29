@@ -50,7 +50,7 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'canvas_post_tag')->withTimestamps();
+        return $this->belongsToMany(Tag::class, 'post_tag')->withTimestamps();
     }
 
     public function tagLinks()

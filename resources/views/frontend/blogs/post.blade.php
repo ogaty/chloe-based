@@ -16,7 +16,7 @@
             <div class="container" id="post">
             <div class="">
                 @if(Auth::check())
-                    <p><a href="{{ route('canvas.admin.post.edit', $post->id) }}">edit</a></p>
+                    <p><a href="{{ route('admin.post.edit', $post->id) }}">edit</a></p>
                 @endif
 
                 <div class="">

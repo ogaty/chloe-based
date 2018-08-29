@@ -20,6 +20,11 @@ class RoutingTest extends TestCase
         $response->assertStatus(200);
         $response = $this->get('/', ['tag' => 'testing']);
         $response->assertStatus(200);
+        $response = $this->get('/tag/testing');
+        $response->assertStatus(200);
+        $response = $this->get('/search/testing');
+        $response->assertStatus(200);
+
 
         $user = User::first();
         $response = $this->actingAs($user)->call('GET', route('admin.home'));
@@ -64,6 +69,7 @@ class RoutingTest extends TestCase
         ]);
         $response->assertStatus(302);
 
-        $this->assertTrue(true);
+        $response = $this->get('/post/testing');
+        $response->assertStatus(200);
     }
 }

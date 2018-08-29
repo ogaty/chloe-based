@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use \App\Models\Post;
 use \App\Models\Tag;
 use \App\Models\User;
@@ -85,7 +86,7 @@ class BlogController extends \App\Http\Controllers\Controller
         }
 
         if (! $post->is_published && ! Auth::check()) {
-            return redirect()->route('canvas.blog.post.index');
+            return redirect()->route('blog.post.index');
         }
 
         $ad1 = $contents = Settings::ad1();
