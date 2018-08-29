@@ -9,7 +9,6 @@
 
 .card {
     background: #fff;
-    padding: 18px;
     margin-bottom: 20px;
     font-size: 14px;
 }
@@ -32,8 +31,15 @@
     border-bottom:1px solid #e0e0e0;
     margin-bottom: 20px;
 }
-.card-header {
+.card__header {
     margin-bottom: 18px;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    padding: 18px;
+}
+.glance-list {
+    padding-left: 18px;
+    padding-right: 18px;
 }
 .glance-list li {
     margin-top: 8px;
@@ -42,11 +48,28 @@
 .glance-list a {
     padding-left: 12px;
 }
+.quick-draft {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 18px;
+}
+.recent-activity {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 18px;
+}
 .dataTables_wrapper {
     margin-top: 30px;
 }
 .actions {
     display: none;
+}
+.block-header {
+    margin-bottom: 25px;
+    color: #5e5e5e;
+}
+.table-responsive {
+    padding: 18px;
 }
 
 @media (min-width: 1200px) {

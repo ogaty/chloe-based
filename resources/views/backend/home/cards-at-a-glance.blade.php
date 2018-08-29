@@ -1,9 +1,9 @@
 <div class="card half">
-    <div class="card-header">
+    <div class="card__header">
         <h2>At a Glance
             <small>Quick snapshot of your site:</small>
         </h2>
-        <br>
+</div>
         <ul class="glance-list">
             <li>
                 <i class="zmdi zmdi-collection-bookmark"></i> <a href="{!! route('admin.post.index') !!}">{!! count($data['posts']) !!}{!! str_plural(' Post', count($data['posts'])) !!}</a>
@@ -25,5 +25,4 @@
                 @endif
             </li>
         </ul>
-    </div>
 </div>

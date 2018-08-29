@@ -51,12 +51,17 @@ $(function() {
         event.preventDefault();
     }
     $(function() {
-        $("body").on("click", function() {
-                if($(this).closest(".user-menu").length == 0) {
+        $(document).on("click", function() {
+                if($(event.target).closest(".user-menu").length == 0) {
                         $(".user-menu").removeClass("visible");
                 }
-                if($(this).closest(".search-menu").length == 0) {
+                if($(event.target).closest(".search-menu").length == 0) {
                         $(".search-menu").removeClass("visible");
+                }
+                if($(event.target).closest(".sidebar").length == 0) {
+                    if ($(".sidebar.toggled").length > 0) {
+                        $(".sidebar.toggled").removeClass("toggled");
+                    }
                 }
         });
     });

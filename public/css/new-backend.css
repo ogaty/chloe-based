@@ -31,6 +31,11 @@ a {
 a:visited {
     color: #0072C6;
 }
+hr {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    border-top: 1px solid #eee;
+}
 .clearfix:before {
     content: " ";
     display: table;
@@ -51,6 +56,7 @@ a:visited {
     overflow: hidden;
     border-radius: 5px;
     margin-bottom: 10px;
+    background: #fff;
 }
 .breadcrumb__parent {
     text-decoration: none;
@@ -68,12 +74,12 @@ a:visited {
     color: #efefef;
 }
 .breadcrumb__parent::after {
-                                                    content: '';
-                                                        position: absolute;
-                                                            top: 0;
-                                                                right: -18px;
-                                                                    width: 36px;
-                                                                        height: 36px;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -18px;
+    width: 36px;
+    height: 36px;
     transform: scale(0.707) rotate(45deg);
     z-index: 1;
     border-radius: 0 5px 0 50px;
@@ -82,15 +88,15 @@ a:visited {
 }
 .breadcrumb__active {
     text-decoration: none;
-                outline: none;
-                    display: block;
-                        float: left;
-                            font-size: 12px;
-                                line-height: 36px;
+    outline: none;
+    display: block;
+    float: left;
+    font-size: 12px;
+    line-height: 36px;
     padding: 0 20px 0 40px;
-                                        position: relative;
-                                            background: #ffffff;
-                                                color: #e91e63;
+    position: relative;
+    background: #ffffff;
+    color: #e91e63;
     border-radius: 0 5px 5px 0;
 }
 .breadcrumb__parent:first_child {
@@ -99,6 +105,18 @@ a:visited {
 }
 .breadcrumb__parent:first_child::before {
     left 14px
+}
+
+.badge {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    color: #fff;
+    vertical-align: baseline;
+    border-radius: .25em;
+    background-color: #777;
+    float: right;
 }
 
 .modal {
