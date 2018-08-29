@@ -11,7 +11,7 @@ use Carbon\Carbon;
 
 class SearchController extends Controller
 {
-    public function index(Request $request) {
+    public function index($slug, Request $request) {
         $tag = $request->get('tag');
         $tagModel = Tag::where('title', $tag)->first();
 
@@ -19,7 +19,7 @@ class SearchController extends Controller
             ->where('published_at', '<=', Carbon::now())
             ->where('custom_code', 'blog')
             ->where('is_published', 1)
-            ->where('title', 'like', '%' . $request->get('query') . '%')
+            ->where('title', 'like', '%' . $slug . '%')
             ->orderBy('published_at', 'desc')
             ->simplePaginate(6);
         $data = [

@@ -20,11 +20,11 @@ Route::post('/adm/lout', '\App\Http\Controllers\Auth\LoginController@logout')->n
 
 Route::get('/', 'Frontend\BlogController@index')->name('home');
 Route::get('/home', 'Frontend\BlogController@index')->name('front.home');
-Route::get('/blog/tag/{slug}', 'Frontend\BlogController@tagIndex')->name('front.tag');
+Route::get('/tag/{slug}', 'Frontend\BlogController@tagIndex')->name('front.tag');
+Route::get('/post/{slug}', 'Frontend\BlogController@showPost')->name('front.post');
+Route::get('/search/{slug}', 'Frontend\SearchController@index')->name('front.search');
 Route::get('/sitemap.xml', 'Frontend\BlogController@sitemap')->name('front.sitemap');
 Route::get('/feed', 'Frontend\BlogController@feed')->name('front.feed');
-Route::get('/blog/post/{slug}', 'Frontend\BlogController@showPost')->name('front.post');
-Route::get('/search', 'Frontend\SearchController@index')->name('front.search');
 
 Route::group([
     'middleware' => ['auth'],
