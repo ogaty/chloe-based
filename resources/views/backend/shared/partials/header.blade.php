@@ -4,26 +4,20 @@
             <img src="logo.png">
         </a>
     </div>
-    <!--
-    <li id="menu-trigger" data-trigger="#sidebar">
-        <div class="line-wrap">
-            <div class="line top"></div>
-            <div class="line center"></div>
-            <div class="line bottom"></div>
-        </div>
-    </li>
+    <div id="menu-trigger">
+        <ion-icon name="menu" onclick="sideToggle()"></ion-icon>
+    </div>
     <div class="header__logo--sm">
         <a href="{!! route('admin.home') !!}">
             <img src="logo.png">
         </a>
     </div>
-    -->
     <div class="header__right">
         <div class="user-wrap">
-            <img src="logo.png" onclick="userMenu()">
+            <ion-icon name="more" onclick="userMenu()"></ion-icon>
         </div>
         <div class="search-wrap">
-            <img src="logo.png" onclick="searchMenu()">
+            <ion-icon name="search" onclick="searchMenu()"></ion-icon>
         </div>
         <div class="user-menu">
             <div>{{ Auth::guard()->user()->display_name }}</div>

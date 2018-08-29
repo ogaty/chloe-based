@@ -13,6 +13,9 @@
     margin-bottom: 20px;
     font-size: 14px;
 }
+.card button {
+    color: #efefef;
+}
 .card-container {
     display: flex;
     justify-content: space-between;

@@ -28,6 +28,7 @@ class TagCreateRequest extends FormRequest
         'tag' => 'required|unique:tags,tag',
         'title' => 'required',
         'subtitle' => 'required',
+        'slug' => 'required',
         ];
     }
 }

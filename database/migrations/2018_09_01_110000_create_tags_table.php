@@ -17,6 +17,7 @@ class CreateTagsTable extends Migration
             $table->increments('id');
             $table->string('tag')->unique();
             $table->string('title');
+            $table->string('slug');
             $table->string('subtitle');
             $table->string('meta_description');
             $table->string('layout')->default(config('blog.tag_layout'));

@@ -44,6 +44,8 @@ class RoutingTest extends TestCase
         $response = $this->actingAs($user)->call('POST', route('admin.tag.store'), [
                 'tag' => 'testingTag',
         ]);
+        $response->assertStatus(302);
+        $response->assertSessionMissing('errors');
         $response = $this->actingAs($user)->call('GET', route('admin.post.create'));
         $response->assertStatus(200);
         $response = $this->actingAs($user)->call('POST', route('admin.post.store', [1]), [
@@ -59,6 +61,9 @@ class RoutingTest extends TestCase
                 'meta_description' => 'meta',
                 'published_at' => '2018-01-01 10:00:00'
         ]);
+        $response->assertStatus(302);
+        $response->assertSessionMissing('errors');
+
         $response = $this->actingAs($user)->call('GET', route('admin.user.create'));
         $response->assertStatus(200);
         $response = $this->actingAs($user)->call('POST', route('admin.user.store'), [
@@ -66,6 +71,7 @@ class RoutingTest extends TestCase
                 'email' => 'testing@example.com',
         ]);
         $response->assertStatus(302);
+        $response->assertSessionMissing('errors');
 
         $response = $this->get('/post/testing');
         $response->assertSee('testingTitle');

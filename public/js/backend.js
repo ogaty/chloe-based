@@ -35,6 +35,11 @@ $(function() {
     */
 });
 
+    function sideToggle() {
+        $(".sidebar").toggleClass("toggled");
+        event.stopPropagation();
+        event.preventDefault();
+    }
     function userMenu() {
         $(".user-menu").addClass("visible");
         event.stopPropagation();

@@ -7,6 +7,20 @@
     height: calc(100% - 70px);
     overflow-y: auto;
     box-shadow: 0 1px 1px rgba(0,0,0,.15);
+    transition: all .6s;
+}
+@media (max-width: 1200px) {
+    .sidebar {
+        transform: translateX(-200px);
+    }
+}
+@media (min-width: 1200px) {
+    .sidebar {
+        transform: translateX(0px);
+    }
+}
+.sidebar.toggled {
+    transform: translateX(0px);
 }
 .sidebar a, .sidebar a:visited {
     color: #303030;
@@ -55,12 +69,16 @@
     color: #000;
 }
 @media (min-width: 1200px) {
+        /*
   body.sw-toggled .sidebar {
     opacity: 1;
   }
+  */
 }
 @media screen and (max-width: 1200px) {
+        /*
   body .sidebar {
     opacity: 0;
   }
+  */
 }
