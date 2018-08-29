@@ -72,7 +72,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->dispatch(new PostFormFields($id));
+        $data = Post::find($id);
 
         return view('backend.post.edit', $data);
     }

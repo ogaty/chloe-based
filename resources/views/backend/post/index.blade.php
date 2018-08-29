@@ -55,15 +55,15 @@
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->getAuthor($post->user_id) }}</td>
-                                        <td>{{ $post->is_published == 1 ? 'Published' : 'Draft' }}</td>
+                                        <td>{!! $post->is_published == 1 ? '<span style="color:#f00;">Published</span>' : 'Draft' !!}</td>
                                         <td>{{ $post->slug }}</td>
                                         @if($post->updated_at != $post->created_at)
                                             <td>{{ $post->updated_at->format('Y/m/d') }}</td>
                                         @else
                                             <td>{{ $post->created_at->format('Y/m/d') }}</td>
                                         @endif
-                                        <td><a href="{!! route('admin.post.edit', $post->id) !!}">e</a>
-                                        <a href="{!! route('front.post', $post->slug) !!}">v</a></td>
+                                        <td><a href="{!! route('admin.post.edit', $post->id) !!}"><ion-icon name="create"></ion-icon></a>
+                                        <a href="{!! route('front.post', $post->slug) !!}"><ion-icon name="tv"></ion-icon></a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
