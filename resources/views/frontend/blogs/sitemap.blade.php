@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://blog.ogatism.com/</loc>
-        <lastmod>{{ date('Y-m-d', strtotime($data['posts'][0]['updated_at'])) }}</lastmod>
+        <lastmod>{{ \Carbon\Carbon::parse($updated)->toAtomString() }}</lastmod>
     </url>
-    @foreach ($data['posts'] as $key => $value)
+    @foreach ($posts as $key => $value)
     <url>
-        <loc>{{ $data['url'] }}/blog/post/{{ $value['slug'] }}</loc>
+        <loc>{{ $value->url }}/blog/post/{{ $value->slug }}</loc>
         <lastmod>{{ \Carbon\Carbon::parse($value['updated_at'])->toAtomString() }}</lastmod>
     </url>
     @endforeach
-    @foreach ($data['tags'] as $key => $value)
+    @foreach ($tags as $key => $value)
     <url>
-        <loc>{{ $data['url'] }}/blog/?tag={{ $value['tag'] }}</loc>
+        <loc>{{ $url }}/blog/?tag={{ $value->tag }}</loc>
         <lastmod>{{ \Carbon\Carbon::parse($value['updated_at'])->toAtomString() }}</lastmod>
     </url>
     @endforeach

@@ -95,4 +95,31 @@ class BlogController extends \App\Http\Controllers\Controller
         $layout = "frontend.blogs.post";
         return view($layout, compact('post', 'tag', 'slug', 'title', 'user', 'css', 'js'));
     }
+
+    public function sitemap(Request $request) {
+        $posts = Post::where('published_at', '<=', Carbon::now())
+            ->where('custom_code', 'blog')
+            ->where('is_published', 1)
+            ->orderBy('published_at', 'desc');
+
+        if ($posts->count() == 0) {
+            $updated = Carbon::now();
+        } else {
+            $updated = $posts->first()->updated;
+        }
+
+        $tags = Tag::all();
+
+        return view('frontend.blogs.sitemap', ['updated' => $updated, 'posts' => $posts, 'tags' => $tags]);
+    }
+
+    public function feed(Request $request) {
+        $posts = Post::where('published_at', '<=', Carbon::now())
+            ->where('custom_code', 'blog')
+            ->where('is_published', 1)
+            ->orderBy('published_at', 'desc')
+            ->simplePaginate(6);
+
+        return view('frontend.blogs.feed', ['posts' => $posts]);
+    }
 }

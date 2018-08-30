@@ -6,21 +6,21 @@
         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
     <channel>
-        <title>{{ $data['title'] }}</title>
-        <link>{{ $data['url'] }}/feed</link>
-        <description>{{ $data['meta_description'] }}</description>
+        <title>{{ $title }}</title>
+        <link>{{ $url }}/feed</link>
+        <description>{{ $meta_description }}</description>
         <dc:language>ja</dc:language>
         <atom:link rel="self" href="{{ $data['url'] }}/feed" type="application/rss+xml"/>  
-        <dc:creator>ogaty</dc:creator>
-        <dc:date>{{ \Carbon\Carbon::parse($data['posts'][0]['created_at'])->toAtomString() }}</dc:date>
+        <dc:creator>$author</dc:creator>
+        <dc:date>{{ \Carbon\Carbon::parse($posts->first()->created_at)->toAtomString() }}</dc:date>
 
-        @foreach ($data['posts'] as $key => $value)
+        @foreach ($posts as $key => $value)
             <item>
-                <title>{{ $value['title'] }}</title>
-                <link>{{ $data['url'] }}/blog/posts/{{ $value['slug'] }}</link>
-                <description>{{ $value['content_html'] }}</description>
-                <dc:creator>ogaty</dc:creator> 
-                <dc:date>{{ \Carbon\Carbon::parse($value['updated_at'])->toAtomString() }}</dc:date>
+                <title>{{ $value->title }}</title>
+                <link>{{ $value->url }}/blog/posts/{{ $value->slug }}</link>
+                <description>{{ $value->content_html }}</description>
+                <dc:creator>$author</dc:creator> 
+                <dc:date>{{ \Carbon\Carbon::parse($value->updated_at)->toAtomString() }}</dc:date>
             </item>
         @endforeach
     </channel>

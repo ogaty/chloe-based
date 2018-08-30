@@ -24,6 +24,10 @@ class RoutingTest extends TestCase
         $response->assertStatus(200);
         $response = $this->get('/search/testing');
         $response->assertStatus(200);
+        $response = $this->get('/sitemap.xml');
+        $response->assertStatus(200);
+        $response = $this->get('/feed');
+        $response->assertStatus(200);
 
 
         $user = User::first();
