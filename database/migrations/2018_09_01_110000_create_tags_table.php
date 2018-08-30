@@ -15,13 +15,11 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tag')->unique();
-            $table->string('title');
+            $table->string('name')->unique();
             $table->string('slug');
-            $table->string('subtitle');
+            $table->string('description');
             $table->string('meta_description');
-            $table->string('layout')->default(config('blog.tag_layout'));
-            $table->boolean('reverse_direction');
+            $table->boolean('reverse_direction')->default(false);
             $table->timestamps();
         });
     }

@@ -15,7 +15,6 @@ class Post extends Model
         'user_id',
         'slug',
         'title',
-        'subtitle',
         'description_raw',
         'content_raw',
         'page_image',

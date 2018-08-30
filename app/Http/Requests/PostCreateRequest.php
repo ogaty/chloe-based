@@ -25,7 +25,6 @@ class PostCreateRequest extends FormRequest
         return [
             'title' => 'required',
             'slug' => 'required|unique:posts',
-            'subtitle' => 'required',
             'published_at' => 'required',
         ];
     }
@@ -41,7 +40,6 @@ class PostCreateRequest extends FormRequest
             'title' => $this->title,
             'slug' => $this->slug,
             'custom_code' => 'blog',
-            'subtitle' => $this->subtitle,
             'page_image' => $this->page_image,
             'description_raw' => $this->description_raw,
             'content_raw' => $this->content_raw,

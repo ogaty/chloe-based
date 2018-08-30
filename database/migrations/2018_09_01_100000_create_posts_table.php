@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->string('slug', 191)->unique();
             $table->string('custom_code', 191)->default('blog');
             $table->string('title', 191);
-            $table->string('subtitle', 191);
             $table->text('description_raw');
             $table->text('description_html');
             $table->text('content_raw');

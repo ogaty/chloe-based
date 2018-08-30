@@ -32,7 +32,6 @@ class PostController extends Controller
     {
         $data = [
             'title' => '',
-            'subtitle' => '',
             'slug' => '',
             'content' => '',
             'meta_description' => '',

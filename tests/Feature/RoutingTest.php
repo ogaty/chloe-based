@@ -42,7 +42,10 @@ class RoutingTest extends TestCase
         $response = $this->actingAs($user)->call('GET', route('admin.tag.create'));
         $response->assertStatus(200);
         $response = $this->actingAs($user)->call('POST', route('admin.tag.store'), [
-                'tag' => 'testingTag',
+                'name' => 'testingTag',
+                'slug' => 'testingTag',
+                'description' => 'testing',
+                'meta_description' => 'testing',
         ]);
         $response->assertStatus(302);
         $response->assertSessionMissing('errors');
@@ -51,7 +54,6 @@ class RoutingTest extends TestCase
         $response = $this->actingAs($user)->call('POST', route('admin.post.store', [1]), [
                 'user_id' => 1,
                 'title' => 'testingTitle',
-                'subtitle' => 'testing',
                 'slug' => 'testing',
                 'description_raw' => 'testing',
                 'description_html' => 'testing',
@@ -67,8 +69,12 @@ class RoutingTest extends TestCase
         $response = $this->actingAs($user)->call('GET', route('admin.user.create'));
         $response->assertStatus(200);
         $response = $this->actingAs($user)->call('POST', route('admin.user.store'), [
-                'name' => 'testing',
                 'email' => 'testing@example.com',
+                'first_name' => 'testing',
+                'last_name' => 'testing',
+                'display_name' => 'testing',
+                'role' => '0',
+                'password' => 'testing',
         ]);
         $response->assertStatus(302);
         $response->assertSessionMissing('errors');

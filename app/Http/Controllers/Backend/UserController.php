@@ -52,7 +52,7 @@ class UserController extends Controller
 
         $request->session()->put('_new-user', trans('canvas::messages.create_success', ['entity' => 'user']));
 
-        return redirect()->route('canvas.admin.user.index');
+        return redirect()->route('admin.user.index');
     }
 
     /**

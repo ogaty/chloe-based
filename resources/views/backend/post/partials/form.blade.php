@@ -50,12 +50,6 @@
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $subtitle }}" placeholder="Subtitle">
-                        </div>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <div class="fg-line">
                             <textarea id="editor" name="content" placeholder="Content">{{ $content }}</textarea>
                         </div>
                     </div>

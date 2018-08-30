@@ -32,7 +32,6 @@ class PostUpdateRequest extends FormRequest
                 'required',
                 Rule::unique('posts')->ignore($slug->first(), 'slug'),
             ],
-            'subtitle' => 'required',
             'published_at' => 'required',
         ];
     }
@@ -47,7 +46,6 @@ class PostUpdateRequest extends FormRequest
             'custom_code' => 'blog',
             'title' => $this->title,
             'slug' => $this->slug,
-            'subtitle' => $this->subtitle,
             'page_image' => $this->page_image,
             'content_raw' => $this->get('content'),
             'meta_description' => $this->meta_description,
