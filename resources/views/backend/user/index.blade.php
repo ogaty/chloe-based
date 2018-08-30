@@ -10,7 +10,7 @@
         <section id="content">
             <div class="container">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card__header">
                         <ol class="breadcrumb">
                             <li class="breadcrumb__parent"><a href="{!! route('admin.home') !!}">Home</a></li>
                             <li class="breadcrumb__active">Users</li>

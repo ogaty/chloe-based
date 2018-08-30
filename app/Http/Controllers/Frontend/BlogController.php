@@ -120,6 +120,14 @@ class BlogController extends \App\Http\Controllers\Controller
             ->orderBy('published_at', 'desc')
             ->simplePaginate(6);
 
-        return view('frontend.blogs.feed', ['posts' => $posts]);
+        if ($posts->count() == 0) {
+            $updated = Carbon::now();
+        } else {
+            $updated = $posts->first()->updated;
+        }
+        $title = Settings::blogTitle();
+        $author = Settings::blogAuthor();
+        $description = Settings::blogDescription();
+        return view('frontend.blogs.feed', ['title' => $title, 'author' => $author, 'description' => $description, 'posts' => $posts]);
     }
 }

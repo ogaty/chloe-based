@@ -7,19 +7,18 @@
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="user_id" value="{!! $user_id !!}">
 @endif
-    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
+        <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+        <div class="card-container">
+            <div class="card half">
+                <div class="card__header">
                     @include('backend.shared.partials.errors')
                     @include('backend.shared.partials.success')
 
                     @if(Route::is('admin.post.create'))
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin.home') !!}">Home</a></li>
-                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
-                            <li class="active">New Post</li>
+                            <li class="breadcrumb__parent"><a href="{!! route('admin.home') !!}">Home</a></li>
+                            <li class="breadcrumb__parent"><a href="{!! route('admin.post.index') !!}">Posts</a></li>
+                            <li class="breadcrumb__active">New Post</li>
                         </ol>
                         <h2>Create a New Post</h2>
                     @else
@@ -34,7 +33,7 @@
                         </h2>
                     @endif
                 </div>
-                <div class="card-body card-padding">
+                <div class="card__body">
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
@@ -55,14 +54,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
             <div class="card">
-                <div class="card-header">
+                <div class="card__header">
                     <h2>Publishing</h2>
                     <hr>
                 </div>
-                <div class="card-body card-padding">
+                <div class="card__body">
                     <br>
                     <label><i class="zmdi zmdi-eye"></i>&nbsp;&nbsp;Status</label>
                     <div class="form-group" style="padding-top: 10px">
@@ -83,8 +80,7 @@
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <label class="fg-label"><i class="zmdi zmdi-view-web"></i>&nbsp;&nbsp;Layout</label>
-                            <input type="text" class="form-control" name="layout" id="layout" value="{{ $layout }}" placeholder="Layout" disabled>
+                            <input type="hidden" name="layout" id="layout" value="{{ $layout }}" placeholder="Layout" disabled>
                         </div>
                     </div>
                     <br>
@@ -119,11 +115,11 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header">
+                <div class="card__header">
                     <h2>Featured Image</h2>
                     <hr>
                 </div>
-                <div class="card-body card-padding">
+                <div class="card__body card-padding">
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
@@ -143,29 +139,31 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header">
+                <div class="card__header">
                     <h2>Tags</h2>
                     <hr>
                 </div>
-                <div class="card-body card-padding">
+                <div class="card__body card-padding">
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
+                            @if (count($allTags) > 0)
                             <select name="tags[]" id="tags" class="selectpicker" multiple>
                                 @foreach ($allTags as $tag)
                                     <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
                                 @endforeach
                             </select>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card">
-                <div class="card-header">
+                <div class="card__header">
                     <h2>SEO Description</h2>
                     <hr>
                 </div>
-                <div class="card-body card-padding">
+                <div class="card__body card-padding">
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
@@ -175,7 +173,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </form>
 
 <script>

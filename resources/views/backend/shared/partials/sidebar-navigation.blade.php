@@ -29,7 +29,7 @@
                         <span class="badge">{!! App\Models\Post::where('custom_code', 'blog')->count() !!}</span>
                     </a>
                 </li>
-                <li><a href="{!! route('admin.post.create') !!}" @if (Route::is('admin.post.create')) class="active" @endif class="sub-menu__link">Add New
+                <li><a href="{!! route('admin.post.create') !!}" @if (Route::is('admin.post.create')) class="active sub-menu__link" @endif class="sub-menu__link">Add New
                 </a></li>
             </ul>
         </li>
@@ -38,8 +38,8 @@
             <a href="" data-ma-action="submenu-toggle" class="sidebar-list__link submenu-toggle"><i class="sidebar-list__link--icon zmdi zmdi-labels"></i> Tags
             <span><ion-icon name="arrow-dropdown"></ion-icon></span></a>
             <ul>
-                <li><a href="{!! route('admin.tag.index') !!}" @if (Route::is('admin.tag.index') || Route::is('admin.tag.edit')) class="active" @endif class="sub-menu__link">All Tags <span class="label label-default label-totals">{!! App\Models\Tag::count() !!}</span></a></li>
-                <li><a href="{!! route('admin.tag.create') !!}" @if (Route::is('admin.tag.create')) class="active" @endif class="sub-menu__link">Add New</a></li>
+                <li><a href="{!! route('admin.tag.index') !!}" @if (Route::is('admin.tag.index') || Route::is('admin.tag.edit')) class="active" @endif class="sub-menu__link">All Tags <span class="badge">{!! App\Models\Tag::count() !!}</span></a></li>
+                <li><a href="{!! route('admin.tag.create') !!}" @if (Route::is('admin.tag.create')) class="active sub-menu__link" @endif class="sub-menu__link">Add New</a></li>
             </ul>
         </li>
 
@@ -50,8 +50,8 @@
                 <a href="" data-ma-action="submenu-toggle" class="sidebar-list__link submenu-toggle"><i class="sidebar-list__link--icon zmdi zmdi-accounts-alt"></i> Users
                 <span id="xxx"><ion-icon name="arrow-dropdown"></ion-icon></span></a>
                 <ul>
-                    <li><a href="{!! route('admin.user.index') !!}" @if (Route::is('admin.user.index') || Route::is('admin.user.edit')) class="active" @endif class="sub-menu__link">All Users <span class="label label-default label-totals">{!! App\Models\User::count() !!}</span></a></li>
-                    <li><a href="{!! route('admin.user.create') !!}" @if (Route::is('admin.user.create')) class="active" @endif class="sub-menu__link">Add New</a></li>
+                    <li><a href="{!! route('admin.user.index') !!}" @if (Route::is('admin.user.index') || Route::is('admin.user.edit')) class="active sub-menu__link" @endif class="sub-menu__link">All Users <span class="badge">{!! App\Models\User::count() !!}</span></a></li>
+                    <li><a href="{!! route('admin.user.create') !!}" @if (Route::is('admin.user.create')) class="active sub-menu__link" @endif class="sub-menu__link">Add New</a></li>
                 </ul>
             </li>
             <li @if (Route::is('admin.setting.index')) class="active" @endif class="sidebar-list"><a href="{!! route('admin.setting.index') !!}" class="sidebar-list__link"><i class="sidebar-list__link--icon zmdi zmdi-settings"></i> Settings</a></li>

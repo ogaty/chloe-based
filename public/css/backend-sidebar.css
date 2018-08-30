@@ -67,6 +67,7 @@
     display: block;
 }
 .sub-menu__link:hover {
+    background: #eee;
     color: #000;
 }
 @media (min-width: 1200px) {

@@ -10,17 +10,17 @@
         <section id="content">
             <div class="container">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card__header">
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin.home') !!}">Home</a></li>
-                            <li><a href="{!! route('admin.tag.index') !!}">Tags</a></li>
-                            <li class="active">New Tag</li>
+                            <li class="breadcrumb__parent"><a href="{!! route('admin.home') !!}">Home</a></li>
+                            <li class="breadcrumb__parent"><a href="{!! route('admin.tag.index') !!}">Tags</a></li>
+                            <li class="breadcrumb__active">New Tag</li>
                         </ol>
                         @include('backend.shared.partials.errors')
                         @include('backend.shared.partials.success')
                         <h2>Create a New Tag</h2>
                     </div>
-                    <div class="card-body card-padding">
+                    <div class="card__body card-padding">
                         <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="{!! route('admin.tag.index') !!}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

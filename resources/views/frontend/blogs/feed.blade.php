@@ -10,7 +10,7 @@
         <link>{{ $url }}/feed</link>
         <description>{{ $meta_description }}</description>
         <dc:language>ja</dc:language>
-        <atom:link rel="self" href="{{ $data['url'] }}/feed" type="application/rss+xml"/>  
+        <atom:link rel="self" href="{{ $url }}/feed" type="application/rss+xml"/>  
         <dc:creator>$author</dc:creator>
         <dc:date>{{ \Carbon\Carbon::parse($posts->first()->created_at)->toAtomString() }}</dc:date>
 
