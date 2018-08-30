@@ -21,13 +21,10 @@
 
 @section('unique-js')
     @include('backend.post.partials.editor')
-    @include('backend.shared.components.datetime-picker')
     @if(Session::get('_update-post'))
-        @include('backend.shared.notifications.notify', ['section' => '_update-post'])
         {{ \Session::forget('_update-post') }}
     @endif
     @if(Session::get('_new-post'))
-        @include('backend.shared.notifications.notify', ['section' => '_new-post'])
         {{ \Session::forget('_new-post') }}
     @endif
 @stop

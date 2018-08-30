@@ -19,12 +19,12 @@ class CreatePostsTable extends Migration
             $table->string('slug', 191)->unique();
             $table->string('custom_code', 191)->default('blog');
             $table->string('title', 191);
-            $table->text('description_raw');
-            $table->text('description_html');
+            $table->text('description_raw')->nullable();
+            $table->text('description_html')->nullable();
             $table->text('content_raw');
             $table->text('content_html');
-            $table->string('page_image', 191);
-            $table->string('meta_description', 191);
+            $table->string('page_image', 191)->nullable()->default('');
+            $table->string('meta_description', 191)->nullable()->default('');
             $table->tinyInteger('is_published')->default(0);
             $table->string('layout', 191)->default('default');
             $table->tinyInteger('ad1')->default(0);

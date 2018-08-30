@@ -114,5 +114,10 @@
         padding-left: 200px;
     }
 }
+@media (max-width: 640px) {
+.table-responsive {
+    overflow-x: scroll;
+}
+}
 
     

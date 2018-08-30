@@ -25,6 +25,7 @@ class PostCreateRequest extends FormRequest
         return [
             'title' => 'required',
             'slug' => 'required|unique:posts',
+            'content_raw' => 'required',
             'published_at' => 'required',
         ];
     }

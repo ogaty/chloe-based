@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use Session;
 use App\Models\Post;
+use App\Models\PostTag;
+use App\Models\Tag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
@@ -30,19 +32,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        $data = [
-            'title' => '',
-            'slug' => '',
-            'content' => '',
-            'meta_description' => '',
-            'page_image' => '',
-            'is_published' => '1',
-            'published_at' => Carbon::now(),
-            'layout' => 'default',
-            'allTags' => [],
-        ];
-
-        return view('backend.post.create', $data);
+        $data = new Post();
+        $allTagIds = Tag::all()->toArray();
+        return view('backend.post.create', compact('allTagIds', 'data'));
     }
 
     /**
@@ -72,8 +64,9 @@ class PostController extends Controller
     public function edit($id)
     {
         $data = Post::find($id);
+        $allTagIds = Tag::all()->toArray();
 
-        return view('backend.post.edit', $data);
+        return view('backend.post.edit', compact('id', 'data', 'allTagIds'));
     }
 
     /**
