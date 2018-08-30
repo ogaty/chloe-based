@@ -14,7 +14,7 @@ class BlogController extends \App\Http\Controllers\Controller
 {
     public function index(Request $request) {
         $tag = $request->get('tag', '');
-        $tagModel = Tag::where('title', $tag)->first();
+        $tagModel = Tag::where('name', $tag)->first();
 
         if (!empty($tagModel)) {
             $postTag = PostTag::where('tag_id', $tagModel->id)->lists('post_id');
