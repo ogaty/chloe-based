@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use \App\Models\Post;
 use \App\Models\Tag;
 use \App\Models\User;
@@ -122,7 +121,7 @@ class BlogController extends \App\Http\Controllers\Controller
             ->simplePaginate(6);
 
         if ($posts->count() == 0) {
-            throw new NotFoundHttpException();
+            abort('404');
         } else {
             $updated = $posts->first()->updated;
         }

@@ -31,7 +31,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $data = Tag::take(self::PER_PAGE)->get();
+        $data = Tag::take(self::PER_PAGE)->simplePaginate(15);
 
         return view('backend.tag.index', compact('data'));
     }

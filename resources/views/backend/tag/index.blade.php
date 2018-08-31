@@ -67,6 +67,24 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div>
+        @if ($data->currentPage() > 1)
+            <li class="previous">
+                <a href="{!! $data->url($data->currentPage() - 1) !!}">
+                    <i class="fa fa-angle-left fa-lg"></i>
+                    Previous {{ $tag->tag }}
+                </a>
+            </li>
+        @endif
+        @if ($data->hasMorePages())
+            <li class="next">
+                <a href="{!! $data->nextPageUrl() !!}">
+                    Next {{ $tag->tag }}
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        @endif
+                        </div>
                     </div>
                 </div>
             </div>

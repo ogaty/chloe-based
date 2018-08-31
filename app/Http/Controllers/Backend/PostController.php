@@ -21,7 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data = Post::where('custom_code', 'blog')->take(self::PER_PAGE)->get();
+        $data = Post::where('custom_code', 'blog')->simplePaginate(15);
 
         return view('backend.post.index', compact('data'));
     }
