@@ -9,7 +9,8 @@
 @endif
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <div class="card-container">
-            <div class="card half">
+            <div class="card-half">
+            <div class="card">
                 <div class="card__header">
                     @include('backend.shared.partials.errors')
                     @include('backend.shared.partials.success')
@@ -54,6 +55,8 @@
                     </div>
                 </div>
             </div>
+            </div>
+            <div class="card-sub">
             <div class="card">
                 <div class="card__header">
                     <h2>Publishing</h2>
@@ -150,7 +153,7 @@
                             @if (count($allTagIds) > 0)
                             <select name="tags[]" id="tags" class="selectpicker" multiple>
                                 @foreach ($allTagIds as $tag)
-                                    <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
+{!--                                    <option @if ($tag = $tag['slug']) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>--}
                                 @endforeach
                             </select>
                             @endif
@@ -170,6 +173,7 @@
                             <textarea class="form-control auto-size" name="meta_description" id="meta_description" style="resize: vertical" placeholder="Meta Description">{!! $data->meta_description !!}</textarea>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('url')->default('');
             $table->string('twitter')->default('');
             $table->string('facebook')->default('');
-            $table->text('bio');
+            $table->text('bio')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken()->nullable();

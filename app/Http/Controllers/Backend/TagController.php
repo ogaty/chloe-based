@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+    const PER_PAGE = 6;
+
     protected $fields = [
         'tag' => '',
         'title' => '',
@@ -29,9 +31,18 @@ class TagController extends Controller
      */
     public function index()
     {
-        $data = Tag::all();
+        $data = Tag::take(self::PER_PAGE)->get();
 
         return view('backend.tag.index', compact('data'));
+    }
+
+    public function page(Request $request)
+    {
+        $page = $request->get('page');
+        $skip = self::PER_PAGE * $page;
+        $data = Tag::skip($skip)->take(self::PER_PAGE)->get()->toArray();
+
+        return $data;
     }
 
     /**

@@ -1,4 +1,4 @@
-<div class="card half">
+<div class="card-half">
     <div class="card__header">
         <h2>Quick Draft
             <small>Save a quick draft post:</small>
@@ -15,7 +15,7 @@
             @include('backend.home.partials.form')
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save Draft</button>
+                <button type="submit" class="card__button"><i class="zmdi zmdi-floppy"></i> Save Draft</button>
             </div>
         </form>
     </div>

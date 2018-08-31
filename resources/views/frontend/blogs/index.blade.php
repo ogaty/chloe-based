@@ -7,6 +7,7 @@
 @endif
 @section('og-title', \App\Models\Settings::blogTitle())
 @section('twitter-title', \App\Models\Settings::blogTitle())
+@section('og-image', \App\Models\Settings::ogImage())
 @section('og-description', \App\Models\Settings::blogDescription())
 @section('twitter-description', \App\Models\Settings::blogDescription())
 

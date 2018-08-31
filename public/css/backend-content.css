@@ -12,7 +12,7 @@
     margin-bottom: 20px;
     font-size: 14px;
 }
-.card button {
+.card__button {
     color: #efefef;
 }
 .card-container {
@@ -20,8 +20,17 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.card-container .card {
+.card-container .card-half {
     width: 46%;
+    background: #fff;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.card-container .card-main {
+    width: 70%;
+}
+.card-container .card-sub {
+    width: 25%;
 }
 .card-container input, .card-container textarea {
     width: 100%;

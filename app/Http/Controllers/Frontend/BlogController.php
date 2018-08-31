@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use \App\Models\Post;
 use \App\Models\Tag;
 use \App\Models\User;
@@ -114,20 +115,20 @@ class BlogController extends \App\Http\Controllers\Controller
     }
 
     public function feed(Request $request) {
-        $posts = Post::where('published_at', '<=', Carbon::now())
+        $posts = Post::where('published_at', '<=', Carbon::now()->subMinutes((int)Settings::feedTime()))
             ->where('custom_code', 'blog')
             ->where('is_published', 1)
             ->orderBy('published_at', 'desc')
             ->simplePaginate(6);
 
         if ($posts->count() == 0) {
-            $updated = Carbon::now();
+            throw new NotFoundHttpException();
         } else {
             $updated = $posts->first()->updated;
         }
         $title = Settings::blogTitle();
         $author = Settings::blogAuthor();
         $description = Settings::blogDescription();
-        return view('frontend.blogs.feed', ['title' => $title, 'author' => $author, 'description' => $description, 'posts' => $posts]);
+        return view('frontend.blogs.feed', ['url' => env('APP_URL' , ''), 'title' => $title, 'author' => $author, 'description' => $description, 'posts' => $posts]);
     }
 }

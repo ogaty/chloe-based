@@ -59,5 +59,9 @@ class SettingsSeeder extends Seeder
             'setting_name' => 'ad2',
             'setting_value' => '',
         ]);
+        DB::table('settings')->insert([
+            'setting_name' => 'og_image',
+            'setting_value' => '',
+        ]);
     }
 }

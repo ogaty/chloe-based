@@ -13,6 +13,7 @@ use Carbon\Carbon;
 
 class PostController extends Controller
 {
+    const PER_PAGE = 6;
     /**
      * Display a listing of the posts.
      *
@@ -20,9 +21,18 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data = Post::where('custom_code', 'blog')->get();
+        $data = Post::where('custom_code', 'blog')->take(self::PER_PAGE)->get();
 
         return view('backend.post.index', compact('data'));
+    }
+
+    public function page(Request $request)
+    {
+        $page = $request->get('page');
+        $skip = self::PER_PAGE * $page;
+        $data = Post::where('custom_code', 'blog')->skip($skip)->take(self::PER_PAGE)->get()->toArray();
+
+        return $data;
     }
 
     /**
@@ -104,6 +114,6 @@ class PostController extends Controller
 
         $request->session()->put('_delete-post', 'Success! :entity has been deleted.');
 
-        return redirect()->route('admin.techs.index');
+        return redirect()->route('admin.post.index');
     }
 }

@@ -42,6 +42,7 @@ Route::group([
             'destroy' => 'admin.post.destroy',
         ],
     ]);
+    Route::get('/adm/post/page', 'PostController@index')->name('admin.post.page');
     Route::resource('/adm/tag', 'TagController', [
         'except' => 'show',
         'names' => [
@@ -53,6 +54,7 @@ Route::group([
             'destroy' => 'admin.tag.destroy',
         ],
     ]);
+    Route::get('/adm/tag/page', 'TagController@index')->name('admin.tag.page');
     Route::resource('/adm/setting', 'SettingsController', [
         'except' => 'show',
         'names' => [

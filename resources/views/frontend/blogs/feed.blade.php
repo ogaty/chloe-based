@@ -8,7 +8,7 @@
     <channel>
         <title>{{ $title }}</title>
         <link>{{ $url }}/feed</link>
-        <description>{{ $meta_description }}</description>
+        <description>{{ $description }}</description>
         <dc:language>ja</dc:language>
         <atom:link rel="self" href="{{ $url }}/feed" type="application/rss+xml"/>  
         <dc:creator>$author</dc:creator>

@@ -1,4 +1,4 @@
-<div class="card half">
+<div class="card-half">
     <div class="card__header">
         <h2>At a Glance
             <small>Quick snapshot of your site:</small>

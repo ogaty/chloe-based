@@ -8,6 +8,9 @@
 @if ($post->page_image)
     @section('og-image', url( $post->page_image ))
     @section('twitter-image', url( $post->page_image ))
+@else
+    @section('og-image', \App\Models\Settings::ogImage())
+    @section('twitter-image', \App\Models\Settings::ogImage())
 @endif
 
 @section('content')

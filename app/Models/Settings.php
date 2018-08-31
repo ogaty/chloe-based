@@ -99,4 +99,12 @@ class Settings extends Model
     public static function socialHeaderIconsUserId()
     {
     }
+
+    public static function ogImage() {
+        return self::where('setting_name', 'og_image')->pluck('setting_value')->first();
+    }
+
+    public static function feedTime() {
+        return self::where('setting_name', 'feed_time')->pluck('setting_value')->first();
+    }
 }
