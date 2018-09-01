@@ -1,9 +1,8 @@
 <div class="post-media-modal">
     <div class="chloe-media-manager">
         @include('backend.shared.components.media-manager')
-        <div>
-            <ul>
-                <li>aaa.png</li>
+        <div class="result-area">
+            <ul class="result-area__item">
             </ul>
         </div>
         <button type="button" onclick="insertAndClose()">Select</button>
@@ -12,6 +11,7 @@
 
 <script>
 function insertAndClose() {
+    $("#page_image").val( $(".images-content__item.selected a").data("fullpath") );
     $(".post-media-modal").removeClass("visible");
 }
 </script>

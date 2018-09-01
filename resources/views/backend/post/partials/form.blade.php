@@ -129,7 +129,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="page_image" id="page_image" alt="Image thumbnail" placeholder="Page Image" v-model="pageImage">
                                 <span class="input-group-btn" style="margin-bottom: 11px">
-                        <button style="margin-bottom: -5px" type="button" class="btn btn-primary waves-effect" onclick="openFromPageImage()">Select Image</button>
+                        <button style="margin-bottom: -5px" type="button" class="" onclick="openFromPageImage()">Select Image</button>
                     </span>
                             </div>
                         </div>
@@ -185,10 +185,3 @@ function openFromPageImage() {
     $(".post-media-modal").addClass("visible");
 }
 </script>
-<media-modal v-if="showMediaManager" @close="showMediaManager = false">
-<media-manager
-        :is-modal="true"
-        :selected-event-name="selectedEventName"
-@close="showMediaManager = false"
-                                           >
-</media-manager>

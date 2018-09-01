@@ -5,14 +5,8 @@
   -o-user-select: none;
   user-select: none;
   padding: 0 10px;
-  border-top: 1px solid #bbb;
-  border-left: 1px solid #bbb;
-  border-right: 1px solid #bbb;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
 }
 .images-toolbar--button {
-  float: left;
   list-style: none;
   display: inline-block;
   margin-right: 8px;
@@ -21,15 +15,66 @@
   border-color: #000;
 }
 .images-breadcrumb {
-  margin: 8px 25px;
+    margin: 8px 15px;
+    list-style: none;
+    border-bottom: 1px solid #eaeaea;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    border-radius: 5px;
+    background: #fff;
+
 }
-.images-breadcrumb__item {
-  display: inline-block;
-  padding: 0px 8px;
+.images-breadcrumb__parent {
+    text-decoration: none;
+    outline: none;
+    display: block;
+    float: left;
+    font-size: 12px;
+    line-height: 36px;
+    padding: 0 10px 0 32px;
+    position: relative;
+    background: #e91e63;
+    color: #ffffff;
 }
-.images-breadcrumb__item:first-child {
-  padding-left: 0px;
+.breadcrumb__parent a {
+    color: #efefef;
 }
+.breadcrumb__parent::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -18px;
+    width: 36px;
+    height: 36px;
+    transform: scale(0.707) rotate(45deg);
+    z-index: 1;
+    border-radius: 0 5px 0 50px;
+    background: #e91e63;
+    box-shadow: 2px -2px 0 2px #e91e63;
+}
+.breadcrumb__active {
+    text-decoration: none;
+    outline: none;
+    display: block;
+    float: left;
+    font-size: 12px;
+    line-height: 36px;
+    padding: 0 20px 0 40px;
+    position: relative;
+    background: #ffffff;
+    color: #e91e63;
+    border-radius: 0 5px 5px 0;
+}
+.breadcrumb__parent:first_child {
+    padding-left 46px
+    border-radius 5px 0 0 5px
+}
+.breadcrumb__parent:first_child::before {
+    left 14px
+}
+
+
 .images-content__list {
   font-size: 14px;
   margin-bottom: 12px;
@@ -37,5 +82,16 @@
 .images-content__item {
   list-style: none;
   margin: 6px 25px;
+  padding: 4px;
   border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.images-content__file {
+  color: #000;
+}
+.images-content__item.selected {
+  background: #44f;
+}
+.images-content__item.selected .images-content__file {
+  color: #fff;
 }

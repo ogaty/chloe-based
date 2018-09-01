@@ -63,9 +63,9 @@ hr {
     text-decoration: none;
     outline: none;
     display: block;
-                        float: left;
-                            font-size: 12px;
-                                line-height: 36px;
+    float: left;
+    font-size: 12px;
+    line-height: 36px;
     padding: 0 10px 0 32px;
     position: relative;
     background: #e91e63;
@@ -154,6 +154,7 @@ hr {
   z-index: 24;
   left: 0;
   right: 0;
+  top: 110px;
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
