@@ -37,10 +37,10 @@
     background: #e91e63;
     color: #ffffff;
 }
-.breadcrumb__parent a {
+.images-breadcrumb__parent a {
     color: #efefef;
 }
-.breadcrumb__parent::after {
+.images-breadcrumb__parent::after {
     content: '';
     position: absolute;
     top: 0;
@@ -53,7 +53,7 @@
     background: #e91e63;
     box-shadow: 2px -2px 0 2px #e91e63;
 }
-.breadcrumb__active {
+.images-breadcrumb__active {
     text-decoration: none;
     outline: none;
     display: block;
@@ -66,11 +66,11 @@
     color: #e91e63;
     border-radius: 0 5px 5px 0;
 }
-.breadcrumb__parent:first_child {
+.images-breadcrumb__parent:first_child {
     padding-left 46px
     border-radius 5px 0 0 5px
 }
-.breadcrumb__parent:first_child::before {
+.images-breadcrumb__parent:first_child::before {
     left 14px
 }
 

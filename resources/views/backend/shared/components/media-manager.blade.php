@@ -21,10 +21,21 @@
         </li>
     </ul>
 </div>
-<div id="images-breadCrumb" class="images-breadcrumb"></div>
+<div id="images-breadCrumb" class="images-breadcrumb" data-bind="foreach: breadCrumb">
+    <li class="images-breadcrumb__parent">
+	<a href="javascript:void(0)" data-bind="click:$parent.reRender, text: name"></a>
+    </li>
+</div>
 <div id="images-content">
-    <div id="images-content__list" class="images-content__list">
+    <div data-bind="html: imageMessage">
     </div>
+    <ul id="images-content__list" class="images-content__List" data-bind="foreach: imagesList">
+        <li class="images-content__item">
+            <a href="javascript:void(0)" class="images-content__file" data-bind="text: name, attr: {'data-fullpath': fullpath}"></a>
+        </li>
+    </ul>
+<div>
+</div>
     <div id="preview-sidebar">
     </div>
 </div>
@@ -76,6 +87,10 @@ $(function() {
     var folder = "/";
 
     var MediaManager = {
+        breadCrumb: ko.observableArray(),
+        imageMessage: ko.observable(),
+        imagesList: ko.observableArray(),
+        topPath: ko.observable(),
         uploadImage : function() {
             $("#upload-modal").addClass("visible");
         },
@@ -97,42 +112,46 @@ $(function() {
         closeModal : function() {
             $("body").find(".modal").removeClass("visible");
         },
-        reRender : function(path) {
-            folder = path;
+        reRender : function(obj) {
+            folder = obj.path;
+	    var self = MediaManager;
             $.ajax({
-                url: '/adm/upload/ls?path=' + path,
+                url: '/adm/upload/ls?path=' + obj.path,
                 dataType: 'json'
             }).done(function(data) {
                 console.log("reRender");
                 console.log(data);
-                $("#images-content__list").html("");
+		self.imageMessage("");
+		self.imagesList.removeAll();
                 console.log("reRender breadCrumb");
                 console.log(data.breadCrumbs);
                 if (typeof data.breadCrumbs.name != undefined) {
-                console.log("reRender breadCrumb1");
-                    $("#images-breadCrumb").html("");
-                    $("#images-breadCrumb").append('<li class="images-breadcrumb__parent"><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs.fullPath+'\')">'+data.breadCrumbs.name+'</a></li>');
+                    console.log("reRender breadCrumb undefined");
+                    self.breadCrumb.removeAll();
+                    self.breadCrumb.push({"name": data.breadCrumbs.name, "path": data.breadCrumbs.fullPath});
+		    self.topPath = data.breadCrumbs.name;
                 }
                 if (data.breadCrumbs.length > 0) {
                 console.log("reRender breadCrumb2");
                     $("#images-breadCrumb").html("");
                     for (var i = 0; i < data.breadCrumbs.length; i++) {
+                        var str = self.breadCrumb.toString();
                     $("#images-breadCrumb").append('<li class="images-breadcrumb__parent"><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs[i].fullPath+'\')">'+data.breadCrumbs[i].name+'</a></li>');
                     }
                 }
                 if (data.subFolders.length > 0) {
-                for (var i = 0; i < data.subFolders.length; i++) {
-                    $("#images-content__list").append('<li class="images-content__item"><input type="checkbox" class="images-content__check" data-fullpath="'+data.subFolders[i].fullPath+'"><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
-                }
+                    for (var i = 0; i < data.subFolders.length; i++) {
+                        self.imagesList.push({"name": data.subFolders[i].name, "fullpath": data.subFolders[i].fullPath});
+                    }
                 }
                 if (data.files.length > 0) {
-                for (var i = 0; i < data.files.length; i++) {
-                    $("#images-content__list").append('<li class="images-content__item"><input type="checkbox" class="images-content__check" data-fullpath="'+data.files[i].fullPath+'"><a href="javascript:void(0)" class="images-content__file" data-fullpath="'+data.files[i].fullPath+'">'+data.files[i].name+'</a></li>');
-                }
+                    for (var i = 0; i < data.files.length; i++) {
+                        self.imagesList.push({"name": data.files[i].name, "fullpath": data.files[i].fullPath});
+                    }
                 } else {
-                if (data.subFolders.length == 0) {
-                    $("#images-content__list").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
-                }
+                    if (data.subFolders.length == 0) {
+                        self.imageMessage('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
+                    }
                 }
                 console.log("reRender end");
             });
@@ -141,7 +160,7 @@ $(function() {
 
     ko.applyBindings(MediaManager);
 
-    MediaManager.reRender('/');
+    MediaManager.reRender({name: '/', path: '/'});
     
     $("#images-content").on("click", ".images-content__item", function() {
 	$(".images-content__item").removeClass("selected");
@@ -177,6 +196,7 @@ $(function() {
     $("#rename").on('click', function() {
         $("#rename-item-modal").addClass("visible");
     });
+    /*
     function reRender(path) {
     console.log("reRender2");
 
@@ -213,6 +233,7 @@ $(function() {
                 }
             }
     });
+     */
 }
 function createDirectory() {
     $.ajax({
