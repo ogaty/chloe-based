@@ -66,4 +66,32 @@
         </div>
     </div>
 </div>
+
+<div class="wrapper">
+    <div>
+        <span></span>
+        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+    </div>
+    <div>
+        <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+    </div>
+        <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+
+    <div>
+                                <button type="submit" class="submit-button">
+                                    {{ __('Login') }}
+                                </button>
+
+    </div>
+    <div>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+
+    </div>
+</div>
 @endsection

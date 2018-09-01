@@ -1,0 +1,33 @@
+body {
+    background: #303030;
+}
+.wrapper {
+    width: 300px;
+    margin: 0 auto;
+}
+.form-control {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: #303030;
+    border-radius: 0;
+    border-bottom: 1px solid #ffffff;
+    color: #fff;
+}
+.form-control:focus {
+    background: #303030;
+    color: #fff;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+}
+.checkbox {
+    color: #fff;
+}
+.submit-button {
+    background: #a08080;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}

@@ -9,8 +9,8 @@
 <body>
     @include('frontend.shared.header')
     <div style="text-align: center;">
-    <h1>400</h1>
-    エラーが発生しました。
+    <h1>404</h1>
+    ページが見つかりません。
     </div>
     @include('frontend.shared.footer')
 </body>
