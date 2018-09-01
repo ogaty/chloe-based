@@ -38,7 +38,7 @@
             <a href="" data-ma-action="submenu-toggle" class="sidebar-list__link submenu-toggle"><i class="sidebar-list__link--icon zmdi zmdi-labels"></i> Tags
             <span><ion-icon name="arrow-dropdown"></ion-icon></span></a>
             <ul>
-                <li><a href="{!! route('admin.tag.index') !!}" @if (Route::is('admin.tag.index') || Route::is('admin.tag.edit')) class="active" @endif class="sub-menu__link">All Tags <span class="badge">{!! App\Models\Tag::count() !!}</span></a></li>
+                <li><a href="{!! route('admin.tag.index') !!}" @if (Route::is('admin.tag.index') || Route::is('admin.tag.edit')) class="active sub-menu__link" @endif class="sub-menu__link">All Tags <span class="badge">{!! App\Models\Tag::count() !!}</span></a></li>
                 <li><a href="{!! route('admin.tag.create') !!}" @if (Route::is('admin.tag.create')) class="active sub-menu__link" @endif class="sub-menu__link">Add New</a></li>
             </ul>
         </li>

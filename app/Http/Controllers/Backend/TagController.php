@@ -14,9 +14,8 @@ class TagController extends Controller
     const PER_PAGE = 6;
 
     protected $fields = [
-        'tag' => '',
-        'title' => '',
-        'subtitle' => '',
+        'name' => '',
+        'slug' => '',
         'meta_description' => '',
         'layout' => 'frontend.blog.index',
         'reverse_direction' => 0,

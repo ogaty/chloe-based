@@ -1,29 +1,18 @@
 <br>
 
-@if(isset($data['tag']))
   <div class="form-group">
       <div class="fg-line">
-        <label class="fg-label">Tag</label>
-        <input type="text" class="form-control" name="tag" id="tag" value="{{ $data['tag'] }}" placeholder="Tag">
+        <label class="fg-label">Tag Name</label>
+        <input type="text" class="form-control" name="name" id="name" value="{{ $data['name'] }}" placeholder="Tag Name">
       </div>
   </div>
 
   <br>
-@endif
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Title</label>
-      <input type="text" class="form-control" name="title" id="title" value="{{ $data['title'] }}" placeholder="Title">
-    </div>
-</div>
-
-<br>
-
-<div class="form-group">
-    <div class="fg-line">
-      <label class="fg-label">Subtitle</label>
-      <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $data['subtitle'] }}" placeholder="Subtitle">
+      <label class="fg-label">Slut</label>
+      <input type="text" class="form-control" name="slug" id="slug" value="{{ $data['slug'] }}" placeholder="Slug">
     </div>
 </div>
 

@@ -5,7 +5,7 @@
 
     <div class="form-group">
         <div class="fg-line">
-            <label class="fg-label">Blog Title</label>
+            <label class="index-label">Blog Title</label>
             <input type="text" class="form-control" name="blog_title" id="blog_title" value="{{ $data['blogTitle'] }}" placeholder="Blog Title">
         </div>
     </div>

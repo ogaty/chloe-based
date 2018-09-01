@@ -52,8 +52,14 @@
     padding-right: 18px;
     padding-bottom: 18px;
 }
-.card__body label {
+.card__body label.block-label {
     display: block;
+}
+.card__body label.info-label {
+    display: inline;
+}
+.card__body label.index-label {
+    color: #2e2e2e;
 }
 .card__body input {
     border-top: none;
@@ -116,6 +122,62 @@
 }
 .table-responsive th, .table-responsive td {
     padding: 8px;
+    text-align: center;
+}
+
+#is_published {
+    opacity: 0;
+    width: 0;
+    display: inline-block;
+}
+#is_published:checked + label {
+    background: #b66d0b;
+}
+#is_published:checked + label:after {
+    left: 64px;
+}
+.toggle-label {
+    background: #bbb;
+    height: 10px;
+    width: 85px;
+    position: relative;
+    display: inline-block;
+    border-radius: 46px;
+    transition: 0.4s;
+}
+.toggle-label:after {
+    background: #fff;
+    top: -7px;
+    width: 24px;
+    height: 24px;
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    left: 0;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: 0.4s;
+    box-sizing: border-box;
+}
+.backend-paginate {
+    position: relative;
+    margin: 12px 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+li.previous {
+    position: absolute;
+    left: 0;
+    list-style: none;
+}
+li.next {
+    position: absolute;
+    right: 0;
+    list-style: none;
+}
+.selectpicker {
+    width: 100%;
 }
 
 @media (min-width: 1200px) {

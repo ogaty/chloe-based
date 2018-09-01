@@ -58,9 +58,9 @@
                                         <td>{!! $post->is_published == 1 ? '<span style="color:#f00;">Published</span>' : 'Draft' !!}</td>
                                         <td>{{ $post->slug }}</td>
                                         @if($post->updated_at != $post->created_at)
-                                            <td>{{ $post->updated_at->format('Y/m/d') }}</td>
+                                            <td>{{ $post->updated_at->format('Y/m/d H:i') }}</td>
                                         @else
-                                            <td>{{ $post->created_at->format('Y/m/d') }}</td>
+                                            <td>{{ $post->created_at->format('Y/m/d H:i') }}</td>
                                         @endif
                                         <td><a href="{!! route('admin.post.edit', $post->id) !!}"><ion-icon name="create"></ion-icon></a>
                                         <a href="{!! route('front.post', $post->slug) !!}"><ion-icon name="tv"></ion-icon></a></td>
@@ -69,23 +69,23 @@
                             </tbody>
                         </table>
 
-                        <div>
-        @if ($data->currentPage() > 1)
-            <li class="previous">
+                        <div class="backend-paginate">
+                        @if ($data->currentPage() > 1)
+                            <li class="previous">
                 <a href="{!! $data->url($data->currentPage() - 1) !!}">
                     <i class="fa fa-angle-left fa-lg"></i>
-                    Previous {{ $tag->tag }}
+                    Previous
                 </a>
-            </li>
+                            </li>
         @endif
         @if ($data->hasMorePages())
-            <li class="next">
+                            <li class="next">
                 <a href="{!! $data->nextPageUrl() !!}">
-                    Next {{ $tag->tag }}
+                    Next
                     <i class="fa fa-angle-right"></i>
                 </a>
-            </li>
-        @endif
+                            </li>
+                        @endif
                         </div>
                     </div>
                 </div>

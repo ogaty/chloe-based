@@ -9,7 +9,7 @@
 @endif
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <div class="card-container">
-            <div class="card-half">
+            <div class="card-main">
             <div class="card">
                 <div class="card__header">
                     @include('backend.shared.partials.errors')
@@ -66,11 +66,11 @@
                     <br>
                     <label><i class="zmdi zmdi-eye"></i>&nbsp;&nbsp;Status</label>
                     <div class="form-group" style="padding-top: 10px">
-                        <div class="toggle-switch toggle-switch-demo" data-ts-color="blue">
-                            <label for="is_published" class="ts-label"><span class="label label-default">Draft</span></label>
-                            <input {{ $data->is_published ? 'checked' : '' }} type="checkbox" name="is_published">
-                            <label for="is_published" class="ts-helper"></label>
-                            <label for="is_published" class="ts-label" style="margin-left: 20px; margin-right: 0"><span class="label label-primary">Published</span></label>
+                        <div class="" data-ts-color="blue">
+                            <label for="is_published" class="info-label"><span class="info-label">Draft</span></label>
+                            <input {{ $data->is_published ? 'checked' : '' }} type="checkbox" name="is_published" id="is_published">
+                            <label for="is_published" class="toggle-label"></label>
+                            <label for="is_published" class="info-label" style="margin-left: 20px; margin-right: 0"><span class="label label-primary">Published</span></label>
                         </div>
                     </div>
                     <br>

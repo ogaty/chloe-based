@@ -43,6 +43,7 @@ class PostController extends Controller
     public function create()
     {
         $data = new Post();
+	$data->published_at = Carbon::now();
         $allTagIds = Tag::all()->toArray();
         return view('backend.post.create', compact('allTagIds', 'data'));
     }

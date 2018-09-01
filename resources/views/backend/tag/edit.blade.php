@@ -57,7 +57,6 @@
 
 @section('unique-js')
     @if(Session::get('_update-tag'))
-        @include('backend.shared.notifications.notify', ['section' => '_update-tag'])
         {{ \Session::forget('_update-tag') }}
     @endif
 @stop

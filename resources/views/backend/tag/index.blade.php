@@ -96,12 +96,10 @@
     @include('backend.tag.partials.datatable')
 
     @if(Session::get('_new-tag'))
-        @include('backend.shared.notifications.notify', ['section' => '_new-tag'])
         {!! \Session::forget('_new-tag') !!}
     @endif
 
     @if(Session::get('_delete-tag'))
-        @include('backend.shared.notifications.notify', ['section' => '_delete-tag'])
         {!! \Session::forget('_delete-tag') !!}
     @endif
 @stop

@@ -1,10 +1,10 @@
 <div class="card">
-    <div class="card-header">
+    <div class="card__header">
         <h2>General Settings
             <small>Overview of configuration options for your site.</small>
         </h2>
     </div>
-    <div class="card-body card-padding">
+    <div class="card__body card-padding">
 
         @include('backend.shared.partials.errors')
 
