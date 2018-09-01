@@ -48,6 +48,9 @@ hr {
 .alert ul {
     font-size: 12px;
 }
+.success {
+    color: #0c0;
+}
 
 .breadcrumb {
     list-style: none;
@@ -120,12 +123,18 @@ hr {
     float: right;
 }
 
-.modal {
+.upload-submodal {
   position: absolute;
   display: none;
   border: 1px solid #ccc;
   width: 400px;
   height: 200px;
+}
+.upload-submodal.visible {
+    display: block;
+    background: #fff;
+    z-index: 21;
+    top: 80px;
 }
 /*
 .visible {

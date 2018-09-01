@@ -10,10 +10,10 @@
         <section id="content">
             <div class="container">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card__header">
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin.home') !!}">Home</a></li>
-                            <li class="active">Media</li>                                                                                   
+                            <li class="breadcrumb__parent"><a href="{!! route('admin.home') !!}">Home</a></li>
+                            <li class="breadcrumb__active">Media</li>                                                                                   
                         </ol>
                         <ul class="actions">
                             <li class="dropdown">
@@ -35,8 +35,9 @@
                         </h2>
                     </div>
 
+                    <div class="card__body">
                     @include('backend.shared.components.media-manager')
-
+                    </div>
                 </div>
             </div>
         </section>

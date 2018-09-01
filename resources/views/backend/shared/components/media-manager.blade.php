@@ -40,31 +40,31 @@
     </div>
 </div>
 {{--modal start--}}
-<div id="upload-modal" class="modal">
+<div id="upload-modal" class="upload-submodal">
     <form id="upload-form" class="modal-form"> 
         <input type="file" name="file" id="image-uploader">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <button type="button" data-bind="click: closeModal">Close</button>
     </form>
 </div>
-<div id="create-directory-modal" class="modal">
+<div id="create-directory-modal" class="upload-submodal">
     <div class="modal-form">
         <h3>Directory name</h3>
         <div>
             <input type="text" id="newDir">
         </div>
-        <button onclick="createDirectory()">Apply</button>
+        <button data-bind="click: createDirectory">Apply</button>
         <button type="button" data-bind="click: closeModal">Cancel</button>
     </div>
 </div>
-<div id="confirm-delete-modal" class="modal">
+<div id="confirm-delete-modal" class="upload-submodal">
     <div class="modal-form">
         <label>Are you sure you want to delete the following item?</label>
         <button onclick="deleteItem()">Delete</button>
         <button type="button" data-bind="click: closeModal">Cancel</button>
     </div>
 </div>
-<div id="move-item-modal" class="modal">
+<div id="move-item-modal" class="upload-submodal">
     <div class="modal-form">
         <div>
             <select id="all-directories"></select>
@@ -73,7 +73,7 @@
         <button type="button" data-bind="click: closeModal">Cancel</button>
     </div>
 </div>
-<div id="rename-item-modal" class="modal">
+<div id="rename-item-modal" class="upload-submodal">
     <div class="modal-form">
         <input type="text" id="newName">
         <button onclick="renameItem()">Apply</button>
@@ -110,8 +110,25 @@ $(function() {
             $("#rename-item-modal").addClass("visible");
         },
         closeModal : function() {
-            $("body").find(".modal").removeClass("visible");
+            $("body").find(".upload-submodal").removeClass("visible");
         },
+	createDirectory : function() {
+            var self = this;
+    $.ajax({
+        url: '/adm/upload/createfolder?folder=' + folder + '&new_folder=' + $("#newDir").val(),
+        dataType: 'json'
+    }).done(function(data) {
+	if (data.success.length > 0) {
+            console.log(data.success);
+	}
+        self.closeModal();
+	self.reRender({name: folder, path: $("#newDir").val()});
+    }).fail(function(req, stat, err) {
+	console.log(req.status);
+	console.log(stat);
+	console.log(err);
+    });
+},
         reRender : function(obj) {
             folder = obj.path;
 	    var self = MediaManager;
@@ -179,6 +196,7 @@ $(function() {
             processData: false,
             contentType: false
         }).done(function() {
+            MediaManager.imageMessage('<p class="success">upload success.</p>');
         });
     });
 
@@ -233,24 +251,8 @@ $(function() {
                 }
             }
     });
-     */
 }
-function createDirectory() {
-    $.ajax({
-        url: '/adm/upload/createfolder?folder=' + folder + '&new_folder=' + $("#newDir").val(),
-        dataType: 'json'
-    }).done(function(data) {
-	if (data.success.length > 0) {
-            console.log(data.success);
-	}
-        closeModal();
-	reRender(folder);
-    }).fail(function(req, stat, err) {
-	console.log(req.status);
-	console.log(stat);
-	console.log(err);
-    });
-}
+*/
 function deleteItem() {
     $.ajax({
         url: '/adm/upload/deleteItem?folder=' + folder,
@@ -308,7 +310,4 @@ function renameItem() {
 }
 
 });
-function reRender() {
-    console.log('reRender');
-}
 </script>
