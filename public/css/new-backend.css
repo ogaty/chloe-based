@@ -88,7 +88,7 @@ hr {
     z-index: 1;
     border-radius: 0 5px 0 50px;
     background: #e91e63;
-    box-shadow: 2px -2px 0 2px #e91e63;
+    box-shadow: 2px -2px 0 1px #ffffff;
 }
 .breadcrumb__active {
     text-decoration: none;

@@ -1,4 +1,3 @@
-{{--post側はcloseModalが必要--}}
 <div class="images-toolbar">
     <ul class="images-toolbar--container clearfix">
         <li class="images-toolbar--button">
@@ -20,11 +19,6 @@
             <button id="rename" data-bind="click: rename">Rename</button>
         </li>
     </ul>
-</div>
-<div id="images-breadCrumb" class="images-breadcrumb" data-bind="foreach: breadCrumb">
-    <li class="images-breadcrumb__parent">
-	<a href="javascript:void(0)" data-bind="click:$parent.reRender, text: name"></a>
-    </li>
 </div>
 <div id="images-content">
     <div data-bind="html: imageMessage">
@@ -87,7 +81,6 @@ $(function() {
     var folder = "/";
 
     var MediaManager = {
-        breadCrumb: ko.observableArray(),
         imageMessage: ko.observable(),
         imagesList: ko.observableArray(),
         topPath: ko.observable(),
@@ -138,24 +131,8 @@ $(function() {
             }).done(function(data) {
                 console.log("reRender");
                 console.log(data);
-		self.imageMessage("");
-		self.imagesList.removeAll();
-                console.log("reRender breadCrumb");
-                console.log(data.breadCrumbs);
-                if (typeof data.breadCrumbs.name != undefined) {
-                    console.log("reRender breadCrumb undefined");
-                    self.breadCrumb.removeAll();
-                    self.breadCrumb.push({"name": data.breadCrumbs.name, "path": data.breadCrumbs.fullPath});
-		    self.topPath = data.breadCrumbs.name;
-                }
-                if (data.breadCrumbs.length > 0) {
-                console.log("reRender breadCrumb2");
-                    $("#images-breadCrumb").html("");
-                    for (var i = 0; i < data.breadCrumbs.length; i++) {
-                        var str = self.breadCrumb.toString();
-                    $("#images-breadCrumb").append('<li class="images-breadcrumb__parent"><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs[i].fullPath+'\')">'+data.breadCrumbs[i].name+'</a></li>');
-                    }
-                }
+                self.imageMessage("");
+                self.imagesList.removeAll();
                 if (data.subFolders.length > 0) {
                     for (var i = 0; i < data.subFolders.length; i++) {
                         self.imagesList.push({"name": data.subFolders[i].name, "fullpath": data.subFolders[i].fullPath});

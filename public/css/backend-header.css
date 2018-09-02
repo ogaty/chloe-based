@@ -35,7 +35,7 @@
     width: 100%;
     background: #ad072ec7;
     box-shadow: 0 1px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    padding: 16px;
+    padding: 4px 16px 16px;
     box-sizing: border-box;
     z-index: 15;
 }
@@ -59,6 +59,7 @@
 .header__right {
     display: block;
     float: right;
+    padding-top: 14px;
 }
 #menu-trigger {
     width: 65px;

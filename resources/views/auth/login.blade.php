@@ -1,6 +1,7 @@
 @extends('auth.layout')
 
 @section('content')
+<!--
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -66,8 +67,10 @@
         </div>
     </div>
 </div>
-
+-->
 <div class="wrapper">
+    <form method="POST" action="{{ route('login') }}">
+    @csrf
     <div>
         <span></span>
         <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
@@ -93,5 +96,6 @@
                                 </a>
 
     </div>
+    </form>
 </div>
 @endsection

@@ -1,7 +1,7 @@
 <div class="header clearfix">
     <div class="header__logo--pc">
         <a href="{!! route('admin.home') !!}">
-            <img src="logo.png">
+            <img src="/chloe.png">
         </a>
     </div>
     <div id="menu-trigger">
@@ -9,7 +9,7 @@
     </div>
     <div class="header__logo--sm">
         <a href="{!! route('admin.home') !!}">
-            <img src="logo.png">
+            <img src="/chloe.png">
         </a>
     </div>
     <div class="header__right">
