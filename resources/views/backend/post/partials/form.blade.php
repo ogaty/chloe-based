@@ -152,8 +152,11 @@
                         <div class="fg-line">
                             @if (count($allTagIds) > 0)
                                 <select name="tags[]" id="tags" class="selectpicker" multiple>
+                                    <!-- 
+                                        {{ var_dump($postTags)}}
+-->
                                     @foreach ($allTagIds as $tag)
-                                        <option value="{!! $tag['id'] !!}">{!! $tag['slug'] !!}</option>
+                                        <option @if (in_array($tag['id'], $postTags)) selected @endif value="{!! $tag['id'] !!}">{!! $tag['slug'] !!}</option>
                                     @endforeach
                                 </select>
                             @endif

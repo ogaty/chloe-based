@@ -75,9 +75,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $data = Post::find($id);
+        $postTags = PostTag::where('post_id', $data->id)->pluck('tag_id')->toArray();
         $allTagIds = Tag::all()->toArray();
 
-        return view('backend.post.edit', compact('id', 'data', 'allTagIds'));
+        return view('backend.post.edit', compact('id', 'data', 'postTags', 'allTagIds'));
     }
 
     /**
