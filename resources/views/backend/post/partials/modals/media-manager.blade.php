@@ -6,12 +6,16 @@
             </ul>
         </div>
         <button type="button" onclick="insertAndClose()">Select</button>
+        <button type="button" onclick="Close()">Cancel</button>
     </div>
 </div>
 
 <script>
 function insertAndClose() {
     $("#page_image").val( $(".images-content__item.selected a").data("fullpath") );
+    $(".post-media-modal").removeClass("visible");
+}
+function Close() {
     $(".post-media-modal").removeClass("visible");
 }
 </script>

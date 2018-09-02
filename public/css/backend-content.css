@@ -136,6 +136,17 @@
 #is_published:checked + label:after {
     left: 64px;
 }
+#reverse_direction {
+    opacity: 0;
+    width: 0;
+    display: inline-block;
+}
+#reverse_direction:checked + label {
+    background: #b66d0b;
+}
+#reverse_direction:checked + label:after {
+    left: 64px;
+}
 .toggle-label {
     background: #bbb;
     height: 10px;

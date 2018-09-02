@@ -11,7 +11,7 @@
 
 <div class="form-group">
     <div class="fg-line">
-      <label class="fg-label">Slut</label>
+      <label class="fg-label">Slug</label>
       <input type="text" class="form-control" name="slug" id="slug" value="{{ $data['slug'] }}" placeholder="Slug">
     </div>
 </div>
@@ -37,17 +37,10 @@
 <br>
 
 <div class="form-group">
-    <label class="radio radio-inline m-r-20">
-        <input type="radio" name="reverse_direction" id="reverse_direction" @if (! $data['reverse_direction']) checked="checked" @endif value="0">
-        <i class="input-helper"></i>
-        Normal
-    </label>
-
-    <label class="radio radio-inline m-r-20">
-        <input type="radio" name="reverse_direction" @if ($data['reverse_direction']) checked="checked" @endif value="1">
-        <i class="input-helper"></i>
-        Reverse
-    </label>
+    <label for="reverse_direction" class="info-label"><span class="info-label">Normal</span></label>
+    <input {{ $data['reverse_direction'] ? 'checked' : '' }} type="checkbox" name="reverse_direction" id="reverse_direction">
+    <label for="reverse_direction" class="toggle-label"></label>
+    <label for="reverse_direction" class="info-label" style="margin-left: 20px; margin-right: 0"><span class="label label-primary">Reverse</span></label>
 </div>
 
 <br>

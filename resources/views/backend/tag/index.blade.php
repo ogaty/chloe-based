@@ -42,7 +42,6 @@
                                     <th data-column-id="id" data-type="numeric" data-order="desc">Id</th>
                                     <th data-column-id="title">Title</th>
                                     <th data-column-id="subtitle">Subtitle</th>
-                                    <th data-column-id="layout">Layout</th>
                                     <th data-column-id="direction">Direction</th>
                                     <th data-column-id="created" data-type="date">Created</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
@@ -52,9 +51,8 @@
                                 @foreach ($data as $tag)
                                     <tr>
                                         <td>{!! $tag->id !!}</td>
-                                        <td>{!! $tag->title !!}</td>
-                                        <td class="hidden-sm">{!! str_limit($tag->subtitle, config('blog.backend_trim_width')) !!}</td>
-                                        <td class="hidden-md">{{ $tag->layout }}</td>
+                                        <td>{!! $tag->name !!}</td>
+                                        <td class="hidden-sm">{!! str_limit($tag->slug, 12) !!}</td>
                                         <td class="hidden-sm">
                                             @if ($tag->reverse_direction)
                                                 Reverse
