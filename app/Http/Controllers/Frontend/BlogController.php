@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \App\Models\Post;
 use \App\Models\Tag;
+use \App\Models\PostTag;
 use \App\Models\User;
 use \App\Models\Settings;
 use Carbon\Carbon;
@@ -17,7 +18,7 @@ class BlogController extends \App\Http\Controllers\Controller
         $tagModel = Tag::where('name', $tag)->first();
 
         if (!empty($tagModel)) {
-            $postTag = PostTag::where('tag_id', $tagModel->id)->lists('post_id');
+            $postTag = PostTag::where('tag_id', $tagModel->id)->pluck('post_id')->toArray();
 
             $posts = Post::with('tags')
             ->whereIn('id', $postTag)
@@ -47,7 +48,7 @@ class BlogController extends \App\Http\Controllers\Controller
         $tagModel = Tag::where('title', $tag)->first();
 
         if (!empty($tagModel)) {
-            $postTag = PostTag::where('tag_id', $tagModel->id)->lists('post_id');
+            $postTag = PostTag::where('tag_id', $tagModel->id)->pluck('post_id')->toArray();
 
             $posts = Post::with('tags')
             ->whereIn('id', $postTag)

@@ -43,7 +43,7 @@ class PostController extends Controller
     public function create()
     {
         $data = new Post();
-	$data->published_at = Carbon::now();
+        $data->published_at = Carbon::now();
         $allTagIds = Tag::all()->toArray();
         return view('backend.post.create', compact('allTagIds', 'data'));
     }
@@ -93,7 +93,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->fill($request->postFillData());
         $post->save();
-        $post->syncTags($request->get('tags', []));
+//        $post->syncTags($request->get('tags', []));
 
         $request->session()->put('_update-post', 'Success! :entity has been updated.');
 

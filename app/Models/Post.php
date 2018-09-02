@@ -54,7 +54,7 @@ class Post extends Model
 
     public function tagLinks()
     {
-        $tags = $this->tags()->pluck('tag');
+        $tags = $this->tags()->pluck('name');
         $return = [];
         foreach ($tags as $tag) {
             $return[] = '<a href="/?tag='.$tag.'">#'.e($tag).'</a>&nbsp;';

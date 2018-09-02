@@ -47,7 +47,7 @@ class PostUpdateRequest extends FormRequest
             'title' => $this->title,
             'slug' => $this->slug,
             'page_image' => $this->page_image,
-            'content_raw' => $this->get('content'),
+            'content_raw' => $this->content_raw,
             'meta_description' => $this->meta_description,
             'is_published' => (bool) $this->is_published,
             'published_at' => $this->published_at,

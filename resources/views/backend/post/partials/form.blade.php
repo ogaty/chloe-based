@@ -129,8 +129,8 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="page_image" id="page_image" alt="Image thumbnail" placeholder="Page Image" v-model="pageImage">
                                 <span class="input-group-btn" style="margin-bottom: 11px">
-                        <button style="margin-bottom: -5px" type="button" class="" onclick="openFromPageImage()">Select Image</button>
-                    </span>
+                                    <button style="margin-bottom: -5px" type="button" class="" onclick="openFromPageImage()">Select Image</button>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -151,11 +151,11 @@
                     <div class="form-group">
                         <div class="fg-line">
                             @if (count($allTagIds) > 0)
-                            <select name="tags[]" id="tags" class="selectpicker" multiple>
-                                @foreach ($allTagIds as $tag)
-{!--                                    <option @if ($tag = $tag['slug']) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>--}
-                                @endforeach
-                            </select>
+                                <select name="tags[]" id="tags" class="selectpicker" multiple>
+                                    @foreach ($allTagIds as $tag)
+                                        <option value="{!! $tag['id'] !!}">{!! $tag['slug'] !!}</option>
+                                    @endforeach
+                                </select>
                             @endif
                         </div>
                     </div>
