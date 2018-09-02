@@ -105,26 +105,26 @@ $(function() {
         closeModal : function() {
             $("body").find(".upload-submodal").removeClass("visible");
         },
-	createDirectory : function() {
+    	createDirectory : function() {
             var self = this;
-    $.ajax({
-        url: '/adm/upload/createfolder?folder=' + folder + '&new_folder=' + $("#newDir").val(),
-        dataType: 'json'
-    }).done(function(data) {
-	if (data.success.length > 0) {
-            console.log(data.success);
-	}
-        self.closeModal();
-	self.reRender({name: folder, path: $("#newDir").val()});
-    }).fail(function(req, stat, err) {
-	console.log(req.status);
-	console.log(stat);
-	console.log(err);
-    });
-},
+            $.ajax({
+                url: '/adm/upload/createfolder?folder=' + folder + '&new_folder=' + $("#newDir").val(),
+                dataType: 'json'
+            }).done(function(data) {
+            if (data.success.length > 0) {
+                    console.log(data.success);
+            }
+                self.closeModal();
+            self.reRender({name: folder, path: $("#newDir").val()});
+            }).fail(function(req, stat, err) {
+            console.log(req.status);
+            console.log(stat);
+            console.log(err);
+            });
+        },
         reRender : function(obj) {
             folder = obj.path;
-	    var self = MediaManager;
+    	    var self = MediaManager;
             $.ajax({
                 url: '/adm/upload/ls?path=' + obj.path,
                 dataType: 'json'
@@ -133,23 +133,18 @@ $(function() {
                 console.log(data);
                 self.imageMessage("");
                 self.imagesList.removeAll();
-                if (data.subFolders.length > 0) {
-                    for (var i = 0; i < data.subFolders.length; i++) {
-                        self.imagesList.push({"name": data.subFolders[i].name, "fullpath": data.subFolders[i].fullPath});
-                    }
-                }
                 if (data.files.length > 0) {
                     for (var i = 0; i < data.files.length; i++) {
-                        self.imagesList.push({"name": data.files[i].name, "fullpath": data.files[i].fullPath});
+                        self.imagesList.push({"name": data.files[i].fullPath, "fullpath": data.files[i].fullPath});
                     }
                 } else {
-                    if (data.subFolders.length == 0) {
+                    if (data.files.length == 0) {
                         self.imageMessage('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
                     }
                 }
                 console.log("reRender end");
             });
-	}
+        }
     }
 
     ko.applyBindings(MediaManager);
@@ -191,45 +186,6 @@ $(function() {
     $("#rename").on('click', function() {
         $("#rename-item-modal").addClass("visible");
     });
-    /*
-    function reRender(path) {
-    console.log("reRender2");
-
-    folder = path;
-    $.ajax({
-        url: '/adm/upload/ls?path=' + path,
-        dataType: 'json'
-    }).done(function(data) {
-        console.log(data);
-            $("#images-content__list").html("");
-            console.log(data.breadCrumbs);
-	    if (typeof data.breadCrumbs.name != undefined) {
-                $("#images-breadCrumb").html("");
-                $("#images-breadCrumb").append('<li class="images-breadcrumb__item"><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs.fullPath+'\')">'+data.breadCrumbs.name+'</a></li>');
-	    }
-            if (data.breadCrumbs.length > 0) {
-                $("#images-breadCrumb").html("");
-                for (var i = 0; i < data.breadCrumbs.length; i++) {
-                    $("#images-breadCrumb").append('<li class="images-breadcrumb__item"><a href="javascript:void(0)" onclick="reRender(\''+data.breadCrumbs[i].fullPath+'\')">'+data.breadCrumbs[i].name+'</a></li>');
-                }
-            }
-            if (data.subFolders.length > 0) {
-                for (var i = 0; i < data.subFolders.length; i++) {
-                    $("#images-content__list").append('<li class="images-content__item"><input type="checkbox" class="images-content__check" data-fullpath="'+data.subFolders[i].fullPath+'"><a href="javascript:void(0)" onclick="reRender(\''+data.subFolders[i].fullPath+'\')">'+data.subFolders[i].name+'</a></li>');
-                }
-            }
-            if (data.files.length > 0) {
-                for (var i = 0; i < data.files.length; i++) {
-                    $("#images-content__list").append('<li class="images-content__item"><input type="checkbox" class="images-content__check" data-fullpath="'+data.files[i].fullPath+'"><a href="javascript:void(0)">'+data.files[i].name+'</a></li>');
-                }
-            } else {
-                if (data.subFolders.length == 0) {
-                    $("#images-content__list").html('<h4>This folder is empty.</h4><p>Drag and drop files onto this window to upload files.</p></div>');
-                }
-            }
-    });
-}
-*/
 function deleteItem() {
     $.ajax({
         url: '/adm/upload/deleteItem?folder=' + folder,
