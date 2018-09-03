@@ -31,9 +31,6 @@
 <div id="upload-modal" class="upload-submodal">
     <form id="upload-form" class="modal-form"> 
         <input type="file" name="file" id="image-uploader">
-        <select type="select" name="targetfolder" data-bind="foreach: directories">
-            <option data-bind="text: name, attr: {'value': name}">
-        </select>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <button type="button" data-bind="click: closeModal">Close</button>
     </form>
@@ -62,16 +59,7 @@ $(function() {
         imageMessage: ko.observable(),
         imagesList: ko.observableArray(),
         topPath: ko.observable(),
-        directories: ko.observableArray(),
         uploadImage : function() {
-            $.ajax({
-                url: '/adm/upload/alldirectories',
-                dataType: 'json'
-            }).done(function(data) {
-                for (var i = 0; i < data.length; i++) {
-                    directories.append({name: data});
-                }
-            });
             $("#upload-modal").addClass("visible");
         },
         refresh : function() {
@@ -116,7 +104,7 @@ $(function() {
     MediaManager.reRender({name: '/', path: '/'});
     
     $("#images-content").on("click", ".images-content__item", function() {
-	$(".images-content__item").removeClass("selected");
+        $(".images-content__item").removeClass("selected");
         $(this).addClass("selected");
     });
 
@@ -132,6 +120,8 @@ $(function() {
             contentType: false
         }).done(function() {
             MediaManager.imageMessage('<p class="success">upload success.</p>');
+            MediaManager.closeModal();
+            MediaManager.reRender({name:'/', path:'/'});
         });
     });
 

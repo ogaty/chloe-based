@@ -184,7 +184,6 @@
 
 <script>
 function openFromPageImage() {
-    window.post = false;
     $(".post-media-modal").addClass("visible");
 }
 </script>

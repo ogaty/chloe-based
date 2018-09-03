@@ -13,14 +13,13 @@
 <script>
 function insertAndClose() {
     if (post) {
-        var mde = this.simpleMde;
-        var output = '[' + file.name + '](' + file.relativePath + ')';
+        var mde = window.simplemde;
+        var file = $(".images-content__item.selected").eq(0).text().trim();
+        var output = '[' + file + '](' + file + ')';
 
-    if (this.isImage(file)) {
         output = '!' + output;
-    }
 
-    mde.replaceSelection(output);
+        mde.codemirror.replaceSelection(output);
     }
     else {
     $("#page_image").val( $(".images-content__item.selected a").data("fullpath") );

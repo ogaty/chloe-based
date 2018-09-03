@@ -9,8 +9,8 @@ var simplemde = new SimpleMDE({
         "quote", "unordered-list", "ordered-list", "|",
         'link', 'image',
         {
-                            name: 'insertImage',
-                            action: function (editor) {
+            name: 'insertImage',
+            action: function (editor) {
         window.post = true;
                                     openFromPageImage();
                             }.bind(this),
