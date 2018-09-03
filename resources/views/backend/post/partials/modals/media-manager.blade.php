@@ -12,7 +12,19 @@
 
 <script>
 function insertAndClose() {
+    if (post) {
+        var mde = this.simpleMde;
+        var output = '[' + file.name + '](' + file.relativePath + ')';
+
+    if (this.isImage(file)) {
+        output = '!' + output;
+    }
+
+    mde.replaceSelection(output);
+    }
+    else {
     $("#page_image").val( $(".images-content__item.selected a").data("fullpath") );
+    }
     $(".post-media-modal").removeClass("visible");
 }
 function Close() {

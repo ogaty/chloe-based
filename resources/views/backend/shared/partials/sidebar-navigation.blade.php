@@ -19,8 +19,12 @@
     </div>
 
     <ul class="main-menu main-ul">
-        <li @if (Route::is('admin.home')) class="active sidebar-list" @else class="sidebar-list" @endif><a href="{!! route('admin.home') !!}" class="sidebar-list__link"><i class="sidebar-list__link--icon zmdi zmdi-home"></i> Home</a></li>
-        <li class="sidebar-list"><a href="{!! route('home') !!}" class="sidebar-list__link"><i class="sidebar-list__link--icon zmdi zmdi-home"></i> View Site</a></li>
+        <li @if (Route::is('admin.home')) class="active sidebar-list" @else class="sidebar-list" @endif>
+            <a href="{!! route('admin.home') !!}" class="sidebar-list__link"><i class="sidebar-list__link--icon zmdi zmdi-home"></i> Home</a>
+        </li>
+        <li class="sidebar-list">
+            <a href="{!! route('home') !!}" class="sidebar-list__link"><i class="sidebar-list__link--icon zmdi zmdi-home"></i> View Site</a>
+        </li>
 
         <li class="sub-menu @if (Route::is('admin.post.index') || Route::is('admin.post.create') || Route::is('admin.post.edit'))active toggled @endif sidebar-list">
             <a href="" class="sidebar-list__link submenu-toggle"><i class="sidebar-list__link--icon zmdi zmdi-collection-bookmark"></i> Posts                        <span><ion-icon name="arrow-dropdown"></ion-icon></span></a>
