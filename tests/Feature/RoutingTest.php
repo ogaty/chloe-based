@@ -27,7 +27,7 @@ class RoutingTest extends TestCase
         $response = $this->get('/sitemap.xml');
         $response->assertStatus(200);
         $response = $this->get('/feed');
-        $response->assertStatus(404);
+        $response->assertSee('404');
 
 
         $user = User::first();
