@@ -10,9 +10,6 @@
             <button id="refresh" data-bind="click: refresh">Refresh</button>
         </li>
         <li class="images-toolbar--button">
-            <button id="move" data-bind="click: move">Move</button>
-        </li>
-        <li class="images-toolbar--button">
             <button id="delete" data-bind="click: deleteItem">Delete</button>
         </li>
         <li class="images-toolbar--button">
@@ -58,15 +55,6 @@
         <button type="button" data-bind="click: closeModal">Cancel</button>
     </div>
 </div>
-<div id="move-item-modal" class="upload-submodal">
-    <div class="modal-form">
-        <div>
-            <select id="all-directories"></select>
-        </div>
-        <button onclick="moveItem()">Apply</button>
-        <button type="button" data-bind="click: closeModal">Cancel</button>
-    </div>
-</div>
 <div id="rename-item-modal" class="upload-submodal">
     <div class="modal-form">
         <input type="text" id="newName">
@@ -92,9 +80,6 @@ $(function() {
         },
         refresh : function() {
             reRender(folder);
-        },
-        move : function() {
-            console.log("clicked");
         },
         deleteItem : function() {
             $("#confirm-delete-modal").addClass("visible");
@@ -172,17 +157,6 @@ $(function() {
         });
     });
 
-    $("#move").on('click', function() {
-        $.ajax({
-            url: '/adm/upload/alldirectories',
-            dataType: 'json'
-        }).done(function(data) {
-	    for (var i = 0; i < data.length; i++) {
-                $("#all-directories").append("<option value=\"" + data[i].fullPath + "\">" + data[i].name + "</option>");
-	    }
-        });
-        $("#move-item-modal").addClass("visible");
-    });
     $("#rename").on('click', function() {
         $("#rename-item-modal").addClass("visible");
     });
@@ -192,25 +166,6 @@ function deleteItem() {
         dataType: 'json',
         type: 'post',
 	data: {'_token': '{{csrf_token()}}', 'path': $(".images-content__check:checked").data("fullpath")}
-    }).done(function(data) {
-	if (data.success.length > 0) {
-            console.log(data.success);
-	}
-        closeModal();
-	reRender(folder);
-    }).fail(function(req, stat, err) {
-	console.log(req.status);
-	console.log(stat);
-	console.log(err);
-    });
-}
-function moveItem() {
-    $.ajax({
-        url: '/adm/upload/moveitem',
-        dataType: 'json',
-        type: 'post',
-        data: {'_token': '{{csrf_token()}}', 'from': $(".images-content__check:checked").data("fullpath"),
-        'to': $("#all-directories").val()}
     }).done(function(data) {
 	if (data.success.length > 0) {
             console.log(data.success);
