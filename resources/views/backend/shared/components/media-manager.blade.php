@@ -4,9 +4,6 @@
             <button id="upload-image" data-bind="click: uploadImage">Upload</button>
         </li>
         <li class="images-toolbar--button">
-            <button id="add-directory" data-bind="click: addDirectory">Add Directory</button>
-        </li>
-        <li class="images-toolbar--button">
             <button id="refresh" data-bind="click: refresh">Refresh</button>
         </li>
         <li class="images-toolbar--button">
@@ -40,16 +37,6 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <button type="button" data-bind="click: closeModal">Close</button>
     </form>
-</div>
-<div id="create-directory-modal" class="upload-submodal">
-    <div class="modal-form">
-        <h3>Directory name</h3>
-        <div>
-            <input type="text" id="newDir">
-        </div>
-        <button data-bind="click: createDirectory">Apply</button>
-        <button type="button" data-bind="click: closeModal">Cancel</button>
-    </div>
 </div>
 <div id="confirm-delete-modal" class="upload-submodal">
     <div class="modal-form">
@@ -87,9 +74,6 @@ $(function() {
             });
             $("#upload-modal").addClass("visible");
         },
-        addDirectory : function() {
-            $("#create-directory-modal").addClass("visible");
-        },
         refresh : function() {
             reRender(folder);
         },
@@ -101,23 +85,6 @@ $(function() {
         },
         closeModal : function() {
             $("body").find(".upload-submodal").removeClass("visible");
-        },
-    	createDirectory : function() {
-            var self = this;
-            $.ajax({
-                url: '/adm/upload/createfolder?folder=' + folder + '&new_folder=' + $("#newDir").val(),
-                dataType: 'json'
-            }).done(function(data) {
-            if (data.success.length > 0) {
-                    console.log(data.success);
-            }
-                self.closeModal();
-            self.reRender({name: folder, path: $("#newDir").val()});
-            }).fail(function(req, stat, err) {
-            console.log(req.status);
-            console.log(stat);
-            console.log(err);
-            });
         },
         reRender : function(obj) {
             folder = obj.path;
