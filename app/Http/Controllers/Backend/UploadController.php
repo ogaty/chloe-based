@@ -145,8 +145,12 @@ class UploadController extends Controller
     public function uploadFiles(UploadFileRequest $request)
     {
         try {
+            $directories = $this->mediaManager->allDirectories();
             $files = $request->file('file');
-            $folder = $request->post('folder', '/');
+            $folder = $request->post('targetfolder', '/');
+            if (!in_array($folder, $directories)) {
+                return $this->errorResponse(['error: invalid path']);
+            }
 
             $response = $this->mediaManager->saveUploadedFiles($files, $folder);
             if ($response != 0) {
