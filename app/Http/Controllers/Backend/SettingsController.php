@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use Session;
 use App\Models\Settings;
-use App\Helpers\CanvasHelper;
 use App\Extensions\ThemeManager;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SettingsUpdateRequest;
@@ -59,7 +58,7 @@ class SettingsController extends Controller
             'phpTimeLimit' => ini_get('max_execution_time'),
             'dbConnection' => strtoupper(env('DB_CONNECTION', 'mysql')),
             'webServer' => isset($_SERVER['SERVER_SOFTWARE'])? $_SERVER['SERVER_SOFTWARE']:'phpunit',
-            'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts')) ? filemtime(storage_path(CanvasHelper::INDEXES['posts'])) : false),
+            'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts')) ? filemtime(storage_path('posts')) : false),
             'version' => 'based 1.0',
             'curl' => (in_array('curl', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
             'curlVersion' => (in_array('curl', get_loaded_extensions()) ? curl_version()['libz_version'] : 'Not Supported'),

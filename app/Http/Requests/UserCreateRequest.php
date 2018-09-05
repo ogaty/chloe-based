@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Helpers\CanvasHelper;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserCreateRequest extends FormRequest

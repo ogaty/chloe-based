@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
-use App\Helpers\CanvasHelper;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -130,7 +129,7 @@ class UserController extends Controller
     {
         // First, assign all the posts authored by this user to another existing user in the system.
         $existingUser = User::where('id', '!=', $id)->first();
-        DB::table(CanvasHelper::TABLES['posts'])
+        DB::table('posts')
             ->where('user_id', $id)
             ->update(['user_id' => $existingUser->id]);
 

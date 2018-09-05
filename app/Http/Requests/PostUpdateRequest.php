@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use App\Models\Post;
 use Illuminate\Validation\Rule;
-use App\Helpers\CanvasHelper;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostUpdateRequest extends FormRequest

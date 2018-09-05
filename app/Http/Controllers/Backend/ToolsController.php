@@ -10,7 +10,6 @@ use App\Models\User;
 use App\Models\PostTag;
 use App\Models\Settings;
 use App\Models\Migrations;
-use App\Helpers\CanvasHelper;
 use App\Models\PasswordResets;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
@@ -34,7 +33,7 @@ class ToolsController extends Controller
     public function index()
     {
         $data = [
-            'status' => App::isDownForMaintenance() ? CanvasHelper::MAINTENANCE_MODE_ENABLED : CanvasHelper::MAINTENANCE_MODE_DISABLED,
+            'status' => App::isDownForMaintenance() ? true : false,
         ];
 
         return view('backend.tools.index', compact('data'));
