@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="{{ asset('vendor/canvas/assets/images/favicon.png') }}">
+<link rel="icon" type="image/png" href="/favicon.png">
 
 <link rel="alternate" type="application/rss+xml" title="{{ \App\Models\Settings::blogTitle() }}" href="{{ \App\Models\Settings::blogUrl() }}/feed/">
 
